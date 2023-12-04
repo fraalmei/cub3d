@@ -6,21 +6,11 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:33:55 by fraalmei          #+#    #+#             */
-/*   Updated: 2023/12/04 12:29:57 by fraalmei         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:31:11 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-/// @brief check the map format, looking the last characters of the map name
-/// @param map 
-/// @return 
-static int	check_format(char map)
-{
-	if (ft_str_last_cmp(map, ".cub"))
-		return (1);
-	return (0);
-}
 
 static int	check_walls(int file)
 {
@@ -94,7 +84,7 @@ int	check_map(char map)
 {
 	int		file;
 
-	if (check_format(map))
+	if (ft_str_last_cmp(map, ".cub"))
 		return (1);
 	file = open(map, O_RDONLY);
 	if (file < 0 || read(file, 0, 0) < 0)
