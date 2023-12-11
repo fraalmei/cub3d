@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 12:26:10 by fraalmei          #+#    #+#             */
-/*   Updated: 2023/12/01 14:29:55 by fraalmei         ###   ########.fr       */
+/*   Updated: 2023/12/11 16:58:13 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	del_node_arr(char **arr, char str)
 				arr[i] = arr[i + 1];
 				i++;
 			}
+			arr[i] = NULL;
 		}
 		i++;
 	}
