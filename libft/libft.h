@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:58:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2023/12/01 14:08:28 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/03/07 10:16:07 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <errno.h>
 # include <limits.h>
+# include <math.h>
 # include <fcntl.h>
 
 	// buffer for the get_next_line
