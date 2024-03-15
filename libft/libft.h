@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:58:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/07 10:16:07 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/03/15 08:52:18 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@
 # define STDIN 0
 # define STDOUT 1
 # define STDERR 2
+
+typedef enum e_bool
+{
+	TRUE = 1,
+	FALSE = 0
+}	t_bool;
 
 	// basic structure of "t_list"
 	// its defined a struct type "t_list"
