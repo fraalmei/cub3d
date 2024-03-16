@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   engine.h                                           :+:      :+:    :+:   */
+/*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 16:44:02 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/03/16 16:51:12 by cagonzal         ###   ########.fr       */
+/*   Created: 2024/03/07 12:11:14 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/03/16 18:50:34 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENGINE_H
-# define ENGINE_H
+#ifndef VECTOR_H
+# define VECTOR_H
 
-# include <vector.h>
+# include <vector2.h>
+# include <vector3.h>
+# include <vector4.h>
 
+# define GRAVITY 9.8
 
 #endif

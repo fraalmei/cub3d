@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/03/16 16:28:57 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/03/16 18:52:56 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,8 @@ endif
 # Directories
 BIN_DIR		= bin
 SRC_DIR		= srcs
-SRCS		= main.c $(PARSE) $(SRC_VECTOR)
+# SRCS		= main.c $(PARSE)
+SRCS		= main.c $(SRC_VECTOR) engine/engine.c
 PARSE		= parse/scene/check_scene.c parse/elements/check_elements.c parse/images/parse_image.c\
 	parse/map/check_map.c
 
@@ -71,20 +72,8 @@ LIBFT_DIR 	= libft				# path to libft library
 INCLUDE_DIR	= include			# path to headers
 ASSETS_DIR	= assets			# path to assets
 
-VECTOR2 = matrix2_utils.c vector2_utils.c vector2_utils2.c
-VECTOR3 = matrix3_utils.c vector3_utils.c vector3_utils2.c
-VECTOR4 = matrix4_utils.c vector4_utils.c vector4_utils2.c
-
-SRC_VECTOR2 = $(addprefix vector2/, $(VECTOR2))
-SRC_VECTOR3 = $(addprefix vector3/, $(VECTOR3))
-SRC_VECTOR4 = $(addprefix vector4/, $(VECTOR4))
-
-SRC_VECTOR =	$(addprefix vector/, $(SRC_VECTOR2)) \
-				$(addprefix vector/, $(SRC_VECTOR3)) \
-				$(addprefix vector/, $(SRC_VECTOR4))
-
 # Convert source files to binary
-OBJ = $(SRCS:%.c=$(BIN_DIR)/%.o)
+OBJS = $(SRCS:%.c=$(BIN_DIR)/%.o)
 
 all: $(NAME)
 

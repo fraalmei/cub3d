@@ -1,48 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector2_utils2.c                                   :+:      :+:    :+:   */
+/*   matrix3_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:43:03 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/03/16 19:13:58 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:06:22 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <vector2.h>
 
-t_vector2	ft_v2div(t_vector2 v1, t_vector2 v2)
+
+t_matrix2	ft_matr2div(t_matrix2 m1, t_matrix2 m2)
 {
-	t_vector2	v;
+	t_matrix2	m;
 
-	v.x = v1.x / v2.x;
-	v.y = v1.y / v2.y;
+	m.elements[0][0] = m1.elements[0][0] / m2.elements[0][0];
+	m.elements[0][1] = m1.elements[0][1] / m2.elements[0][1];
+	m.elements[1][0] = m1.elements[1][0] / m2.elements[1][0];
+	m.elements[1][1] = m1.elements[1][1] / m2.elements[1][1];
 
-	return (v);
+	return (m);
 }
 
-t_vector2	ft_v2fdiv(t_vector2 v1, float f)
+t_matrix2	ft_matr2fdiv(t_matrix2 m1, float f)
 {
-	t_vector2	v;
+	t_matrix2	m;
 
-	v.x = v1.x / f;
-	v.y = v1.y / f;
+	m.elements[0][0] = m1.elements[0][0] / f;
+	m.elements[0][1] = m1.elements[0][1] / f;
+	m.elements[1][0] = m1.elements[1][0] / f;
+	m.elements[1][1] = m1.elements[1][1] / f;
 
-	return (v);
-}
-
-double	ft_v2mag(t_vector2 v)
-{
-	return (v.x * v.x + v.y * v.y);
-}
-
-double	ft_v2sqrtmag(t_vector2 v)
-{
-	return (sqrtf(v.x * v.x + v.y * v.y));
-}
-
-t_bool	ft_v2eqv(t_vector2 v1, t_vector2 v2)
-{
-	return (v1.x == v2.x && v1.y == v2.y);
+	return (m);
 }
