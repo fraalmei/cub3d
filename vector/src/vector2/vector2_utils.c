@@ -1,48 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector2_utils2.c                                   :+:      :+:    :+:   */
+/*   vector2_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:43:03 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/03/16 19:13:58 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/03/16 20:22:02 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vector2.h>
+#include <vector.h>
 
-t_vector2	ft_v2div(t_vector2 v1, t_vector2 v2)
+t_vector2	ft_vector2(double x, double y)
+{
+	t_vector2	vector;
+
+	vector.x = x;
+	vector.y = y;
+
+	return (vector);
+}
+
+t_vector2	ft_v2add(t_vector2 v1, t_vector2 v2)
 {
 	t_vector2	v;
 
-	v.x = v1.x / v2.x;
-	v.y = v1.y / v2.y;
+	v.x = v1.x + v2.x;
+	v.y = v1.y + v2.y;
 
 	return (v);
 }
 
-t_vector2	ft_v2fdiv(t_vector2 v1, float f)
+t_vector2	ft_v2subs(t_vector2 v1, t_vector2 v2)
 {
 	t_vector2	v;
 
-	v.x = v1.x / f;
-	v.y = v1.y / f;
+	v.x = v1.x - v2.x;
+	v.y = v1.y - v2.y;
 
 	return (v);
 }
 
-double	ft_v2mag(t_vector2 v)
+t_vector2	ft_v2mult(t_vector2 v1, t_vector2 v2)
 {
-	return (v.x * v.x + v.y * v.y);
+	t_vector2	v;
+
+	v.x = v1.x * v2.x;
+	v.y = v1.y * v2.y;
+
+	return (v);
 }
 
-double	ft_v2sqrtmag(t_vector2 v)
+t_vector2	ft_v2fmult(t_vector2 v1, float f)
 {
-	return (sqrtf(v.x * v.x + v.y * v.y));
-}
+	t_vector2	v;
 
-t_bool	ft_v2eqv(t_vector2 v1, t_vector2 v2)
-{
-	return (v1.x == v2.x && v1.y == v2.y);
+	v.x = v1.x * f;
+	v.y = v1.y * f;
+
+	return (v);
 }

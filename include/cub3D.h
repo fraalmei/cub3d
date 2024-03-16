@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:06:24 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/16 17:15:57 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/03/16 21:38:48 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <mlx.h>
 # include <keys.h>
 # include <functions.h>
-# include <engine.h>
+# include "../vector/include/vector.h"
+# include "../srcs/engine/include/engine.h"
 
 #endif

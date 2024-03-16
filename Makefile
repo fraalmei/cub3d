@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/03/16 18:52:56 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/03/16 21:39:10 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,11 +64,12 @@ endif
 BIN_DIR		= bin
 SRC_DIR		= srcs
 # SRCS		= main.c $(PARSE)
-SRCS		= main.c $(SRC_VECTOR) engine/engine.c
+SRCS		= main.c engine/engine.c
 PARSE		= parse/scene/check_scene.c parse/elements/check_elements.c parse/images/parse_image.c\
 	parse/map/check_map.c
 
 LIBFT_DIR 	= libft				# path to libft library
+VECTOR_DIR 	= vector			# path to libft library
 INCLUDE_DIR	= include			# path to headers
 ASSETS_DIR	= assets			# path to assets
 
@@ -91,6 +92,7 @@ $(OBJS): $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
 #	Libraries compile
 libs:
 	make -C $(LIBFT_DIR)
+	make -C $(VECTOR_DIR)
 	make -C $(MLX_DIR)
 
 re: fclean all
