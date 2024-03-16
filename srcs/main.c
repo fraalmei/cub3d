@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/15 09:08:07 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/03/16 16:14:19 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vector.h>
+#include "cub3d.h"
 
 static void	leaks(void)
 {
@@ -21,8 +21,11 @@ static void	leaks(void)
 int	main(int argc, char **argv)
 {
 	if (argc != 2)
-		return (printf_fd(2, "Numero de argumentos incorrecto.\n"), 0);
-	read_map(argv[1]);
+	{
+		ft_printf_fd(2, "Numero de argumentos incorrecto.\n");
+		return (0);
+	}
+	check_scene(argv[1]);
 	atexit(leaks);
 	return (0);
 }

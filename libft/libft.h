@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:58:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/15 08:52:18 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/03/16 12:34:21 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ void	ignore_spaces(char *buffer, int *i);
 char	*get_next_line(int fd);
 
 		//get_next_word
-char	*get_next_word(char line, int new);
+char	*get_next_word(char *line, int new);
 
 		//extras
 size_t	ft_intlen(int n, int base);
@@ -172,13 +172,14 @@ size_t	ft_strlen_array(const void **string);
 int		ft_strnstr_f(const char *haystack, const char *needle, size_t n);
 int		ft_strnstr_l(const char *haystack, const char *needle, size_t n);
 
-int		ft_error(int error, char *str);
-int		ft_q_error(int error, char *msg_error);
-int		ft_t_error(int error, char *msg_error);
-int		ft_file_err(char *file);
-
 		//ft_islanum.c
 int		ft_isnum(int c);
 int		ft_is_str_num(char *str);
+
+		//ft_split_trim.c
+int		ft_str_strlen(char **string);
+int		ft_scndchrlen(const char *s, char c);
+char	*ft_last_string(char **str);
+char	**str_strjoin_freeall(char **s1, char *s2);
 
 #endif

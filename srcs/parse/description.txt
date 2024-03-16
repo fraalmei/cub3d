@@ -1,0 +1,45 @@
+El único argumento que debe tener el programa es un mapa en formato .cub (escena)
+
+1- Se comprueba la extension del mapa ".cub"
+2- Se abre el archivo y vemos si se puede leer
+	Si no se puede salimos y devolvemos 1
+3- Comprobamos los elementos en el archivo
+	Leemos el archivo a ver si tiene algo
+		Si no salimos devolviendo 1
+	Comprobamos las texturas
+		Deben existir en la direccion que se indica
+		Se deben poder leerse
+		Tener un formato correcto para la lectura
+		El suelo y el techo para la parte obligatoria deben ser colores sólidos pero daremos la opcion que sean texturas (quiza tambien para el resto de elementos)
+	Se comprueba el mapa
+		Se verifica si existe el jugador (N,E,W,S)
+		Se verifica si el mapa está totalmente cerrado
+		Si metemos salida comprobamos que tenga un camino correcto
+
+
+
+Ej:
+NO ./path_to_the_north_texture
+SO ./path_to_the_south_texture
+WE ./path_to_the_west_texture
+EA ./path_to_the_east_texture
+											// los elementos del mapa pueden estar separados por una o más lineas vacias
+F 220,100,0
+C 225,30,0
+											// el ultimo elemento debe ser siempre el mapa el resto pueden ir en cualquier orden
+											// excepto el mapa la informacion de cada elemento puede estar separada por uno o mas espacios
+											// para la parte bonus se puede añadir más elementos del tipo C y F con texturas especificas
+        1111111111111111111111111
+        1000000000110000000000001
+        1011000001110000000000001
+        1001000000000000000000001
+111111111011000001110000000000001
+100000000011000001110111111111111
+11110111111111011100000010001
+11110111111111011101010010001
+11000000110101011100000010001
+10000000000000001100000010001
+10000000000000001101010010001
+11000001110101011111011110N0111
+11110111 1110101 101111010001
+11111111 1111111 111111111111

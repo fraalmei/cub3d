@@ -6,24 +6,11 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:33:55 by fraalmei          #+#    #+#             */
-/*   Updated: 2023/12/11 17:03:57 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/03/16 14:31:33 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
-
-// comentarios
-	// check_elements(int file)
-		// primero comprobamos la extension del mapa ".cub"
-		// segundo abrimos el archivo y vemos si se puede leer
-		// si no se puede salimos y devolvemos 1
-		// si se puede chekeamos los elementos
-	// check_elements(int file)
-		// primero leemos el archivo a ver si tiene algo
-		// si no salimos devolviendo 1
-		// si lee comprobamos las texturas
-	// check_textures(int fd, char line)
-		// 
+#include "cub3d.h"
 
 typedef struct s_g_textures
 {

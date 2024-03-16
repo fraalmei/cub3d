@@ -10,7 +10,7 @@
 /*																			*/
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 /* 	// open the .xmp files and detect the pixels
 t_size	detect_image_size(char *dir)

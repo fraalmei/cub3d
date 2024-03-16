@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:11:14 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/03/07 14:03:10 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/03/16 14:37:20 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define VECTOR_H
 
 
-#include <libft.h>
+#include "cub3d.h"
 #include <vector2/vector2.h>
 #include <vector3/vector3.h>
 #include <vector4/vector4.h>

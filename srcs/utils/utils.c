@@ -6,11 +6,11 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 12:26:10 by fraalmei          #+#    #+#             */
-/*   Updated: 2023/12/11 16:58:13 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/03/16 14:37:24 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
 char	**str_array(char line)
 {

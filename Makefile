@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
+#    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/03/15 10:25:29 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/03/16 14:20:38 by fraalmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CYAN	= @echo "\033[0;35m"
 RESET	= "\033[1;0m"
 
 #	file's name
-NAME	= so_long
+NAME	= cub3D
 
 #	compilation
 CC		= gcc
@@ -28,14 +28,14 @@ CC		= gcc
 RM		= /bin/rm -f
 
 #	flags
-CFLAGS	= #-Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra
 
 LEAK_FLAGS	= -fsanitize=address -g3
 
 #	Compile a mlx for linux or mac
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
-#	MLX_DIR		= minilibx/minilibx-linux
+#	MLX_DIR		= minilibx/minilibx/minilibx-linux
 	MLX_DIR		= minilibx/mlx_Linux
 	MLX_FLAGS	= -Imlx_Linux -Lmlx_Linux -lmlx_Linux -lXext -lX11 -lm -lz
 	INCLUDES	= -I$(INCLUDE_DIR) \
@@ -47,9 +47,9 @@ ifeq ($(UNAME), Linux)
 endif
 
 ifeq ($(UNAME), Darwin)
-#	MLX_DIR		= minilibx/minilibx_opengl_20191021
-#	MLX_DIR		= minilibx/minilibx_mms_20200219
-	MLX_DIR		= mlx
+#	MLX_DIR		= minilibx/minilibx/minilibx_opengl_20191021
+#	MLX_DIR		= minilibx/minilibx/minilibx_mms_20200219
+	MLX_DIR		= minilibx/mlx
 	MLX_FLAGS	= -L$(MLX_DIR) -lmlx \
 				  -framework OpenGL \
 				  -framework AppKit \
@@ -63,6 +63,10 @@ endif
 # Directories
 BIN_DIR		= bin
 SRC_DIR		= srcs
+SRCS		= main.c $(PARSE) $(SRC_VECTOR)
+PARSE		= parse/scene/check_scene.c parse/elements/check_elements.c parse/images/parse_image.c\
+	parse/map/check_map.c
+
 LIBFT_DIR 	= libft				# path to libft library
 INCLUDE_DIR	= include			# path to headers
 ASSETS_DIR	= assets			# path to assets
@@ -79,30 +83,25 @@ SRC_VECTOR =	$(addprefix vector/, $(SRC_VECTOR2)) \
 				$(addprefix vector/, $(SRC_VECTOR3)) \
 				$(addprefix vector/, $(SRC_VECTOR4))
 
-MAIN_SRC = main.c
- 
-SRC = $(MAIN_SRC) $(SRC_VECTOR)
-
-
 # Convert source files to binary
-OBJ = $(SRC:%.c=$(BIN_DIR)/%.o)
+OBJ = $(SRCS:%.c=$(BIN_DIR)/%.o)
 
 all: $(NAME)
 
 $(NAME): $(BIN) $(OBJS) | libs
-	@echo "\033[0;32mCompiling so_long..."
+	@echo "\033[0;32mCompiling cub3D..."
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
 	@echo "\n\033[0mDone !"
 
 #	Objects construction
 $(OBJS): $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	@printf "\033[0;33mGenerating so_long objects... %-33.33s\r" $@
+	@printf "\033[0;33mGenerating cub3D objects... %-33.33s\r" $@
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 #	Libraries compile
 libs:
-#	make -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR)
 	make -C $(MLX_DIR)
 
 re: fclean all

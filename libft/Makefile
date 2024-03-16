@@ -6,7 +6,7 @@
 #    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/21 13:09:37 by fraalmei          #+#    #+#              #
-#    Updated: 2023/12/01 13:58:13 by fraalmei         ###   ########.fr        #
+#    Updated: 2024/03/16 12:27:03 by fraalmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ BONUS_FUNCTIONS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 
 #	functions out of libft
 EXTRA_FUNCTIONS = ft_chrjoin.c ft_printf.c get_next_line.c ft_strchr_nbr.c \
-	ft_intlen.c free.c ft_chrcmp.c ft_error.c ft_printf_fd.c get_next_word.c
+	ft_intlen.c free.c ft_chrcmp.c ft_printf_fd.c get_next_word.c \
+	ft_split_trim.c
 
 #OBJS_EXTRA	= $(EXTRA_FUNCTIONS:.c=.o)
 
