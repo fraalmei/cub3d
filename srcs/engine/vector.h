@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:11:14 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/03/16 14:37:20 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/03/16 16:44:21 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
 # define VECTOR_H
 
-
-#include "cub3d.h"
 #include <vector2/vector2.h>
 #include <vector3/vector3.h>
 #include <vector4/vector4.h>

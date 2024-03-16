@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
+#    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/03/16 14:20:38 by fraalmei         ###   ########.fr        #
+#    Updated: 2024/03/16 16:28:57 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ ASSETS_DIR	= assets			# path to assets
 
 VECTOR2 = matrix2_utils.c vector2_utils.c vector2_utils2.c
 VECTOR3 = matrix3_utils.c vector3_utils.c vector3_utils2.c
-VECTOR4 = matrix_utils.c vector_utils.c vector_utils2.c
+VECTOR4 = matrix4_utils.c vector4_utils.c vector4_utils2.c
 
 SRC_VECTOR2 = $(addprefix vector2/, $(VECTOR2))
 SRC_VECTOR3 = $(addprefix vector3/, $(VECTOR3))

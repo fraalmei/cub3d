@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
+/*   engine.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2023/11/27 16:14:13 by fraalmei         ###   ########.fr       */
+/*   Created: 2024/03/16 16:44:02 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/03/16 16:51:12 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#ifndef ENGINE_H
+# define ENGINE_H
 
-# include <so_long.h>
+# include <vector.h>
 
-typedef struct s_size
-{
-	size_t		width;
-	size_t		height;
-}				t_size;
 
 #endif
