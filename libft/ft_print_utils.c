@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_print_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/21 10:41:59 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/17 03:06:55 by fraalmei         ###   ########.fr       */
+/*   Created: 2024/03/17 00:31:42 by fraalmei          #+#    #+#             */
+/*   Updated: 2024/03/17 00:31:56 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-	//check if the char is printable
-int	ft_isprint(int c)
+#include "libft.h"
+
+void	print_str_str(char **string)
 {
-	if (c > 32 && c <= 126)
-		return (1);
-	return (0);
+	int		i;
+
+	i = 0;
+	while (string[i])
+	{
+		printf("%s\n", string[i]);
+		i++;
+	}
 }

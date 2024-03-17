@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:58:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/16 12:34:21 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/03/17 01:14:10 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 		//ft_printf
 int		ft_printf(char const *str, ...);
-
 int		ft_printf_fd(int fd, char const *str, ...);
 
 		//ft_chrjoin
@@ -115,14 +114,14 @@ char	*ft_chr_n_join(char *s1, char *s2, int n);
 char	*ft_strjoin_onefree(char *s1, char const *s2);
 char	*ft_strjoin_allfree(char *s1, char *s2);
 char	**str_strjoin_onefree(char **s1, char const *s2);
-char	**str_strjoin_freeall(char **s1, char *s2);
 
 		//get_next_line
 void	ignore_spaces(char *buffer, int *i);
 char	*get_next_line(int fd);
 
 		//get_next_word
-char	*get_next_word(char *line, int new);
+char	*get_next_word(char *line, int *new);
+char	*get_word(char *line, int n_word);
 
 		//extras
 size_t	ft_intlen(int n, int base);
@@ -181,5 +180,8 @@ int		ft_str_strlen(char **string);
 int		ft_scndchrlen(const char *s, char c);
 char	*ft_last_string(char **str);
 char	**str_strjoin_freeall(char **s1, char *s2);
+
+		//ft_print_utils.c
+void	print_str_str(char **string);
 
 #endif

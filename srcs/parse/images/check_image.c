@@ -83,11 +83,11 @@ t_size	higher_size_assets(void)
 	}
 	return (size);
 } */
-
+/* 
 int	isformat_xpm(int archivo)
 {
 	// Definir una firma típica de un archivo XPM
-	const char firmaXPM[] = "/* XPM */";
+	const char firmaXPM[] = " XPM ";
 
 	// Leer los primeros caracteres del archivo para verificar la firma
 	char buffer[sizeof(firmaXPM)];
@@ -119,20 +119,16 @@ int	isformat_png(int archivo)
 		// No es un archivo PNG
 		return (0);
 }
-
+ */
 int	check_image(char *dir)
 {
-	int		file;
+	int		fd;
 
-	file = open(dir, O_RDONLY);
-	if (file < 0)
+	if (check_extension(dir, ".xpm"))
 		return (1);
-	if (!ft_str_last_cmp(dir, ".xmp"))
-		if (esFormatoXPM(file))
-			return (0);
-	else if (!ft_str_last_cmp(dir, ".png"))
-		if (esFormatoPNG(file))
-			return (0);
-	return (1);
+	fd = check_readable(dir);
+	if (fd < 0)
+		return (1);
+	return (0);
 
 }

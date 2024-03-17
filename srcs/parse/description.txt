@@ -1,7 +1,7 @@
 El único argumento que debe tener el programa es un mapa en formato .cub (escena)
 
-1- Se comprueba la extension del mapa ".cub"
-2- Se abre el archivo y vemos si se puede leer
+1- Se comprueba la extension del mapa ".cub" √
+2- Se abre el archivo y vemos si se puede leer 
 	Si no se puede salimos y devolvemos 1
 3- Comprobamos los elementos en el archivo
 	Leemos el archivo a ver si tiene algo
@@ -19,7 +19,7 @@ El único argumento que debe tener el programa es un mapa en formato .cub (escen
 
 
 Ej:
-NO ./path_to_the_north_texture
+NO ./path_to_the_north_texture joder veamoso "puff pero que es esto"
 SO ./path_to_the_south_texture
 WE ./path_to_the_west_texture
 EA ./path_to_the_east_texture

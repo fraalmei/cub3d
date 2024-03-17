@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
+#    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/03/17 13:18:30 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/03/17 13:27:24 by fraalmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CYAN	= @echo "\033[0;35m"
 RESET	= "\033[1;0m"
 
 #	file's name
-NAME	= cub3D
+NAME	= cub3d
 
 #	compilation
 CC		= gcc
@@ -63,11 +63,9 @@ endif
 # Directories
 BIN_DIR		= bin
 SRC_DIR		= srcs
-# SRCS		= main.c $(PARSE)
-SRCS		= main.c engine/engine.c
-PARSE		= parse/scene/check_scene.c parse/elements/check_elements.c parse/images/parse_image.c\
-	parse/map/check_map.c
-
+SRCS		= main.c utils/utils.c $(PARSE)
+PARSE		= parse/scene/check_scene.c parse/elements/check_element.c parse/images/check_image.c \
+	parse/utils/file_utils.c parse/utils/utils.c
 LIBFT_DIR 	= libft				# path to libft library
 VECTOR_DIR 	= vector			# path to libft library
 INCLUDE_DIR	= include			# path to headers

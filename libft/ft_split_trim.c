@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 17:42:05 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/16 12:22:52 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:15:37 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,28 +50,4 @@ char	*ft_last_string(char **str)
 	while (str[i])
 		i++;
 	return (str[i - 1]);
-}
-
-/// @brief join a string to a string array
-/// @param s1 
-/// @param s2 
-/// @return 
-char	**str_strjoin_freeall(char **s1, char *s2)
-{
-	char	**str;
-	int		str_len;
-	int		i;
-
-	if (!s1)
-		s1 = (char **)ft_calloc(sizeof(char *), 1);
-	if (!s1)
-		return (NULL);
-	str_len = ft_str_strlen(s1);
-	i = -1;
-	str = (char **)ft_calloc(sizeof(char *), str_len + 2);
-	while (s1[++i])
-		str[i] = s1[i];
-	free (s1);
-	str[i] = s2;
-	return (str);
 }
