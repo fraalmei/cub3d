@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 12:33:07 by fraalmei          #+#    #+#             */
-/*   Updated: 2023/10/26 13:21:47 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/03/17 15:04:03 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ static int	ft_putnbr(long long int nbr, long long int i, char *base, int fd)
 }
 
 	// it's a modified putnbr to print the start of a "pointer"
-static int	ft_putptr(uintptr_t nbr, unsigned int i, char *base, int fd)
+static int	ft_putptr(unsigned long long int nbr, unsigned int i, \
+	char *base, int fd)
 {
 	int		len;
 
@@ -76,7 +77,8 @@ static int	ft_selector(char str, va_list args, int fd)
 		len += ft_putstr(va_arg(args, char *), fd);
 	else if (str == 'p')
 		len += ft_putstr("0x", fd)
-			+ ft_putptr(va_arg(args, uintptr_t), 16, "0123456789abcdef", fd);
+			+ ft_putptr(va_arg(args, unsigned long long int ), \
+				16, "0123456789abcdef", fd);
 	else if (str == 'd' || str == 'i')
 		len += ft_putnbr(va_arg(args, int), 10, "0123456789", fd);
 	else if (str == 'u')

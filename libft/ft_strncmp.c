@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 13:48:05 by fraalmei          #+#    #+#             */
-/*   Updated: 2023/11/25 11:28:25 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/03/17 14:56:04 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_str_last_cmp(const char *haystack, const char *needle)
 	j = ft_strlen(needle) - 1;
 	if (i < j)
 		return (1);
-	while (haystack[i] && needle[j] && j >= 0)
+	while (haystack[i] && needle[j] && (j > 0))
 	{
 		if (haystack[i] != needle[j])
 			return (1);
