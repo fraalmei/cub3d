@@ -1,48 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector2_utils2.c                                   :+:      :+:    :+:   */
+/*   lensqr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 12:43:03 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/03/16 19:59:10 by cagonzal         ###   ########.fr       */
+/*   Created: 2023/07/06 21:33:16 by pedromar          #+#    #+#             */
+/*   Updated: 2024/03/17 12:57:03 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <vector.h>
+#include "vector.h"
 
-t_vector2	ft_v2div(t_vector2 v1, t_vector2 v2)
-{
-	t_vector2	v;
-
-	v.x = v1.x / v2.x;
-	v.y = v1.y / v2.y;
-
-	return (v);
-}
-
-t_vector2	ft_v2fdiv(t_vector2 v1, float f)
-{
-	t_vector2	v;
-
-	v.x = v1.x / f;
-	v.y = v1.y / f;
-
-	return (v);
-}
-
-double	ft_v2mag(t_vector2 v)
+float	ft_lensqrv2(t_vector2 v)
 {
 	return (v.x * v.x + v.y * v.y);
 }
 
-double	ft_v2sqrtmag(t_vector2 v)
+float	ft_lensqrv3(t_vector3 v)
 {
-	return (sqrtf(v.x * v.x + v.y * v.y));
+	return (v.x * v.x + v.y * v.y + v.z * v.z);
 }
 
-int	ft_v2eqv(t_vector2 v1, t_vector2 v2)
+float	ft_lensqrv4(t_vector4 v)
 {
-	return (v1.x == v2.x && v1.y == v2.y);
+	return (v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w);
 }

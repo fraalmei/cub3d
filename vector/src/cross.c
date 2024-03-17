@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   cross.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:06:24 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/17 13:16:10 by cagonzal         ###   ########.fr       */
+/*   Created: 2023/07/06 21:05:54 by pedromar          #+#    #+#             */
+/*   Updated: 2024/03/17 12:49:54 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "vector.h"
 
-# include <libft.h>
-# include <mlx.h>
-# include <keys.h>
-# include <functions.h>
-# include "../vector/src/vector.h"
-# include "../srcs/engine/include/engine.h"
+t_vector3	ft_cross(t_vector3 v1, t_vector3 v2)
+{
+	t_vector3	v;
 
-#endif
+	v.x = (v1.y * v2.z) - (v2.y * v1.z);
+	v.y = (v1.z * v2.x) - (v2.z * v1.x);
+	v.z = (v1.x * v2.y) - (v2.x * v1.y);
+	return (v);
+}

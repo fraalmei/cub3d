@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/03/16 21:39:10 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/03/17 13:18:30 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,9 +91,9 @@ $(OBJS): $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
 
 #	Libraries compile
 libs:
+	make -C $(MLX_DIR)
 	make -C $(LIBFT_DIR)
 	make -C $(VECTOR_DIR)
-	make -C $(MLX_DIR)
 
 re: fclean all
 
@@ -104,20 +104,24 @@ cbuild:
 	$(RM) -r $(BIN_DIR)
 
 clean:
-	@echo "\033[0;31mCleaning libft..."
-	make clean -C $(LIBFT_DIR)
 	@echo "\033[0;31mCleaning mlx..."
 	make clean -C $(MLX_DIR)
+	@echo "\033[0;31mCleaning libft..."
+	make clean -C $(LIBFT_DIR)
+	@echo "\033[0;31mCleaning vectorlib..."
+	make clean -C $(VECTOR_DIR)
 	@echo "\nRemoving binaries..."
 	@$(RM) $(OBJS)
 	@$(RM) -r $(BIN_DIR)
 	@echo "\033[0m"
 
 fclean: clean
-	@echo "\033[0;31mFcleaning libft..."
-	@make fclean -C $(LIBFT_DIR)
 	@echo "\033[0;31mFcleaning mlx..."
 	@make fclean -C $(MLX_DIR)
+	@echo "\033[0;31mFcleaning libft..."
+	@make fclean -C $(LIBFT_DIR)
+	@echo "\033[0;31mFcleaning vectorlib..."
+	@make fclean -C $(VECTOR_DIR)
 	@echo "\nDeleting executable..."
 	@$(RM) $(NAME)
 	@echo "\033[0m"

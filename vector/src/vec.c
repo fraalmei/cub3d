@@ -1,23 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   vec.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:06:24 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/17 13:16:10 by cagonzal         ###   ########.fr       */
+/*   Created: 2023/07/06 20:15:35 by pedromar          #+#    #+#             */
+/*   Updated: 2024/03/17 12:59:28 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "vector.h"
 
-# include <libft.h>
-# include <mlx.h>
-# include <keys.h>
-# include <functions.h>
-# include "../vector/src/vector.h"
-# include "../srcs/engine/include/engine.h"
+t_vector2	ft_vector2(float x, float y)
+{
+	t_vector2	v;
 
-#endif
+	v.x = x;
+	v.y = y;
+	return (v);
+}
+
+t_vector3	ft_vector3(float x, float y, float z)
+{
+	t_vector3	v;
+
+	v.x = x;
+	v.y = y;
+	v.z = z;
+	return (v);
+}
+
+t_vector4	ft_vector4(float x, float y, float z, float w)
+{
+	t_vector4	v;
+
+	v.x = x;
+	v.y = y;
+	v.z = z;
+	v.w = w;
+	return (v);
+}
