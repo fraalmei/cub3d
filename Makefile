@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
+#    By: p <p@student.42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/03/17 13:27:24 by fraalmei         ###   ########.fr        #
+#    Updated: 2024/03/17 15:36:23 by p                ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,16 +28,16 @@ CC		= gcc
 RM		= /bin/rm -f
 
 #	flags
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= #-Wall -Werror -Wextra
 
 LEAK_FLAGS	= -fsanitize=address -g3
 
 #	Compile a mlx for linux or mac
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
-#	MLX_DIR		= minilibx/minilibx/minilibx-linux
-	MLX_DIR		= minilibx/mlx_Linux
-	MLX_FLAGS	= -Imlx_Linux -Lmlx_Linux -lmlx_Linux -lXext -lX11 -lm -lz
+	MLX_DIR		= minilibx/minilibx/minilibx-linux
+#	MLX_DIR		= minilibx/mlx_Linux
+	MLX_FLAGS	= -Imlx_Linux -Lmlx_Linux -lXext -lX11 -lm -lz
 	INCLUDES	= -I$(INCLUDE_DIR) \
 				  -I$(LIBFT_DIR) \
 				  -I$(MLX_DIR) \
@@ -63,9 +63,9 @@ endif
 # Directories
 BIN_DIR		= bin
 SRC_DIR		= srcs
-SRCS		= main.c utils/utils.c $(PARSE)
+SRCS		= main.c $(PARSE)
 PARSE		= parse/scene/check_scene.c parse/elements/check_element.c parse/images/check_image.c \
-	parse/utils/file_utils.c parse/utils/utils.c
+	utils/file_utils.c utils/utils.c
 LIBFT_DIR 	= libft				# path to libft library
 VECTOR_DIR 	= vector			# path to libft library
 INCLUDE_DIR	= include			# path to headers
