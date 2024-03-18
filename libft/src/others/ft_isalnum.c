@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 09:09:37 by cagonzal         ###   ########.fr       */
+/*   Created: 2022/03/21 12:22:01 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/03/18 10:15:21 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <libft.h>
 
-static void	leaks(void)
+int	ft_isalnum(int c)
 {
-	system("leaks -q cub3D");
-}
-	//atexit(leaks);
-
-/*int	main(int argc, char **argv)
-{
-	atexit(leaks);
-	if (argc != 2)
-	{
-		ft_printf_fd(2, "Numero de argumentos incorrecto %s.\n", *argv[1]);
+	if (c >= 48 && c <= 57)
+		return (1);
+	else if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
+	else
 		return (0);
-	}
-	check_scene(argv[1]);
-	return (0);
-}*/
-
- int	main(void)
-{
-	engine();
-	atexit(leaks);
-	return (0);
-} 
+}

@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstduplicate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 09:09:37 by cagonzal         ###   ########.fr       */
+/*   Created: 2022/10/10 14:48:15 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/03/18 10:22:57 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <t_list.h>
 
-static void	leaks(void)
+int	ft_lstduplicates(t_list *lst)
 {
-	system("leaks -q cub3D");
-}
-	//atexit(leaks);
+	t_list	*frst;
+	t_list	*dup;
 
-/*int	main(int argc, char **argv)
-{
-	atexit(leaks);
-	if (argc != 2)
+	frst = lst;
+	while (frst)
 	{
-		ft_printf_fd(2, "Numero de argumentos incorrecto %s.\n", *argv[1]);
-		return (0);
+		dup = frst->next;
+		while (dup)
+		{
+			if (frst->content == dup->content)
+				return (1);
+			dup = dup->next;
+		}
+		frst = frst->next;
 	}
-	check_scene(argv[1]);
 	return (0);
-}*/
-
- int	main(void)
-{
-	engine();
-	atexit(leaks);
-	return (0);
-} 
+}

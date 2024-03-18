@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 09:09:37 by cagonzal         ###   ########.fr       */
+/*   Created: 2022/03/25 17:02:45 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/03/18 10:13:16 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <libft.h>
 
-static void	leaks(void)
+void	ft_putnbr_fd(int nb, int fd)
 {
-	system("leaks -q cub3D");
-}
-	//atexit(leaks);
-
-/*int	main(int argc, char **argv)
-{
-	atexit(leaks);
-	if (argc != 2)
+	if (nb == -2147483648)
 	{
-		ft_printf_fd(2, "Numero de argumentos incorrecto %s.\n", *argv[1]);
-		return (0);
+		ft_putchar_fd('-', fd);
+		ft_putchar_fd('2', fd);
+		nb = 147483648;
 	}
-	check_scene(argv[1]);
-	return (0);
-}*/
-
- int	main(void)
-{
-	engine();
-	atexit(leaks);
-	return (0);
-} 
+	if (nb < 0)
+	{
+		ft_putchar_fd('-', fd);
+		nb = -nb;
+	}
+	if (nb >= 10)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		nb = nb % 10;
+	}
+	if (nb < 10)
+		ft_putchar_fd(nb + 48, fd);
+}

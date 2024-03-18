@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 09:09:37 by cagonzal         ###   ########.fr       */
+/*   Created: 2022/03/24 12:04:12 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/03/18 10:21:17 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <libft.h>
 
-static void	leaks(void)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	system("leaks -q cub3D");
-}
-	//atexit(leaks);
+	unsigned int	i;
+	char			*str;
 
-/*int	main(int argc, char **argv)
-{
-	atexit(leaks);
-	if (argc != 2)
+	if (!s)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
 	{
-		ft_printf_fd(2, "Numero de argumentos incorrecto %s.\n", *argv[1]);
-		return (0);
+		str[i] = f(i, s[i]);
+		i++;
 	}
-	check_scene(argv[1]);
-	return (0);
-}*/
-
- int	main(void)
-{
-	engine();
-	atexit(leaks);
-	return (0);
-} 
+	str[i] = '\0';
+	return (str);
+}

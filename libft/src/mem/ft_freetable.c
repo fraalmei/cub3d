@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_freetable.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 09:09:37 by cagonzal         ###   ########.fr       */
+/*   Created: 2022/06/17 15:19:17 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/03/18 10:13:49 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <libft.h>
 
-static void	leaks(void)
+void	ft_free_arg(void **arg)
 {
-	system("leaks -q cub3D");
+	if (*arg)
+		free(*arg);
+	*arg = NULL;
 }
-	//atexit(leaks);
 
-/*int	main(int argc, char **argv)
+void	ft_free_tab(char **tab)
 {
-	atexit(leaks);
-	if (argc != 2)
+	size_t	i;
+
+	i = 0;
+	while (tab[i])
 	{
-		ft_printf_fd(2, "Numero de argumentos incorrecto %s.\n", *argv[1]);
-		return (0);
+		free(tab[i]);
+		i++;
 	}
-	check_scene(argv[1]);
-	return (0);
-}*/
-
- int	main(void)
-{
-	engine();
-	atexit(leaks);
-	return (0);
-} 
+	free(tab);
+}

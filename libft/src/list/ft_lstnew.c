@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 09:09:37 by cagonzal         ###   ########.fr       */
+/*   Created: 2022/03/29 18:33:49 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/03/18 10:23:07 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <t_list.h>
 
-static void	leaks(void)
+/**
+ * @brief Creates a new element of a linked list and returns a pointer to it.
+ * 
+ * @param content Pointer to the content of the new element.
+ * @return t_list* Pointer to the new element.
+ */
+t_list	*ft_lstnew(int content)
 {
-	system("leaks -q cub3D");
+	t_list	*e;
+
+	e = malloc(sizeof(t_list));
+	if (e == NULL)
+		return (NULL);
+	e->content = content;
+	e->next = NULL;
+	return (e);
 }
-	//atexit(leaks);
-
-/*int	main(int argc, char **argv)
-{
-	atexit(leaks);
-	if (argc != 2)
-	{
-		ft_printf_fd(2, "Numero de argumentos incorrecto %s.\n", *argv[1]);
-		return (0);
-	}
-	check_scene(argv[1]);
-	return (0);
-}*/
-
- int	main(void)
-{
-	engine();
-	atexit(leaks);
-	return (0);
-} 

@@ -1,38 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 09:09:37 by cagonzal         ###   ########.fr       */
+/*   Created: 2022/03/24 15:32:28 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/03/18 10:21:10 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <libft.h>
 
-static void	leaks(void)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	system("leaks -q cub3D");
-}
-	//atexit(leaks);
+	size_t	i;
+	size_t	res;
 
-/*int	main(int argc, char **argv)
-{
-	atexit(leaks);
-	if (argc != 2)
+	i = 0;
+	res = 0;
+	while (src[res])
+		res++;
+	if (size < 1)
+		return (res);
+	while (src[i] && i < size - 1)
 	{
-		ft_printf_fd(2, "Numero de argumentos incorrecto %s.\n", *argv[1]);
-		return (0);
+		dst[i] = src[i];
+		i++;
 	}
-	check_scene(argv[1]);
-	return (0);
-}*/
-
- int	main(void)
-{
-	engine();
-	atexit(leaks);
-	return (0);
-} 
+	dst[i] = '\0';
+	return (res);
+}

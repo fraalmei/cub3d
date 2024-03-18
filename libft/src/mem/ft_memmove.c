@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 09:09:37 by cagonzal         ###   ########.fr       */
+/*   Created: 2022/03/21 18:30:11 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/03/18 10:14:29 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <libft.h>
 
-static void	leaks(void)
+void	*ft_memmove(void *dst, const void *src, unsigned int len)
 {
-	system("leaks -q cub3D");
-}
-	//atexit(leaks);
+	unsigned char		*d;
+	const unsigned char	*s;
 
-/*int	main(int argc, char **argv)
-{
-	atexit(leaks);
-	if (argc != 2)
-	{
-		ft_printf_fd(2, "Numero de argumentos incorrecto %s.\n", *argv[1]);
+	d = dst;
+	s = src;
+	if (d == NULL && s == NULL)
 		return (0);
-	}
-	check_scene(argv[1]);
-	return (0);
-}*/
-
- int	main(void)
-{
-	engine();
-	atexit(leaks);
-	return (0);
-} 
+	if (d > s)
+		while (len--)
+			d[len] = s[len];
+	else if (d < s)
+		ft_memcpy(dst, src, len);
+	return (dst);
+}

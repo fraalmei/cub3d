@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: p <p@student.42.fr>                        +#+  +:+       +#+         #
+#    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/03/17 15:36:23 by p                ###   ########.fr        #
+#    Updated: 2024/03/18 10:10:21 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,21 +28,23 @@ CC		= gcc
 RM		= /bin/rm -f
 
 #	flags
-CFLAGS	= #-Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra
 
 LEAK_FLAGS	= -fsanitize=address -g3
 
 #	Compile a mlx for linux or mac
 UNAME = $(shell uname -s)
 ifeq ($(UNAME), Linux)
-	MLX_DIR		= minilibx/minilibx/minilibx-linux
-#	MLX_DIR		= minilibx/mlx_Linux
+#	MLX_DIR		= minilibx/minilibx/minilibx-linux
+	MLX_DIR		= minilibx/mlx_Linux
 	MLX_FLAGS	= -Imlx_Linux -Lmlx_Linux -lXext -lX11 -lm -lz
 	INCLUDES	= -I$(INCLUDE_DIR) \
 				  -I$(LIBFT_DIR) \
+				  -I$(VECTOR_DIR) \
 				  -I$(MLX_DIR) \
 				  -I/usr/include
 	LIBS		= -L$(LIBFT_DIR) -lft \
+				  -L$(VECTOR_DIR) \
 				  -L/usr/lib
 endif
 
@@ -55,7 +57,7 @@ ifeq ($(UNAME), Darwin)
 				  -framework AppKit \
 				  -lm
 	INCLUDES	= -I$(INCLUDE_DIR) \
-				  -I$(LIBFT_DIR) \
+				  -I$(LIBFT_DIR)/$(INCLUDE_DIR) \
 				  -I$(MLX_DIR)
 	LIBS		= -L$(LIBFT_DIR) -lft
 endif
@@ -63,13 +65,20 @@ endif
 # Directories
 BIN_DIR		= bin
 SRC_DIR		= srcs
-SRCS		= main.c $(PARSE)
+# SRCS		= main.c $(PARSE)
+SRCS		= main.c #$(ENGINE)
+ENGINE		= engine/engine.c
 PARSE		= parse/scene/check_scene.c parse/elements/check_element.c parse/images/check_image.c \
 	utils/file_utils.c utils/utils.c
-LIBFT_DIR 	= libft				# path to libft library
-VECTOR_DIR 	= vector			# path to libft library
+LIBFT_DIR 	= libft		# path to libft library
+#VECTOR_DIR 	= vector		# path to vector library
 INCLUDE_DIR	= include			# path to headers
 ASSETS_DIR	= assets			# path to assets
+
+VECTOR = vector
+VECTOR_DIR = vector
+VECTOR_RULE = vector/vector.a
+VECTOR_LIB = $(VECTOR_DIR)/$(VECTOR).a
 
 # Convert source files to binary
 OBJS = $(SRCS:%.c=$(BIN_DIR)/%.o)
@@ -87,11 +96,17 @@ $(OBJS): $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
 	@printf "\033[0;33mGenerating cub3D objects... %-33.33s\r" $@
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
+$(VECTOR_RULE):
+	echo make $(VECTOR_RULE)
+	@$(MAKE) -C $(VECTOR_DIR)
+	$(info CREATED $@)
+
+
 #	Libraries compile
-libs:
+libs: $(VECTOR_RULE)
 	make -C $(MLX_DIR)
 	make -C $(LIBFT_DIR)
-	make -C $(VECTOR_DIR)
+#	make -C $(VECTOR_DIR)
 
 re: fclean all
 

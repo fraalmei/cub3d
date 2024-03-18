@@ -1,5 +1,5 @@
 
-NAME = vector.a
+NAME = libvector.a
 
 SRC_DIR := src
 

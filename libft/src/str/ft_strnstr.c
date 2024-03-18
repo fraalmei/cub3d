@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 09:09:37 by cagonzal         ###   ########.fr       */
+/*   Created: 2022/03/21 16:37:33 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/03/18 10:21:28 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <libft.h>
 
-static void	leaks(void)
+char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
-	system("leaks -q cub3D");
-}
-	//atexit(leaks);
+	size_t	i;
+	size_t	c;
+	size_t	n_len;
+	char	*s;
 
-/*int	main(int argc, char **argv)
-{
-	atexit(leaks);
-	if (argc != 2)
+	i = 0;
+	s = (char *)str;
+	n_len = ft_strlen(to_find);
+	if (n_len == 0 || str == to_find)
+		return (s);
+	while (s[i] != '\0' && i < len)
 	{
-		ft_printf_fd(2, "Numero de argumentos incorrecto %s.\n", *argv[1]);
-		return (0);
+		c = 0;
+		while (s[i + c] != '\0' && to_find[c] != '\0'
+			&& s[i + c] == to_find[c] && i + c < len)
+			c++;
+		if (c == n_len)
+			return (s + i);
+		i++;
 	}
-	check_scene(argv[1]);
 	return (0);
-}*/
-
- int	main(void)
-{
-	engine();
-	atexit(leaks);
-	return (0);
-} 
+}

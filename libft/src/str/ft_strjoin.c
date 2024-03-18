@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 09:09:37 by cagonzal         ###   ########.fr       */
+/*   Created: 2022/03/22 16:55:54 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/03/18 10:20:55 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include <libft.h>
 
-static void	leaks(void)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	system("leaks -q cub3D");
+	char	*ret;
+	size_t	len;
+
+	if (!s1 || !s2)
+		return (NULL);
+	len = (ft_strlen(s1) + ft_strlen(s2) + 1);
+	ret = (char *)malloc(sizeof(char) * len + 1);
+	if (!ret)
+		return (NULL);
+	ft_strlcpy(ret, s1, len);
+	ft_strlcat(ret, s2, len);
+	ret[len] = '\0';
+	return (ret);
 }
-	//atexit(leaks);
-
-/*int	main(int argc, char **argv)
-{
-	atexit(leaks);
-	if (argc != 2)
-	{
-		ft_printf_fd(2, "Numero de argumentos incorrecto %s.\n", *argv[1]);
-		return (0);
-	}
-	check_scene(argv[1]);
-	return (0);
-}*/
-
- int	main(void)
-{
-	engine();
-	atexit(leaks);
-	return (0);
-} 
