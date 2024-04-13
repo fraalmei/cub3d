@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/18 09:09:37 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/04/13 17:58:16 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static void	leaks(void)
 	return (0);
 }*/
 
- int	main(void)
+int	main(void)
 {
 	engine();
 	atexit(leaks);
 	return (0);
-} 
+}

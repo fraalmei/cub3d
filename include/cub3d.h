@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:06:24 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/17 15:39:40 by p                ###   ########.fr       */
+/*   Updated: 2024/04/13 17:58:08 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <libft.h>
 
 # include <mlx.h>
 # include <keys.h>
 # include <functions.h>
 # include "../vector/src/vector.h"
+# include "../libft/include/libft.h"
 # include "../srcs/engine/include/engine.h"
 
 #endif

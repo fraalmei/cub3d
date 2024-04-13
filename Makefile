@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/03/18 10:10:21 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/04/13 18:11:18 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ ifeq ($(UNAME), Linux)
 				  -I$(MLX_DIR) \
 				  -I/usr/include
 	LIBS		= -L$(LIBFT_DIR) -lft \
-				  -L$(VECTOR_DIR) \
+				  -L$(VECTOR_DIR) -lvector\
 				  -L/usr/lib
 endif
 
@@ -57,23 +57,33 @@ ifeq ($(UNAME), Darwin)
 				  -framework AppKit \
 				  -lm
 	INCLUDES	= -I$(INCLUDE_DIR) \
-				  -I$(LIBFT_DIR)/$(INCLUDE_DIR) \
+				  -I$(LIBFT_DIR) \
+				  -I$(VECTOR_DIR) \
 				  -I$(MLX_DIR)
-	LIBS		= -L$(LIBFT_DIR) -lft
+	LIBS		= -L$(LIBFT_DIR) -lft \
+				  -L$(VECTOR_DIR) -lvector
 endif
 
 # Directories
 BIN_DIR		= bin
 SRC_DIR		= srcs
 # SRCS		= main.c $(PARSE)
-SRCS		= main.c #$(ENGINE)
+SRCS		= main.c $(ENGINE)
 ENGINE		= engine/engine.c
 PARSE		= parse/scene/check_scene.c parse/elements/check_element.c parse/images/check_image.c \
 	utils/file_utils.c utils/utils.c
-LIBFT_DIR 	= libft		# path to libft library
-#VECTOR_DIR 	= vector		# path to vector library
 INCLUDE_DIR	= include			# path to headers
 ASSETS_DIR	= assets			# path to assets
+
+VECTOR		= vector
+VECTOR_DIR	= vector
+VECTOR_RULE	= vector/vector.a
+VECTOR_LIB	= $(VECTOR_DIR)/$(VECTOR).a
+
+LIBFT 		= libft
+LIBFT_DIR 	= libft
+LIBFT_RULE	= libft/libft.a
+LIBFT_LIB	= $(LIBFT_DIR)/$(LIBFT).a
 
 VECTOR = vector
 VECTOR_DIR = vector
@@ -98,15 +108,22 @@ $(OBJS): $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
 
 $(VECTOR_RULE):
 	echo make $(VECTOR_RULE)
-	@$(MAKE) -C $(VECTOR_DIR)
+	@make -C $(VECTOR_DIR)
+	$(info CREATED $@)
+
+$(MLX_RULE):
+	echo make $(MLX_RULE)
+	@make -C $(MLX_DIR)
+	$(info CREATED $@)
+
+$(LIBFT_RULE):
+	echo make $(LIBFT_RULE)
+	@make -C $(LIBFT_DIR)
 	$(info CREATED $@)
 
 
 #	Libraries compile
-libs: $(VECTOR_RULE)
-	make -C $(MLX_DIR)
-	make -C $(LIBFT_DIR)
-#	make -C $(VECTOR_DIR)
+libs: $(LIBFT_RULE) $(VECTOR_RULE) $(MLX_RULE)
 
 re: fclean all
 
