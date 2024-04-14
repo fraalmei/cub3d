@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/04/13 18:11:18 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/04/14 12:18:37 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ BIN_DIR		= bin
 SRC_DIR		= srcs
 # SRCS		= main.c $(PARSE)
 SRCS		= main.c $(ENGINE)
-ENGINE		= engine/engine.c
+ENGINE		= engine/engine.c engine/end_program.c engine/map_generator.c
 PARSE		= parse/scene/check_scene.c parse/elements/check_element.c parse/images/check_image.c \
 	utils/file_utils.c utils/utils.c
 INCLUDE_DIR	= include			# path to headers

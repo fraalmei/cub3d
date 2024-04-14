@@ -6,49 +6,16 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:44:02 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/04/13 17:57:59 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/04/14 12:15:09 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ENGINE_H
 # define ENGINE_H
 
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bpp; //bits per pixel
-	int		line_length;
-	int		endian;
-}	t_data;
+# include <cub3d.h>
 
-typedef struct s_player
-{
-	t_vector2	position;
-	t_vector2	direction;
-}	t_player;
-
-typedef struct s_time
-{
-	double	time;
-	double	old_time;
-}	t_time;
-
-typedef struct s_game
-{
-	t_player	player;
-	t_vector3	map;
-	t_vector2	camera_plane; // perpendicular to dir
-	double		fov;
-	double		camx;
-	t_vector2	ray_dir;
-	t_vector2	side_dist; // distance from begin to 1st intersection
-	t_vector2	delta_dist; //  distance from one intersection to next
-	double		per_wall_dist; // for raylenght calc
-	t_vector2	step; // ray direction
-}	t_game;
-
-
-void	engine(void);
+int		end_program(t_game *game);
+void	generate_map(t_game game);
 
 #endif

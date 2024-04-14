@@ -6,13 +6,12 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 08:53:58 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/03/17 13:06:45 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/04/14 10:38:48 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
 # define VECTOR_H
-
 
 # include <stdio.h>
 # include <math.h>
@@ -25,13 +24,11 @@ typedef union u_vector2
 		float	x;
 		float	y;
 	};
-
 	struct
 	{
 		float	u;
 		float	v;
 	};
-
 	struct
 	{
 		float	left;
@@ -59,14 +56,12 @@ typedef union u_vector3
 		float	y;
 		float	z;
 	};
-
 	struct
 	{
 		float	u;
 		float	v;
 		float	w;
 	};
-
 	struct
 	{
 		float	r;
@@ -108,7 +103,6 @@ typedef union u_vector4
 		float	b;
 		float	a;
 	};
-
 	float	elements[4];
 
 }	t_vector4;
@@ -216,4 +210,3 @@ void			printm3(t_matrix3 m);
 void			printm4(t_matrix4 m);
 
 #endif
-

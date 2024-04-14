@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   end_program.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/04/13 19:32:37 by cagonzal         ###   ########.fr       */
+/*   Created: 2024/04/13 19:39:57 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/04/13 20:56:22 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "include/engine.h"
 #include <cub3d.h>
 
-static void	leaks(void)
+/* Frees all allocated memory and makes exit(0) */
+int	end_program(t_game *game)
 {
-	system("leaks -q cub3D");
-}
-	//atexit(leaks);
-
-/*int	main(int argc, char **argv)
-{
-	atexit(leaks);
-	if (argc != 2)
-	{
-		ft_printf_fd(2, "Numero de argumentos incorrecto %s.\n", *argv[1]);
-		return (0);
-	}
-	check_scene(argv[1]);
-	return (0);
-}*/
-
-int	main(void)
-{
-	engine();
-	atexit(leaks);
-	return (0);
+	free(game);
+	// free_tilemap(game);
+	// game->tilemap = NULL;
+	// free_enemies(game);
+	// game->enemy_list = NULL;
+	exit(0);
 }
