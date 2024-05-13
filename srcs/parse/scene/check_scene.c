@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_scene.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:11:41 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/17 14:33:46 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/05/13 17:08:55 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_scene(char *file)
 {
 	int	fd;
 
-	ft_printf("Checking scene\n");
+	ft_printf_fd(1, "Checking scene\n");
 	if (check_extension(file, ".cub"))
 		return (1);
 	fd = check_readable(file);
@@ -31,6 +31,6 @@ int	check_scene(char *file)
 		return (1);
 	/*if (check_map(fd))
 		return (1); */
-	ft_printf("Scene correct\n");
+	ft_printf_fd(1, "Scene correct\n");
 	return (0);
 }

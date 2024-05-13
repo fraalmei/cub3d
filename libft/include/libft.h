@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:40:56 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/03/18 10:12:12 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/05/13 14:15:35 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,14 @@ size_t		ft_strlen(const char *str);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_strndup(const char *s1, unsigned int n);
 int			ft_strncmp(const char *s1, const char *s2, int n);
+int     	ft_str_last_cmp(const char *haystack, const char *needle);
 char		*ft_strnstr(const char *str, const char *to_find, size_t len);
 char		*ft_strrchr(const char *str, int c);
 char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 int			ft_tolower(int c);
 int			ft_toupper(int c);
+char	    *ft_chrjoin(char *s1, char s2);
+char    	*ft_chr_n_join(char *s1, char *s2, int n);
 
 #endif

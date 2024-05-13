@@ -6,13 +6,13 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/17 15:15:21 by p                ###   ########.fr       */
+/*   Updated: 2024/05/13 17:08:00 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-char	*check_texture(char *line)
+/* static char	*check_texture(char *line)
 {
 	char	*word;
 
@@ -31,7 +31,7 @@ static char	*check_side(char *line, char ***sides)
 	*sides = del_node_arr(*sides, word);
 	print_str_str(*sides);
 	return (word);
-}
+} */
 
 static char	**set_sides(void)
 {
@@ -41,13 +41,14 @@ static char	**set_sides(void)
 	return (ret);
 }
 
-static char	*check_textures(char *line, char ***sides)
+static char	*read_texture(char *line, char ***sides)
 {
-	char	*side;
+	//char	*side;
 	char	*texture;
 
-	texture = get_word(line, 2);
-	if (texture)
+	(void) sides;
+	texture = get_word(line, 1);
+	/* if (texture)
 	{
 		ft_printf ("Datos con de textura con argumentos extra\n");
 		free (texture);
@@ -55,7 +56,7 @@ static char	*check_textures(char *line, char ***sides)
 	}
 	free (texture);
 	side = check_side(line, sides);
-	texture = check_texture(line);
+	texture = check_texture(line); */
 	return (texture);
 }
 
@@ -64,10 +65,14 @@ int	check_elements(int fd)
 	char	*line;
 	char	*texture;
 	char	**sides;
+	(void) fd;
 
 	sides = set_sides();
 	line = get_next_line(fd);
-	texture = check_textures(line, &sides);
+	texture = read_texture(line, &sides);
+	ft_printf_fd(1, "Textura: %s\n", texture);
+	free (texture);
+	free_arr ((void **)sides);
 	free (line);
 	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
+#    By: p <p@student.42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/21 13:30:04 by cagonzal          #+#    #+#              #
-#    Updated: 2024/03/18 10:31:20 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/05/13 14:17:20 by p                ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ OTHERS		=	ft_arraybi_size.c ft_error.c ft_isalnum.c ft_isalpha.c \
 STR			=	ft_split.c ft_strchr.c ft_strcmp.c ft_strcpy.c ft_strdup.c ft_strichr.c \
 				ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c \
 				ft_strncmp.c ft_strndup.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_strtrim.c \
-				ft_substr.c ft_tolower.c ft_toupper.c
+				ft_substr.c ft_tolower.c ft_toupper.c ft_chrjoin.c
 
 LIBFT_SRC	=	$(FILE:%=file/%) \
 				$(LIST:%=list/%) \

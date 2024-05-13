@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 12:46:41 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/17 13:26:59 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/05/13 17:49:36 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_readable(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd < 0 || read(fd, 0, 0) < 0)
 	{
-		ft_printf_fd(2, "File is not readable.\n");
+		ft_printf_fd(2, "\033[0;31mFile is not readable.\n\033[0m");
 		close(fd);
 		return (-1);
 	}

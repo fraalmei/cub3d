@@ -13,7 +13,6 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-
 # include <mlx.h>
 # include <keys.h>
 # include <structs.h>

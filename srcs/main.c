@@ -18,21 +18,29 @@ static void	leaks(void)
 }
 	//atexit(leaks);
 
-/*int	main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	atexit(leaks);
+	/* (void) argc;
+	(void) argv; */
+	ft_printf_fd(1, "Numero de argumentos: %d\n", argc);
 	if (argc != 2)
 	{
-		ft_printf_fd(2, "Numero de argumentos incorrecto %s.\n", *argv[1]);
+		ft_printf_fd(2, "Numero de argumentos incorrecto.\n");
 		return (0);
 	}
-	check_scene(argv[1]);
+	if (check_scene(argv[1]))
+	{
+		ft_printf_fd(2, "Error de mapa.\n");
+		return (1);
+	}
 	return (0);
-}*/
+}
 
-int	main(void)
+/* int	main(void)
 {
 	engine();
 	atexit(leaks);
 	return (0);
 }
+ */

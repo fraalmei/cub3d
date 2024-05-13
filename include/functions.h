@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/04/13 19:31:34 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/05/13 14:09:25 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ int		check_extension(char *file, char *ext);
 int		check_readable(char *file);
 		// utils.c
 char	*del_char_str(char *str, char c);
+int		print_arr(char **str);
+char	*read_word(char *buffer, int *i);
+char	*get_word(char *str, int w);
+		// free.c
+int		 free_arr(void **arr);
 //char	**create_array(char *line);
 char	**del_node_arr(char **arr, char *str);
 
