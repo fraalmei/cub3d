@@ -84,6 +84,7 @@ int			ft_isascii(int c);
 int			ft_isdigit(int c);
 int			ft_isprint(int c);
 int			ft_printf(const char *str, ...);
+int	        ft_printf_fd(int fd, char const *str, ...);
 
 // STR
 

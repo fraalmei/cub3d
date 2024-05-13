@@ -53,7 +53,7 @@ MEM			=	ft_memset.c ft_bzero.c ft_calloc.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
 NBR			=	ft_abs.c ft_atoi_base.c ft_atoi.c ft_itoa.c ft_atoll.c
 
 OTHERS		=	ft_arraybi_size.c ft_error.c ft_isalnum.c ft_isalpha.c \
-				ft_isascii.c ft_isdigit.c ft_isprint.c ft_printf.c ft_swap.c
+				ft_isascii.c ft_isdigit.c ft_isprint.c ft_printf.c ft_printf_fd.c ft_swap.c
 
 STR			=	ft_split.c ft_strchr.c ft_strcmp.c ft_strcpy.c ft_strdup.c ft_strichr.c \
 				ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strlen.c ft_strmapi.c \
