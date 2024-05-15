@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/05/15 16:31:32 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/05/15 17:40:53 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,11 @@ static char	*read_texture(char *line, char ***sides)
 	side = get_word(line, 0);
 	if (check_side(side, sides))
 	{
-		ft_printf_fd(1, "Varios elementos iguales o no existentes: %s\n", side);
+		ft_printf_fd(2, "Varios elementos iguales o no existentes: %s\n", side);
 		return (NULL);
 	}
 	*sides = del_node_arr(*sides, side);
-	ft_printf_fd(1, "-----------------------\n");
-	print_arr(*sides);
-	ft_printf_fd(1, "%s\n", line);
 	texture = get_word(line, 1);
-	ft_printf_fd(1, "%s\n", texture);
 	if (!texture)
 		return (NULL);
 	/*texture = check_texture(line); */
@@ -74,19 +70,18 @@ int	check_elements(int fd)
 	char	**sides;
 	int		i;
 
+	ft_printf_fd(1, " - Checking elements.\n");
 	sides = set_sides();
 	i = ft_arraylen((const void **)sides);
 	while (i--)
 	{
-		ft_printf_fd(1, "str en array: %d\n", ft_arraylen((const void **)sides));
-		print_arr(sides);
 		line = get_next_notempty_line(fd);
 		texture = read_texture(line, &sides);
-		ft_printf_fd(1, "Textura: %s\n", texture);
-		//free (texture);
+		free (texture);
+		free (line);
 	}
 	if (sides)
 		free_arr ((void **)sides);
-	//free (line);
+	ft_printf_fd(1, " - Correct.\n");
 	return (0);
 }
