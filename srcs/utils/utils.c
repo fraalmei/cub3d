@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 12:26:10 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/05/15 11:28:58 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:23:12 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 	return (arr);
 } */
 
-/* char	**del_node_arr(char **arr, char *str)
+char	**del_node_arr(char **arr, char *str)
 {
 	int		i;
 	char	**ret;
@@ -58,16 +58,18 @@
 	if (!arr)
 		return (NULL);
 	i = 0;
-	ret = NULL;
+	ret = (char **)ft_calloc(sizeof(char *), 2);
 	while (arr[i])
 	{
 		if (ft_strcmp(arr[i], str) != 0)
-			ret = str_strjoin_onefree(ret, arr[i]);
+			ret = ft_arrayjoin_arrfree(ret, arr[i]);
+		else
+			free (arr[i]);
 		i++;
 	}
 	free (arr);
 	return (ret);
-} */
+}
 
 int	print_arr(char **str)
 {
@@ -136,7 +138,7 @@ char	*get_word(char *str, int w)
 	i = 0;
 	l = 0;
 	word = NULL;
-	while(str[i] && w >= i)
+	while (str[i] && w >= i)
 	{
 		if (i == w)
 			word = read_word(str, &l);
@@ -145,4 +147,14 @@ char	*get_word(char *str, int w)
 		i++;
 	}
 	return (word);
+}
+
+char	*get_next_notempty_line(int fd)
+{
+	char	*line;
+
+	line = get_next_line(fd);
+	while (ft_strcmp(line, "\n") == 0)
+		line = (free (line), get_next_line(fd));
+	return (line);
 }

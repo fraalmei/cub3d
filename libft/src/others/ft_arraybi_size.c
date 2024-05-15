@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_arraybi_size.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 08:40:40 by mortiz-d          #+#    #+#             */
-/*   Updated: 2024/03/18 10:15:11 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:54:26 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,14 @@ int	ft_arraybi_size(char **str)
 		while (str[tam] != 0)
 			tam++;
 	return (tam);
+}
+
+size_t	ft_arraylen(const void **array)
+{
+	size_t	i;
+
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
 }

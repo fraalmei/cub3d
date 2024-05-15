@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:40:56 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/05/13 14:15:35 by p                ###   ########.fr       */
+/*   Updated: 2024/05/15 15:23:28 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ char		*ft_itoa(int n);
 // OTHERS
 
 int			ft_arraybi_size(char **str);
+size_t		ft_arraylen(const void **array);
 void		ft_error(int error);
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);
@@ -84,7 +85,7 @@ int			ft_isascii(int c);
 int			ft_isdigit(int c);
 int			ft_isprint(int c);
 int			ft_printf(const char *str, ...);
-int	        ft_printf_fd(int fd, char const *str, ...);
+int			ft_printf_fd(int fd, char const *str, ...);
 
 // STR
 
@@ -96,20 +97,23 @@ char		*ft_strdup(const char *s1);
 int			ft_strichr(char *str, char c);
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 char		*ft_strjoin(char const *s1, char const *s2);
+char		*ft_strjoin_onefree(char *s1, char const *s2);
+char		*ft_strjoin_allfree(char *s1, char *s2);
 size_t		ft_strlcat(char *dst, const char *src, size_t size);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 size_t		ft_strlen(const char *str);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_strndup(const char *s1, unsigned int n);
 int			ft_strncmp(const char *s1, const char *s2, int n);
-int     	ft_str_last_cmp(const char *haystack, const char *needle);
+int			ft_str_last_cmp(const char *haystack, const char *needle);
 char		*ft_strnstr(const char *str, const char *to_find, size_t len);
 char		*ft_strrchr(const char *str, int c);
 char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 int			ft_tolower(int c);
 int			ft_toupper(int c);
-char	    *ft_chrjoin(char *s1, char s2);
-char    	*ft_chr_n_join(char *s1, char *s2, int n);
+char		*ft_chrjoin(char *s1, char s2);
+char		*ft_chr_n_join(char *s1, char *s2, int n);
+char		**ft_arrayjoin_arrfree(char **array, const char *str);
 
 #endif

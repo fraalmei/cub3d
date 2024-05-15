@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/05/13 14:09:25 by p                ###   ########.fr       */
+/*   Updated: 2024/05/15 16:23:15 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ char	*del_char_str(char *str, char c);
 int		print_arr(char **str);
 char	*read_word(char *buffer, int *i);
 char	*get_word(char *str, int w);
+char	*get_next_notempty_line(int fd);
 		// free.c
-int		 free_arr(void **arr);
+int		free_arr(void **arr);
 //char	**create_array(char *line);
 char	**del_node_arr(char **arr, char *str);
 
