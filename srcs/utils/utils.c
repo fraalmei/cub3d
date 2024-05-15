@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 12:26:10 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/05/13 17:05:24 by p                ###   ########.fr       */
+/*   Updated: 2024/05/15 11:28:58 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,10 @@ char	*read_word(char *buffer, int *i)
 	char	*word;
 	char	c;
 
+	if (buffer[*i] == '\n')
+		return (NULL);
 	ignore_no_p(buffer, i);
-	word = (char *)ft_calloc(sizeof(char), 2);
+	word = (char *)ft_calloc(sizeof(char), 1);
 	while (buffer[*i] && !(ft_isprint(buffer[*i]) == 0 || buffer[*i] == 32))
 	{
 		if (buffer[*i] == 39 || buffer[*i] == 34)
@@ -133,11 +135,14 @@ char	*get_word(char *str, int w)
 
 	i = 0;
 	l = 0;
-	while(str[i] && w > i)
+	word = NULL;
+	while(str[i] && w >= i)
 	{
-		free (read_word(str, &l));
+		if (i == w)
+			word = read_word(str, &l);
+		else
+			word = (free(read_word(str, &l)), NULL);
 		i++;
 	}
-	word = read_word(str, &l);
 	return (word);
 }

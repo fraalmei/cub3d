@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: p <p@student.42.fr>                        +#+  +:+       +#+         #
+#    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/05/13 17:10:39 by p                ###   ########.fr        #
+#    Updated: 2024/05/15 09:58:09 by fraalmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,15 +36,15 @@ MLX_DIR		= minilibx/minilibx_opengl_20191021
 #MLX_DIR		= minilibx/minilibx_mms_20200219
 #MLX_DIR		= minilibx/minilibx-linux
 MLX_FLAGS	= -L$(MLX_DIR) \
-				-Imlx_Linux -Lmlx_Linux -lXext -lX11 -lm -lGLEW -lglfw -lGL
+				-Imlx_Linux -Lmlx_Linux -lXext -lX11 -lm -lglfw -lGL
 INCLUDES	= -I$(INCLUDE_DIR) \
 				-I$(LIBFT_DIR) \
 				-I$(VECTOR_DIR) \
 				-I$(MLX_DIR) \
 				-I/usr/include 
 LIBS		= -L$(LIBFT_DIR) -lft \
-				-L$(VECTOR_DIR) -lvector\
-				-L/usr/lib
+				-L/usr/lib \
+				-L$(VECTOR_DIR) -lvector
 
 # Directories
 BIN_DIR		= bin
@@ -104,8 +104,10 @@ libs: $(LIBFT_RULE) $(VECTOR_RULE) $(MLX_RULE)
 
 re: fclean all
 
-leaks: $(OBJS)
-	$(CC) $(CFLAGS) $(LEAK_FLAGS) $(OBJS) $(INCLUDES) $(LIBS) $(MLX_FLAGS) -o $(NAME)
+leaks: $(BIN) $(OBJS) | libs
+	@echo "\033[0;32mCompiling cub3D..."
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLX_FLAGS) $(MLX_FLAGS) -o $(NAME)
+	@echo "\n\033[0mDone !"
 
 cbuild:
 	$(RM) -r $(BIN_DIR)

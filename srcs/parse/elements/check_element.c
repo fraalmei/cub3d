@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_element.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/05/13 17:08:00 by p                ###   ########.fr       */
+/*   Updated: 2024/05/15 11:29:14 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,12 @@ static char	*read_texture(char *line, char ***sides)
 
 	(void) sides;
 	texture = get_word(line, 1);
-	/* if (texture)
+	if (!texture)
 	{
 		ft_printf ("Datos con de textura con argumentos extra\n");
-		free (texture);
 		return (NULL);
 	}
-	free (texture);
+	/* free (texture);
 	side = check_side(line, sides);
 	texture = check_texture(line); */
 	return (texture);
@@ -65,13 +64,14 @@ int	check_elements(int fd)
 	char	*line;
 	char	*texture;
 	char	**sides;
-	(void) fd;
 
+	(void) fd;
 	sides = set_sides();
 	line = get_next_line(fd);
 	texture = read_texture(line, &sides);
 	ft_printf_fd(1, "Textura: %s\n", texture);
 	free (texture);
+	print_arr(sides);
 	free_arr ((void **)sides);
 	free (line);
 	return (0);
