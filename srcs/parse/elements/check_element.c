@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/05/15 16:21:48 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/05/15 16:31:32 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ int	check_elements(int fd)
 		line = get_next_notempty_line(fd);
 		texture = read_texture(line, &sides);
 		ft_printf_fd(1, "Textura: %s\n", texture);
-		free (texture);
+		//free (texture);
 	}
 	if (sides)
 		free_arr ((void **)sides);
-	free (line);
+	//free (line);
 	return (0);
 }
