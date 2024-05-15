@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/05/15 11:29:14 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/05/15 11:34:40 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,9 @@ static char	*read_texture(char *line, char ***sides)
 	char	*texture;
 
 	(void) sides;
-	texture = get_word(line, 1);
+	texture = get_word(line, 7);
 	if (!texture)
-	{
-		ft_printf ("Datos con de textura con argumentos extra\n");
 		return (NULL);
-	}
 	/* free (texture);
 	side = check_side(line, sides);
 	texture = check_texture(line); */
