@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/04/14 12:35:09 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/06/08 17:19:29 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,24 @@ typedef struct s_size
 	size_t		width;
 	size_t		height;
 }				t_size;
+
+typedef struct s_texture
+{
+	char		*dir;
+	void		*img;
+	t_size		size;
+}				t_texture;
+
+typedef struct s_textures
+{
+	t_texture	*t_no;
+	t_texture	*t_so;
+	t_texture	*t_we;
+	t_texture	*t_ea;
+	t_texture	*t_f;
+	t_texture	*t_c;
+}				t_textures;
+
 /*
 typedef enum e_directions
 {
@@ -81,6 +99,7 @@ typedef struct s_game
 	void		*mlx;
 	void		*window;
 	t_data		data;
+	t_textures	map_textures;
 	t_player	player;
 	t_vector3	map;
 	t_vector2	camera_plane; // perpendicular to dir
@@ -91,6 +110,6 @@ typedef struct s_game
 	t_vector2	delta_dist; //  distance from one intersection to next
 	double		per_wall_dist; // for raylenght calc
 	t_vector2	step; // ray direction
-}	t_game;
+}				t_game;
 
 #endif

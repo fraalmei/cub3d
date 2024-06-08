@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   file_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 12:46:41 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/05/13 17:49:36 by p                ###   ########.fr       */
+/*   Updated: 2024/06/08 14:56:39 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ int	check_readable(char *file)
 		close(fd);
 		return (-1);
 	}
-	ft_printf(" - Correct.\n");
+	ft_printf("%s - Correct.\n", file);
 	return (fd);
 }

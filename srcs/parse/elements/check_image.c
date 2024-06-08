@@ -12,34 +12,16 @@
 
 #include "cub3d.h"
 
-/* 	// open the .xmp files and detect the pixels
-t_size	detect_image_size(char *dir)
-{
-	t_size	size;
-	int		file;
-	int		i;
-
-	i = -1;
-	size.width = 0;
-	size.height = 0;
-	file = open(dir, O_RDONLY);
-	if (file == -1)
-		return (NULL);
-	size = count_image_size(i, file, size);
-	close (file);
-	return (size);
-} */
-
-/* 	// function to calculate the size of an image
-t_size	count_image_size(int i, int file, t_size size)
+	// function to calculate the size of an image
+static t_size	count_image_size(int i, int file, t_size size)
 {
 	char	*line;
 
 	line = get_next_line(file);
 	while (line)
-	{ */
-		//if (ft_strncmp(line, "/* pixels */", 12) == 0 && i == -1)
-/* 			i = 0;
+	{
+		if (ft_strncmp(line, "/* pixels */", 12) == 0 && i == -1)
+			i = 0;
 		else if (ft_strncmp(line, "};", 2) > -1 && i == 0)
 		{
 			i = -1;
@@ -56,8 +38,26 @@ t_size	count_image_size(int i, int file, t_size size)
 	}
 	free (line);
 	return (size);
-} */
-/* 
+}
+
+	// open the .xmp files and detect the pixels
+static int	detect_image_size(char *dir, t_size *size)
+{
+	int		file;
+	int		i;
+
+	i = -1;
+	size->width = 0;
+	size->height = 0;
+	file = open(dir, O_RDONLY);
+	if (file == -1)
+		return (1);
+	*size = count_image_size(i, file, *size);
+	close (file);
+	return (0);
+}
+
+/*
 	// travel all visible characters to detect all files
 	// and detect the  maximun size between them
 t_size	higher_size_assets(void)
@@ -83,52 +83,17 @@ t_size	higher_size_assets(void)
 	}
 	return (size);
 } */
-/* 
-int	isformat_xpm(int archivo)
+
+int	check_image(char *dir, t_texture *img)
 {
-	// Definir una firma típica de un archivo XPM
-	const char firmaXPM[] = " XPM ";
-
-	// Leer los primeros caracteres del archivo para verificar la firma
-	char buffer[sizeof(firmaXPM)];
-	fread(buffer, sizeof(firmaXPM), 1, archivo);
-
-	// Comparar la firma
-	if (memcmp(buffer, firmaXPM, sizeof(firmaXPM)) == 0)
-		// Es un archivo XPM
-		return (1);
-	else
-		// No es un archivo XPM
-		return (0);
-}
-
-int	isformat_png(int archivo)
-{
-	// Definir la firma típica de un archivo PNG (primeros 8 bytes)
-	const uint8_t firmaPNG[] = {137, 80, 78, 71, 13, 10, 26, 10};
-
-	// Leer los primeros 8 bytes del archivo para verificar la firma
-	uint8_t buffer[sizeof(firmaPNG)];
-	fread(buffer, sizeof(firmaPNG), 1, archivo);
-
-	// Comparar la firma
-	if (memcmp(buffer, firmaPNG, sizeof(firmaPNG)) == 0)
-		// Es un archivo PNG
-		return (1);
-	else
-		// No es un archivo PNG
-		return (0);
-}
- */
-int	check_image(char *dir)
-{
-	int		fd;
-
+	img->dir = dir;
 	if (check_extension(dir, ".xpm"))
+		return (ft_printf("Error: extension\n"), 1);
+	detect_image_size(dir, &img->size);
+	img->img = mlx_xpm_file_to_image(g_data->mlx, dir, \
+		(int *)img->size.width, (int *)img->size.height);
+	if (!img->img)
 		return (1);
-	fd = check_readable(dir);
-	if (fd < 0)
-		return (1);
+	print_map_textures();
 	return (0);
-
 }

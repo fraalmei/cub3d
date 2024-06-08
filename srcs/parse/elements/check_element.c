@@ -6,22 +6,11 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/05/15 17:40:53 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/08 17:23:36 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/* static char	*check_texture(char *line)
-{
-	char	*word;
-
-	word = get_word(line, 1);
-	if (check_image(word))
-		return (NULL);
-	ft_printf ("texture -> %s\n", word);
-	return (word);
-} */
 
 static int	check_side(char *side, char ***sides)
 {
@@ -44,7 +33,7 @@ static char	**set_sides(void)
 	return (ret);
 }
 
-static char	*read_texture(char *line, char ***sides)
+static int	read_texture(char *line, char ***sides)
 {
 	char	*side;
 	char	*texture;
@@ -53,20 +42,20 @@ static char	*read_texture(char *line, char ***sides)
 	if (check_side(side, sides))
 	{
 		ft_printf_fd(2, "Varios elementos iguales o no existentes: %s\n", side);
-		return (NULL);
+		return (1);
 	}
 	*sides = del_node_arr(*sides, side);
 	texture = get_word(line, 1);
 	if (!texture)
-		return (NULL);
-	/*texture = check_texture(line); */
-	return (texture);
+		return (1);
+	if (check_texture(texture, side))
+		return (1);
+	return (0);
 }
 
 int	check_elements(int fd)
 {
 	char	*line;
-	char	*texture;
 	char	**sides;
 	int		i;
 
@@ -76,12 +65,12 @@ int	check_elements(int fd)
 	while (i--)
 	{
 		line = get_next_notempty_line(fd);
-		texture = read_texture(line, &sides);
-		free (texture);
+		if (!read_texture(line, &sides))
+			return (1);
 		free (line);
 	}
 	if (sides)
 		free_arr ((void **)sides);
-	ft_printf_fd(1, " - Correct.\n");
+	ft_printf_fd(1, "Elements - Correct.\n");
 	return (0);
 }

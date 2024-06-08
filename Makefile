@@ -6,7 +6,7 @@
 #    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/05/15 09:58:09 by fraalmei         ###   ########.fr        #
+#    Updated: 2024/06/08 17:12:52 by fraalmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ INCLUDES	= -I$(INCLUDE_DIR) \
 				-I$(LIBFT_DIR) \
 				-I$(VECTOR_DIR) \
 				-I$(MLX_DIR) \
-				-I/usr/include 
+				-I/usr/include
 LIBS		= -L$(LIBFT_DIR) -lft \
 				-L/usr/lib \
 				-L$(VECTOR_DIR) -lvector
@@ -53,7 +53,8 @@ SRCS		= main.c $(PARSE) $(UTILS)
 #SRCS		= main.c $(ENGINE) $(UTILS)
 ENGINE		= engine/engine.c engine/end_program.c engine/map_generator.c
 PARSE		= parse/scene/check_scene.c parse/elements/check_element.c \
-			#parse/images/check_image.c
+			parse/elements/check_image.c parse/elements/check_textures.c \
+			
 
 UTILS		= utils/free.c utils/file_utils.c utils/utils.c
 INCLUDE_DIR	= include			# path to headers
