@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/08 16:05:53 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/09 17:39:11 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 /// scrs
 	/// parse
 		// scene
-int		check_scene(char *file);
+int		check_scene(t_game *data, char *file);
 		// elements
 			// check_elements.c
-int		check_elements(int fd);
+int		check_elements(t_game *data, int fd);
 			// check_image.c
-int		check_image(char *dir, t_texture *img);
+int		check_image(t_game *data, char *dir, t_texture *img);
 			// check_textures.c
-int		check_texture(char *texture, char *name);
+int		check_texture(t_game *data, char *texture, char *name);
 		// map
 //int		check_map(char *map);
 
@@ -44,10 +44,15 @@ int		free_arr(void **arr);
 //char	**create_array(char *line);
 char	**del_node_arr(char **arr, char *str);
 		// global_data
-void	print_map_textures(void);
-int		free_data(void);
+t_game	*init_data(void);
+void	print_map_textures(t_textures *map_textures);
+int		free_data(t_game *data);
 
 	//engine
 void	engine(void);
+
+	// window
+		// window
+t_win	new_program(t_size map, t_size img, char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:11:41 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/08 13:19:28 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/09 16:10:27 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /// and check the elements writed in the map
 /// @param file 
 /// @return 0 if the maps its correct
-int	check_scene(char *file)
+int	check_scene(t_game *data, char *file)
 {
 	int	fd;
 
@@ -27,7 +27,7 @@ int	check_scene(char *file)
 	fd = check_readable(file);
 	if (fd < 0)
 		return (1);
-	if (check_elements(fd))
+	if (check_elements(data, fd))
 		return (1);
 	/*if (check_map(fd))
 		return (1); */

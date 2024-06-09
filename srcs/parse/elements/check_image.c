@@ -62,10 +62,7 @@ static int	detect_image_size(char *dir, t_size *size)
 	// and detect the  maximun size between them
 t_size	higher_size_assets(void)
 {
-	t_size	size;
-	t_size	size_swap;
-	char	c;
-
+	t_size	size;data
 	c = 32;
 	size.width = 0;
 	size.height = 0;
@@ -84,16 +81,16 @@ t_size	higher_size_assets(void)
 	return (size);
 } */
 
-int	check_image(char *dir, t_texture *img)
+int	check_image(t_game *data, char *dir, t_texture *img)
 {
 	img->dir = dir;
 	if (check_extension(dir, ".xpm"))
 		return (ft_printf("Error: extension\n"), 1);
 	detect_image_size(dir, &img->size);
-	img->img = mlx_xpm_file_to_image(g_data->mlx, dir, \
+	/* img->img = mlx_xpm_file_to_image(g_data->window->mlx_ptr, dir, \
 		(int *)img->size.width, (int *)img->size.height);
 	if (!img->img)
-		return (1);
-	print_map_textures();
+		return (1); */
+	print_map_textures(data->map_textures);
 	return (0);
 }

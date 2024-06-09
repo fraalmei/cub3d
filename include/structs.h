@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/08 17:19:29 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/09 17:36:02 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,19 @@ typedef struct s_size
 
 typedef struct s_texture
 {
-	char		*dir;
-	void		*img;
-	t_size		size;
+	char				*dir;
+	void				*img;
+	struct s_size		size;
 }				t_texture;
 
 typedef struct s_textures
 {
-	t_texture	*t_no;
-	t_texture	*t_so;
-	t_texture	*t_we;
-	t_texture	*t_ea;
-	t_texture	*t_f;
-	t_texture	*t_c;
+	struct s_texture	*t_no;
+	struct s_texture	*t_so;
+	struct s_texture	*t_we;
+	struct s_texture	*t_ea;
+	struct s_texture	*t_f;
+	struct s_texture	*t_c;
 }				t_textures;
 
 /*
@@ -94,22 +94,29 @@ typedef struct s_time
 	double	old_time;
 }	t_time;
 
+typedef struct s_win
+{
+	void			*mlx_ptr;
+	void			*win_ptr;
+	struct s_size	size_map;
+	struct s_size	size_img;
+}				t_win;
+
 typedef struct s_game
 {
-	void		*mlx;
-	void		*window;
-	t_data		data;
-	t_textures	map_textures;
-	t_player	player;
-	t_vector3	map;
-	t_vector2	camera_plane; // perpendicular to dir
-	double		fov;
-	double		camx;
-	t_vector2	ray_dir;
-	t_vector2	side_dist; // distance from begin to 1st intersection
-	t_vector2	delta_dist; //  distance from one intersection to next
-	double		per_wall_dist; // for raylenght calc
-	t_vector2	step; // ray direction
-}				t_game;
+	t_win					*window;
+	t_data					data;
+	t_textures				*map_textures;
+	t_player				player;
+	t_vector3				map;
+	t_vector2				camera_plane; // perpendicular to dir
+	double					fov;
+	double					camx;
+	t_vector2				ray_dir;
+	t_vector2				side_dist; // distance from begin to 1st intersection
+	t_vector2				delta_dist; //  distance from one intersection to next
+	double					per_wall_dist; // for raylenght calc
+	t_vector2				step; // ray direction
+}					t_game;
 
 #endif

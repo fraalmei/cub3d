@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/08 17:23:36 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/09 16:10:18 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static char	**set_sides(void)
 	return (ret);
 }
 
-static int	read_texture(char *line, char ***sides)
+static int	read_texture(t_game *data, char *line, char ***sides)
 {
 	char	*side;
 	char	*texture;
@@ -48,12 +48,12 @@ static int	read_texture(char *line, char ***sides)
 	texture = get_word(line, 1);
 	if (!texture)
 		return (1);
-	if (check_texture(texture, side))
+	if (check_texture(data, texture, side))
 		return (1);
 	return (0);
 }
 
-int	check_elements(int fd)
+int	check_elements(t_game *data, int fd)
 {
 	char	*line;
 	char	**sides;
@@ -65,7 +65,7 @@ int	check_elements(int fd)
 	while (i--)
 	{
 		line = get_next_notempty_line(fd);
-		if (!read_texture(line, &sides))
+		if (!read_texture(data, line, &sides))
 			return (1);
 		free (line);
 	}
