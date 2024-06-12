@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
+#    By: p <p@student.42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/06/09 17:46:03 by fraalmei         ###   ########.fr        #
+#    Updated: 2024/06/12 17:29:31 by p                ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ MLX_DIR1		= minilibx/minilibx_opengl_20191021
 MLX_DIR2		= minilibx/minilibx_mms_20200219
 #MLX_DIR3		= minilibx/minilibx-linux
 MLX_FLAGS	= -L$(MLX_DIR1) -L$(MLX_DIR2) \
-				-Imlx_Linux -Lmlx_Linux -lXext -lX11 -lm -lglfw -lGL
+				-Imlx_Linux -Lmlx_Linux -lXext -lX11 -lm -lGL #-lglfw 
 INCLUDES	= -I$(INCLUDE_DIR) \
 				-I$(LIBFT_DIR) \
 				-I$(VECTOR_DIR) \
@@ -50,16 +50,16 @@ LIBS		= -L$(LIBFT_DIR) -lft \
 # Directories
 BIN_DIR		= bin
 SRC_DIR		= srcs
-SRCS		= main.c $(PARSE) $(UTILS) $(WINDOW)
+SRCS		= main.c $(PARSE) $(UTILS) #$(WINDOW)
 #SRCS		= main.c $(ENGINE) $(UTILS)
 ENGINE		= engine/engine.c engine/end_program.c engine/map_generator.c
 PARSE		= parse/scene/check_scene.c parse/elements/check_element.c \
 			parse/elements/check_image.c parse/elements/check_textures.c
 			
 
-UTILS		= utils/free.c utils/file_utils.c utils/utils.c utils/global_data.c
+UTILS		= utils/free.c utils/file_utils.c utils/utils.c #utils/global_data.c
 
-WINDOW		= window/window.c
+#WINDOW		= window/window.c
 
 INCLUDE_DIR	= include			# path to headers
 ASSETS_DIR	= assets			# path to assets
