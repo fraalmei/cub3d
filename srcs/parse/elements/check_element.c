@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/12 17:41:52 by p                ###   ########.fr       */
+/*   Updated: 2024/06/14 15:49:00 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,31 +33,31 @@ static char	**set_sides(void)
 	return (ret);
 }
 
-static t_texture	*get_texture(t_textures *textures, char *name)
+static t_texture	*get_texture(t_texture **textures, char *name)
 {
 	ft_printf_fd(1, "Obteniendo textura\n");
-	if (!ft_strcmp(textures->t_no->name, name))
-		return (textures->t_no);
-	if (!ft_strcmp(textures->t_so->name, name))
-		return (textures->t_so);
-	if (!ft_strcmp(textures->t_we->name, name))
-		return (textures->t_we);
-	if (!ft_strcmp(textures->t_ea->name, name))
-		return (textures->t_ea);
-	if (!ft_strcmp(textures->t_f->name, name))
-		return (textures->t_f);
-	if (!ft_strcmp(textures->t_c->name, name))
-		return (textures->t_c);
+	if (!ft_strcmp(textures[0]->name, name))
+		return (textures[0]);
+	if (!ft_strcmp(textures[1]->name, name))
+		return (textures[1]);
+	if (!ft_strcmp(textures[2]->name, name))
+		return (textures[2]);
+	if (!ft_strcmp(textures[3]->name, name))
+		return (textures[3]);
+	if (!ft_strcmp(textures[4]->name, name))
+		return (textures[4]);
+	if (!ft_strcmp(textures[5]->name, name))
+		return (textures[5]);
 	return (NULL);
 }
 
-static int	read_texture(t_textures *textures, char *line, char ***sides)
+static int	read_texture(t_texture **texture, char *line, char ***sides)
 {
 	char		*side;
-	t_texture	*texture;
+	t_texture	*p_texture;
 
 	side = get_word(line, 0);
-	texture = get_texture(textures, side);
+	p_texture = get_texture(texture, side);
 	ft_printf_fd(1, "Comprobando textura %s\n", side);
 	if (check_side(side, sides) && !texture)
 	{
@@ -65,12 +65,12 @@ static int	read_texture(t_textures *textures, char *line, char ***sides)
 		return (1);
 	}
 	*sides = del_node_arr(*sides, side);
-	texture->dir = get_word(line, 1); // Problem here
-	if (!texture->dir)
+	p_texture->dir = get_word(line, 1);
+	if (!p_texture->dir)
 		return (1);
 	/* if (check_texture(*texture, side))
 		return (1); */
-	ft_printf_fd(1, "Textura obtenida %s\n", texture->dir);
+	ft_printf_fd(1, "Textura obtenida %s\n", p_texture->dir);
 	return (0);
 }
 
@@ -78,7 +78,7 @@ int	check_elements(int fd)
 {
 	char		*line;
 	char		**sides;
-	t_textures	*textures;
+	t_texture	**textures;
 	int			i;
 
 	ft_printf_fd(1, " - Checking elements.\n");
@@ -88,7 +88,7 @@ int	check_elements(int fd)
 	while (i--)
 	{
 		line = get_next_notempty_line(fd);
-		if (!read_texture(textures, line, &sides))
+		if (read_texture(textures, line, &sides))
 			return (free_textures(textures), 1);
 		free (line);
 	}

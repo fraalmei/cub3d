@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/10 18:22:34 by p                ###   ########.fr       */
+/*   Updated: 2024/06/14 10:48:49 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,11 @@ typedef struct s_size
 
 typedef struct s_texture
 {
-	char			*name;
+	char				*name;
 	char				*dir;
 	void				*img;
 	struct s_size		size;
 }				t_texture;
-
-typedef struct s_textures
-{
-	struct s_texture	*t_no;
-	struct s_texture	*t_so;
-	struct s_texture	*t_we;
-	struct s_texture	*t_ea;
-	struct s_texture	*t_f;
-	struct s_texture	*t_c;
-}				t_textures;
 
 /*
 typedef enum e_directions
@@ -107,7 +97,7 @@ typedef struct s_game
 {
 	t_win					*window;
 	t_data					data;
-	t_textures				*map_textures;
+	struct s_texture		*map_textures;
 	t_player				player;
 	t_vector3				map;
 	t_vector2				camera_plane; // perpendicular to dir

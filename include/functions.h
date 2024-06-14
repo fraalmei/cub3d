@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/12 17:26:52 by p                ###   ########.fr       */
+/*   Updated: 2024/06/14 15:47:11 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int			check_elements(int fd);
 			// check_image.c
 // int			check_image(char *dir, t_texture *img);
 			// check_textures.c
-t_textures	*set_textures(void);
-int			free_textures(t_textures *textures);
+t_texture	**set_textures(void);
+int			free_textures(t_texture **texture);
 //int			check_texture(char *texture, char *name);
 		// map
 //int		check_map(char *map);

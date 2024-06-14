@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/12 17:31:53 by p                ###   ########.fr       */
+/*   Updated: 2024/06/14 15:44:56 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ static t_texture	*set_texture(char *name)
 	return (texture);
 }
 
-t_textures	*set_textures(void)
+t_texture	**set_textures(void)
 {
-	t_textures	*textures;
+	t_texture	**textures;
 
-	textures = (t_textures *)ft_calloc(sizeof(t_textures *), 1);
-	textures->t_no = set_texture(ft_strdup("NO"));
-	textures->t_so = set_texture(ft_strdup("SO"));
-	textures->t_we = set_texture(ft_strdup("WE"));
-	textures->t_ea = set_texture(ft_strdup("EA"));
-	textures->t_f = set_texture(ft_strdup("F"));
-	textures->t_c = set_texture(ft_strdup("C"));
+	textures = (t_texture **)ft_calloc(sizeof(t_texture *), 6);
+	textures[0] = set_texture(ft_strdup("NO"));
+	textures[1] = set_texture(ft_strdup("SO"));
+	textures[2] = set_texture(ft_strdup("WE"));
+	textures[3] = set_texture(ft_strdup("EA"));
+	textures[4] = set_texture(ft_strdup("F"));
+	textures[5] = set_texture(ft_strdup("C"));
 	return (textures);
 }
 
@@ -48,22 +48,22 @@ static int	free_texture(t_texture *texture)
 	return (0);
 }
 
-int	free_textures(t_textures *textures)
+int	free_textures(t_texture **textures)
 {
 	if (!textures)
 		return (0);
-	if (textures->t_no)
-		free_texture(textures->t_no), free (textures->t_no);
-	if (textures->t_so)
-		free_texture(textures->t_so), free (textures->t_so);
-	if (textures->t_we)
-		free_texture(textures->t_we), free (textures->t_we);
-	if (textures->t_ea)
-		free_texture(textures->t_ea), free (textures->t_ea);
-	if (textures->t_f)
-		free_texture(textures->t_f), free (textures->t_f);
-	if (textures->t_c)
-		free_texture(textures->t_c), free (textures->t_c);
+	if (textures[0])
+		free_texture(textures[0]), free (textures[0]);
+	if (textures[1])
+		free_texture(textures[1]), free (textures[1]);
+	if (textures[2])
+		free_texture(textures[2]), free (textures[2]);
+	if (textures[3])
+		free_texture(textures[3]), free (textures[3]);
+	if (textures[4])
+		free_texture(textures[4]), free (textures[4]);
+	if (textures[5])
+		free_texture(textures[5]), free (textures[5]);
 	return (free (textures), ft_printf_fd(1, "Liberadas texturas\n"), 0);
 }
 
