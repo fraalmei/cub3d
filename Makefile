@@ -6,7 +6,7 @@
 #    By: p <p@student.42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/06/12 17:29:31 by p                ###   ########.fr        #
+#    Updated: 2024/06/17 10:21:42 by p                ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ PARSE		= parse/scene/check_scene.c parse/elements/check_element.c \
 			parse/elements/check_image.c parse/elements/check_textures.c
 			
 
-UTILS		= utils/free.c utils/file_utils.c utils/utils.c #utils/global_data.c
+UTILS		= utils/free.c utils/file_utils.c utils/utils.c utils/print_things.c\
+			#utils/global_data.c
 
 #WINDOW		= window/window.c
 

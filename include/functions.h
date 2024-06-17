@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/14 15:47:11 by p                ###   ########.fr       */
+/*   Updated: 2024/06/17 11:53:00 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int			check_scene(char *file);
 			// check_elements.c
 int			check_elements(int fd);
 			// check_image.c
+int			is_img(char *str);
 // int			check_image(char *dir, t_texture *img);
 			// check_textures.c
 t_texture	**set_textures(void);
@@ -49,6 +50,8 @@ char	**del_node_arr(char **arr, char *str);
 // t_game	*init_data(void);
 // void	print_map_textures(t_textures *map_textures);
 // int		free_data(t_game *data);
+		// print_things
+int 	print_textures(t_texture **textures);
 
 	//engine
 void	engine(void);

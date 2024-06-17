@@ -12,32 +12,6 @@
 
 #include "cub3d.h"
 /*
-typedef struct s_g_textures
-{
-	void		*no_texture;
-	void		*so_texture;
-	void		*we_texture;
-	void		*ea_texture;
-	void		*f_texture;
-	void		*c_texture;
-}				t_g_textures;
-
-int	init_g_textures(void)
-{
-	t_g_textures	*textures;
-
-	textures = (t_g_textures *)ft_calloc(sizeof(*textures), 1);
-	if (!textures)
-		return (1);
-	textures->no_texture = NULL;
-	textures->so_texture = NULL;
-	textures->we_texture = NULL;
-	textures->ea_texture = NULL;
-	textures->f_texture = NULL;
-	textures->c_texture = NULL;
-	return (0);
-}
-
 static int	check_walls(int file)
 {
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/14 15:44:56 by p                ###   ########.fr       */
+/*   Updated: 2024/06/17 10:21:06 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,14 @@ static int	free_texture(t_texture *texture)
 
 int	free_textures(t_texture **textures)
 {
+	int		i;
+
 	if (!textures)
 		return (0);
-	if (textures[0])
-		free_texture(textures[0]), free (textures[0]);
-	if (textures[1])
-		free_texture(textures[1]), free (textures[1]);
-	if (textures[2])
-		free_texture(textures[2]), free (textures[2]);
-	if (textures[3])
-		free_texture(textures[3]), free (textures[3]);
-	if (textures[4])
-		free_texture(textures[4]), free (textures[4]);
-	if (textures[5])
-		free_texture(textures[5]), free (textures[5]);
+	i = -1;
+	while(textures[++i])
+		if (textures[i])
+			free_texture(textures[i]), free (textures[i]);
 	return (free (textures), ft_printf_fd(1, "Liberadas texturas\n"), 0);
 }
 

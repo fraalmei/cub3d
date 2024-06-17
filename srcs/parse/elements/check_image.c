@@ -12,7 +12,32 @@
 
 #include "cub3d.h"
 
-	// function to calculate the size of an image
+int is_img(char *str)
+{
+	int i;
+	int l;
+	int num;
+	char **swap;
+
+	swap = ft_split(str, ',');
+	if (!swap[2] || !swap[1])
+		return (free_arr((void **)swap), 1);
+	i = -1;
+	while (swap[++i] && i < 3)
+	{
+		l = -1;
+		while (swap[i][++l])
+			if (!(swap[i][l] >= 48 && swap[i][l] <= 57))
+				return (1);
+		num = ft_atoi(swap[i]);
+		if (!(num >= 0 && num <= 255))
+			return (free_arr((void **)swap), 1);
+	}
+	free_arr((void **)swap);
+	return (0);
+}
+
+// function to calculate the size of an image
 // static t_size	count_image_size(int i, int file, t_size size)
 // {
 // 	char	*line;

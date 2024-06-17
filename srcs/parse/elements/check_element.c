@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/14 15:49:00 by p                ###   ########.fr       */
+/*   Updated: 2024/06/17 10:20:05 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int	check_elements(int fd)
 	ft_printf_fd(1, "Comprobadas texturas\n");
 	if (sides)
 		free_arr ((void **)sides);
+	print_textures(textures);
 	free_textures(textures);
 	ft_printf_fd(1, "Elements - Correct.\n");
 	return (0);
