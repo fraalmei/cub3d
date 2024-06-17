@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-int is_img(char *str)
+int is_color(char *str)
 {
 	int i;
 	int l;
