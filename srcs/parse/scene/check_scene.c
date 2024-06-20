@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:11:41 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/10 17:21:40 by p                ###   ########.fr       */
+/*   Updated: 2024/06/20 13:53:21 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	check_scene(char *file)
 	if (fd < 0)
 		return (1);
 	if (check_elements(fd))
+		return (1);
+	if (check_map(fd))
 		return (1);
 	/*if (check_map(fd))
 		return (1); */

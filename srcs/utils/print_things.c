@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 09:54:41 by p                 #+#    #+#             */
-/*   Updated: 2024/06/17 12:18:29 by p                ###   ########.fr       */
+/*   Updated: 2024/06/20 14:02:29 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int print_textures(t_texture **textures)
         if (textures[i]->dir)
         {
             ft_printf_fd(1, "Dir: %s\n", textures[i]->dir);
-            ft_printf_fd(1, "Img?: %d\n", is_img(textures[i]->dir));
+            ft_printf_fd(1, "Img?: %d\n", is_color(textures[i]->dir));
         }
         if (textures[i]->img)
             ft_printf_fd(1, "Img: OK\n");

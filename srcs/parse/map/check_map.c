@@ -1,12 +1,12 @@
-/* /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:33:55 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/03/16 14:31:33 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:24:31 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,28 +84,90 @@ static int	check_elements(int file)
 	(free (line), close (file));
 	return (0);
 }
+*/
 
+static int	check_empty_line(char *line)
+{
+	int		i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (ft_isprint(line[i]) == 0 || line[i] == 32)
+			ft_printf_fd(1, "%c", line[i]), i++;
+		else
+			return (0);
+	}
+	return (1);
+}
+/* 
+static char	**add_str_arr(char **arr, char *str)
+{
+	char	**swap;
+	size_t		i;
+
+	if (!str && !arr)
+		return (NULL);
+	if (!str && arr)
+		return (arr);
+	if (str && !arr)
+		arr = (char **)ft_calloc(sizeof(char *), 1);
+	i = ft_arraybi_size(arr);
+	ft_printf("arraylen %d - %s\n", i, str);
+	swap = (char **)ft_calloc(sizeof(char *), i + 1);
+	i = -1;
+	while(arr[++i])
+		swap[i] = arr[i];
+	swap[i] = str;
+	free (arr);
+	return (swap);
+} */
+
+static char	**map_to_matrix(int fd)
+{
+	char	**map;
+	char	*line;
+
+	if (fd == 0)
+		return (NULL);
+	map = NULL;
+	line = get_next_notempty_line(fd);
+	while (line != NULL)
+	{
+		if (check_empty_line(line))
+			line = (free (line), NULL);
+		else
+			map = ft_arrayjoin_arrfree(map, line);
+		free (line);
+		line = get_next_line(fd);
+		ft_printf("##################################\n");
+		ft_printf("\n");
+		print_arr(map);
+		ft_printf("\n");
+		ft_printf("##################################\n");
+	}
+	ft_printf("##################################\n");
+	ft_printf("\n");
+	print_arr(map);
+	ft_printf("\n");
+	ft_printf("##################################\n");
+	return (map);
+}
 
 /// @brief first check the format 
 /// second check the archivo is readable
 /// and check the elements writed in the map
 /// @param map 
 /// @return 0 if the maps its correct
-int	check_map(char map)
+int	check_map(int fd)
 {
-	int		file;
+	char	**map;
 
 	ft_printf("Checking map.\n");
-	ft_printf(" - Checking extension.\n");
-	if (ft_str_last_cmp(map, ".cub"))
+	map = map_to_matrix(fd);
+	if (!map)
 		return (1);
+	ft_printf(" - - Printing map \n"), print_arr(map);
 	ft_printf(" - Correct.\n");
-	ft_printf(" - Checking readable file.\n");
-	file = open(map, O_RDONLY);
-	if (file < 0 || read(file, 0, 0) < 0)
-		return (close (file), 1);
-	ft_printf(" - Correct.\n");
-	if (check_elements(file))
-		return (1);
 	return (0);
-} */
+}

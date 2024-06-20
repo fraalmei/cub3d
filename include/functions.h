@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/17 15:49:09 by p                ###   ########.fr       */
+/*   Updated: 2024/06/20 14:02:34 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_texture	**set_textures(void);
 int			free_textures(t_texture **texture);
 //int			check_texture(char *texture, char *name);
 		// map
-//int		check_map(char *map);
+int		check_map(int fd);
 
 	/// utils
 		//  file_utils.c

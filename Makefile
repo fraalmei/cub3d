@@ -6,7 +6,7 @@
 #    By: p <p@student.42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/06/17 10:21:42 by p                ###   ########.fr        #
+#    Updated: 2024/06/20 16:55:20 by p                ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,16 +32,15 @@ CFLAGS	= -Wall -Werror -Wextra
 
 LEAK_FLAGS	= -fsanitize=address -g3
 
-MLX_DIR1		= minilibx/minilibx_opengl_20191021
-MLX_DIR2		= minilibx/minilibx_mms_20200219
-#MLX_DIR3		= minilibx/minilibx-linux
-MLX_FLAGS	= -L$(MLX_DIR1) -L$(MLX_DIR2) \
+MLX_DIR		= minilibx/minilibx_opengl_20191021
+#MLX_DIR		= minilibx/minilibx_mms_20200219
+#MLX_DIR		= minilibx/minilibx-linux
+MLX_FLAGS	= -L$(MLX_DIR) \
 				-Imlx_Linux -Lmlx_Linux -lXext -lX11 -lm -lGL #-lglfw 
 INCLUDES	= -I$(INCLUDE_DIR) \
 				-I$(LIBFT_DIR) \
 				-I$(VECTOR_DIR) \
-				-I$(MLX_DIR1) \
-				-I$(MLX_DIR2) \
+				-I$(MLX_DIR) \
 				-I/usr/include
 LIBS		= -L$(LIBFT_DIR) -lft \
 				-L/usr/lib \
@@ -54,7 +53,8 @@ SRCS		= main.c $(PARSE) $(UTILS) #$(WINDOW)
 #SRCS		= main.c $(ENGINE) $(UTILS)
 ENGINE		= engine/engine.c engine/end_program.c engine/map_generator.c
 PARSE		= parse/scene/check_scene.c parse/elements/check_element.c \
-			parse/elements/check_image.c parse/elements/check_textures.c
+			parse/elements/check_image.c parse/elements/check_textures.c\
+			parse/map/check_map.c
 			
 
 UTILS		= utils/free.c utils/file_utils.c utils/utils.c utils/print_things.c\
@@ -96,8 +96,7 @@ $(VECTOR_RULE):
 
 $(MLX_RULE):
 	echo make $(MLX_RULE)
-	@make -C $(MLX_DIR1)
-	@make -C $(MLX_DIR2)
+	@make -C $(MLX_DIR)
 	$(info CREATED $@)
 
 $(LIBFT_RULE):
@@ -121,8 +120,7 @@ cbuild:
 
 clean:
 	@echo "\033[0;31mCleaning mlx..."
-	@make clean -C $(MLX_DIR1)
-	@make clean -C $(MLX_DIR2)
+	@make clean -C $(MLX_DIR)
 	@echo "\033[0;31mCleaning libft..."
 	make clean -C $(LIBFT_DIR)
 	@echo "\033[0;31mCleaning vectorlib..."

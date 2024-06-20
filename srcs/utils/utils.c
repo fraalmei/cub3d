@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 12:26:10 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/05/15 16:23:12 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/20 17:23:53 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,11 @@ int	print_arr(char **str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		printf("paco no sabe hace un bucle\n");
 	while (str[i])
 	{
+		ft_printf_fd (1, "Entra a imprimir el array\n");
 		ft_printf_fd (1, "%s\n", str[i]);
 		i++;
 	}
