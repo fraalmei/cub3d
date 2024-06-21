@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:33:55 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/20 17:24:31 by p                ###   ########.fr       */
+/*   Updated: 2024/06/21 11:38:37 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static int	check_elements(int file)
 }
 */
 
-static int	check_empty_line(char *line)
+/* static int	check_empty_line(char *line)
 {
 	int		i;
 
@@ -99,7 +99,7 @@ static int	check_empty_line(char *line)
 			return (0);
 	}
 	return (1);
-}
+} */
 /* 
 static char	**add_str_arr(char **arr, char *str)
 {
@@ -127,30 +127,23 @@ static char	**map_to_matrix(int fd)
 {
 	char	**map;
 	char	*line;
+	char	*swap;
 
 	if (fd == 0)
 		return (NULL);
 	map = NULL;
 	line = get_next_notempty_line(fd);
-	while (line != NULL)
+	swap = ft_strtrim(line, "\n");
+	free(line);
+	while (swap)
 	{
-		if (check_empty_line(line))
-			line = (free (line), NULL);
-		else
-			map = ft_arrayjoin_arrfree(map, line);
-		free (line);
+		map = ft_arrayjoin_arrfree(map, swap);
+		free(swap);
 		line = get_next_line(fd);
-		ft_printf("##################################\n");
-		ft_printf("\n");
-		print_arr(map);
-		ft_printf("\n");
-		ft_printf("##################################\n");
+		swap = ft_strtrim(line, "\n");
+		free(line);
 	}
-	ft_printf("##################################\n");
-	ft_printf("\n");
-	print_arr(map);
-	ft_printf("\n");
-	ft_printf("##################################\n");
+	free(swap);
 	return (map);
 }
 
