@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/17 10:20:05 by p                ###   ########.fr       */
+/*   Updated: 2024/06/21 12:13:07 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static int	read_texture(t_texture **texture, char *line, char ***sides)
 	return (0);
 }
 
-int	check_elements(int fd)
+t_texture	**check_elements(int fd)
 {
 	char		*line;
 	char		**sides;
@@ -89,14 +89,12 @@ int	check_elements(int fd)
 	{
 		line = get_next_notempty_line(fd);
 		if (read_texture(textures, line, &sides))
-			return (free_textures(textures), 1);
+			return (free_textures(textures), NULL);
 		free (line);
 	}
 	ft_printf_fd(1, "Comprobadas texturas\n");
 	if (sides)
 		free_arr ((void **)sides);
-	print_textures(textures);
-	free_textures(textures);
 	ft_printf_fd(1, "Elements - Correct.\n");
-	return (0);
+	return (textures);
 }

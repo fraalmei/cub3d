@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:33:55 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/21 11:38:37 by p                ###   ########.fr       */
+/*   Updated: 2024/06/21 11:59:23 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static int	check_elements(int file)
 }
 */
 
-/* static int	check_empty_line(char *line)
+static int	check_empty_line(char *line)
 {
 	int		i;
 
@@ -99,7 +99,7 @@ static int	check_elements(int file)
 			return (0);
 	}
 	return (1);
-} */
+}
 /* 
 static char	**add_str_arr(char **arr, char *str)
 {
@@ -137,6 +137,8 @@ static char	**map_to_matrix(int fd)
 	free(line);
 	while (swap)
 	{
+		if (check_empty_line(swap))
+			break ;
 		map = ft_arrayjoin_arrfree(map, swap);
 		free(swap);
 		line = get_next_line(fd);
@@ -152,15 +154,15 @@ static char	**map_to_matrix(int fd)
 /// and check the elements writed in the map
 /// @param map 
 /// @return 0 if the maps its correct
-int	check_map(int fd)
+char	**check_map(int fd)
 {
 	char	**map;
 
 	ft_printf("Checking map.\n");
 	map = map_to_matrix(fd);
 	if (!map)
-		return (1);
+		return (NULL);
 	ft_printf(" - - Printing map \n"), print_arr(map);
 	ft_printf(" - Correct.\n");
-	return (0);
+	return (map);
 }

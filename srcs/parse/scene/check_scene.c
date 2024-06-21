@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:11:41 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/20 13:53:21 by p                ###   ########.fr       */
+/*   Updated: 2024/06/21 12:05:07 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 /// and check the elements writed in the map
 /// @param file 
 /// @return 0 if the maps its correct
-int	check_scene(char *file)
+int	check_scene(t_game *game, char *file)
 {
 	int	fd;
 
@@ -27,12 +27,13 @@ int	check_scene(char *file)
 	fd = check_readable(file);
 	if (fd < 0)
 		return (1);
-	if (check_elements(fd))
+	game->map_textures = check_elements(fd);
+	if (!game->map_textures)
 		return (1);
-	if (check_map(fd))
+	game->map = check_map(fd);
+	if (!game->map)
 		return (1);
-	/*if (check_map(fd))
-		return (1); */
+	close (fd);
 	ft_printf_fd(1, "Scene correct\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/14 10:48:49 by p                ###   ########.fr       */
+/*   Updated: 2024/06/21 12:12:24 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,10 @@ typedef struct s_game
 {
 	t_win					*window;
 	t_data					data;
-	struct s_texture		*map_textures;
+	t_texture				**map_textures;
 	t_player				player;
-	t_vector3				map;
+	char					**map;
+	t_vector3				map_later;
 	t_vector2				camera_plane; // perpendicular to dir
 	double					fov;
 	double					camx;
