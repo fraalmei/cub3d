@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/21 12:13:07 by p                ###   ########.fr       */
+/*   Updated: 2024/06/21 15:53:12 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,6 @@ static int	check_side(char *side, char ***sides)
 		if (ft_strcmp(swap[i], side) == 0)
 			return (0);
 	return (1);
-}
-
-static char	**set_sides(void)
-{
-	char	**ret;
-
-	ret = ft_split("NO;SO;WE;EA;F;C", ';');
-	return (ret);
 }
 
 static t_texture	*get_texture(t_texture **textures, char *name)
@@ -83,7 +75,7 @@ t_texture	**check_elements(int fd)
 
 	ft_printf_fd(1, " - Checking elements.\n");
 	textures = set_textures();
-	sides = set_sides();
+	sides = set_double_arr("NO;SO;WE;EA;F;C", ';');
 	i = ft_arraylen((const void **)sides);
 	while (i--)
 	{

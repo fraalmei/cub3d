@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:11:41 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/21 12:05:07 by p                ###   ########.fr       */
+/*   Updated: 2024/06/27 17:35:36 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_scene(t_game *game, char *file)
 	game->map_textures = check_elements(fd);
 	if (!game->map_textures)
 		return (1);
-	game->map = check_map(fd);
+	game->map = read_map(fd);
 	if (!game->map)
 		return (1);
 	close (fd);

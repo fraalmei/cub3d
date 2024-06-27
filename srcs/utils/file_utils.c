@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   file_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 12:46:41 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/08 14:56:39 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/21 15:53:07 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+char	**set_double_arr(char *str, char c)
+{
+	char	**ret;
+
+	ret = ft_split(str, c);
+	return (ret);
+}
 
 int	check_extension(char *file, char *ext)
 {

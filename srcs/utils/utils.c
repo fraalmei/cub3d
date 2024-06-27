@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 12:26:10 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/21 11:31:04 by p                ###   ########.fr       */
+/*   Updated: 2024/06/27 15:24:23 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // its for strings with no duplicates
 // it deletes the char of the strings
 // if the char its founded 
-/* char	*del_char_str(char *str, char c)
+char	*del_char_str(char *str, char c)
 {
 	int		i;
 	int		char_finded;
@@ -37,7 +37,7 @@
 	}
 	free (str);
 	return (ret);
-} */
+}
 
 /* char	**str_array(char line)
 {
@@ -50,13 +50,62 @@
 	return (arr);
 } */
 
+int		ft_chrcmp_str(char c, char *str)
+{
+	int		i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == c)
+			return (i);
+	}
+	return (-1);
+}
+
+int		ft_del_str_arr_chr_cmp(char c, char ***arr)
+{
+	int 	i;
+
+	if (*arr[0])
+		return (0);
+	i = -1;
+	while (*arr[++i])
+	{
+		if (ft_chrcmp_str(c, *arr[i] + 1) != -1)
+		{
+			if (*arr[i][0] == '0')
+			{
+				*arr[i][0] = '1';
+					return (0);
+			}
+			else if (*arr[i][0] == '1')
+				return (1);
+		}
+	}
+	return (1);
+}
+
+int		ft_str_arr_cmp(char *str, char **arr)
+{
+	int		i;
+
+	i = -1;
+	while (arr[++i])
+	{
+		if (ft_strcmp(str, arr[i]) == 0)
+			return (0);
+	}
+	return (1);
+}
+
 char	**del_node_arr(char **arr, char *str)
 {
 	int		i;
 	char	**ret;
 
-	if (!arr)
-		return (NULL);
+	if (!arr[0])
+		return (arr);
 	i = 0;
 	ret = (char **)ft_calloc(sizeof(char *), 2);
 	while (arr[i])
@@ -75,6 +124,8 @@ int	print_arr(char **str)
 {
 	int	i;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i])
 	{
