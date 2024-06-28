@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 09:54:41 by p                 #+#    #+#             */
-/*   Updated: 2024/06/20 14:02:29 by p                ###   ########.fr       */
+/*   Updated: 2024/06/28 18:00:47 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,19 @@ int print_textures(t_texture **textures)
         ft_printf_fd(1, "#######################\n");
     }
     return (0);
+}
+
+int	print_arr(char **str)
+{
+	int	i;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i])
+	{
+		ft_printf_fd (1, "%s\n", str[i]);
+		i++;
+	}
+	return (i);
 }
