@@ -10,15 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/engine.h"
+#include <cub3d.h>
 
 int	extract_color(t_vector3 color)
 {
 	int	ret_color;
 
-    if (color.x < 0 || color.x > 255 || color.y < 0 || color.y > 255 || color.z < 0 || color.z > 255)
-        (fprintf(stderr, "Invalid color value\n"), exit(EXIT_FAILURE));
+	if (color.x < 0 || color.x > 255 || color.y < 0 || \
+			color.y > 255 || color.z < 0 || color.z > 255)
+		(fprintf(stderr, "Invalid color value\n"), exit(EXIT_FAILURE));
 
-    ret_color = (0 << 24 | (int)color.x << 16 | (int)color.y << 8 | (int)color.z);
+	ret_color = (0 << 24 | (int)color.x << 16 | \
+		(int)color.y << 8 | (int)color.z);
 	return (ret_color);
 }

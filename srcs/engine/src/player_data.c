@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/engine.h"
+#include <cub3d.h>
 
 static void	player_data_aux(t_game *game, int pos_x, int pos_y, char value)
 {
-	t_vector2 new_pos;
-	float center;
-	
+	t_vector2	new_pos;
+	float		center;
+
 	center = T_SIZE / 2;
 	if (value == 'N' || value == 'S' || value == 'W' || value == 'E')
 	{
@@ -38,7 +38,7 @@ void	player_data(t_game *game)
 {
 	int	pos_x;
 	int	pos_y;
-	
+
 	pos_x = -1;
 	while (++pos_x < game->map_size.x)
 	{

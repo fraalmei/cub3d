@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   map_generator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:18:51 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/04/14 16:39:15 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/06/29 20:14:50 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/engine.h"
+#include <cub3d.h>
 #include <time.h>
 
-static void apply_rotation(t_vector3 *vertex, float angle_x, float angle_y, float angle_z)
+/* static void apply_rotation(t_vector3 *vertex, float angle_x, float angle_y, float angle_z)
 {
 	// Aplicar rotación en los ejes X, Y y Z
 	float x = vertex->x;
@@ -68,7 +68,7 @@ static void draw_3d_scene(void *mlx_ptr, void *win_ptr)
 		// Proyectar y dibujar cada vértice rotado en la ventana 2D
 		// (Implementación similar a los pasos anteriores)
 	}
-}
+} */
 
 // Función para dibujar unlínea en la ventana
 // static void draw_line(void *mlx_ptr, void *win_ptr, t_vector32 start, t_vector32 end, int color)
@@ -105,7 +105,7 @@ static void draw_3d_scene(void *mlx_ptr, void *win_ptr)
 // 		} /* e_xy+e_y < 0 */
 // 	}
 // }
-
+/* 
 // Algoritmo de Recursive Backtracking para generar el laberinto
 void	generate_map(t_game game)
 {
@@ -116,4 +116,4 @@ void	generate_map(t_game game)
 	// draw_line(game.mlx, game.window, start, end, 0xFF0000);
 	draw_3d_scene(game.mlx, game.window);
 
-}
+} */

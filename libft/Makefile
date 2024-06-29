@@ -6,7 +6,7 @@
 #    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/21 13:30:04 by cagonzal          #+#    #+#              #
-#    Updated: 2024/05/15 13:54:13 by fraalmei         ###   ########.fr        #
+#    Updated: 2024/06/29 19:13:12 by fraalmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,6 @@ INCLUDE		=	-I./$(INCLUDE_L)
 COMPILE		=	$(CC) $(FLAGS) $(INCLUDE)
 NAME		=	libft.a
 HEADER		=	libft.h
-
 
 # Color
 NC			=	'\033[0m'
@@ -85,7 +84,7 @@ $(BIN)/%.o: $(SRC)/%.c
 	@$(COMPILE) -c $< -o $@
 
 # Clean logic
-.PHONY: re fclean
+.PHONY: all clean fclean re
 
 re: fclean all
 

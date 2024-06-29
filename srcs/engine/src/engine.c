@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   engine.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:12:31 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/28 14:35:53 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/06/30 01:33:41 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/engine.h"
-#include "functions.h"
+#include <cub3d.h>
 
 /** Substitute for parser once completed */
-static char	**create_example_map(t_game *game)
+/* static char	**create_example_map(t_game *game)
 {
-	char **map2d;
-	
+	char	**map2d;
+
 	game->map_size = ft_vector2(10, 25);
 	map2d = ft_calloc(game->map_size.height, sizeof(char *));
 	map2d[0] = strdup("111111111111111111111111");
@@ -41,9 +40,10 @@ static char	**create_example_map(t_game *game)
 	// map2d[8] = strdup("100000000001010000000001");
 	// map2d[9] = strdup("111111111111111111111111");
 	return (map2d);
-}
+} */
+
 /** Change for texture loading */
-void	init_color_textures(t_game * game)
+void	init_color_textures(t_game *game)
 {
 	game->roof_color = extract_color(ft_vector3(135, 206, 235));
 	game->floor_color = extract_color(ft_vector3(50, 50, 50));
@@ -56,7 +56,7 @@ void	init_color_textures(t_game * game)
 
 t_game	*init(t_game *game)
 {
-	game->matrix = create_example_map(game);	
+	//game->matrix = create_example_map(game);	
 	game->ray = calloc(1, sizeof(t_ray));
 	game->mlx.p_mlx = mlx_init();
 	game->mlx.window = mlx_new_window(game->mlx.p_mlx, S_WIDTH, S_HEIGHT, "Cub3D");
@@ -76,12 +76,13 @@ int	update(t_game *game)
 	return (0);
 }
 
-void engine(t_game game)
+void	engine(t_game *game)
 {
-	game = *init(&game);
+	game = init(game);
 	// mlx_key_hook(game->mlx.p_mlx, &update, (void *)&game->mlx);
-	PRINT_DEBUG("Funcion [%s]: Map pos [%0.2f][%0.2f]", __func__, game.player_pos.x, game.player_pos.y);
-	mlx_hook(game.mlx.window, 17, 0, end_program, &game);
-	mlx_loop_hook(game.mlx.p_mlx, &update, &game);
-	mlx_loop(game.mlx.p_mlx);
+	PRINT_DEBUG("Funcion [%s]: Map pos [%0.2f][%0.2f]", __func__, game->player_pos.x, game->player_pos.y);
+	mlx_key_hook(game->mlx.window, read_keys, game);
+	mlx_hook(game->mlx.window, 17, 0, end_program, &game->mlx);
+	mlx_loop_hook(game->mlx.p_mlx, &update, &game->mlx);
+	mlx_loop(game->mlx.p_mlx);
 }

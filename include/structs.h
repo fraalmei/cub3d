@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/29 17:27:50 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/29 21:54:46 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define STRUCTS_H
 
 # include <cub3d.h>
-# include "../vector/src/vector.h"
 
 typedef struct s_size
 {

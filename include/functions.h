@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/29 17:22:56 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/29 17:40:08 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ char		*del_char_str(char *str, char c);
 char		**del_node_arr(char **arr, char *str);
 
 	//engine
-void		engine(t_game game);
+void		engine(t_game *game);
 
 #endif

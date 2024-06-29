@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:16:16 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/28 14:07:13 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/06/29 20:15:00 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/engine.h"
+#include <cub3d.h>
 
 /**
  * @brief Normalizes the given angle between 0 and 2*pi.

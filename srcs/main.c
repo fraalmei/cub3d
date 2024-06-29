@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/29 17:29:52 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/30 01:32:08 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ int	main(int argc, char **argv)
 		ft_printf_fd(2, "Error de mapa.\n");
 		return (1);
 	}
-	print_global(game);
-	free_data(game);
+	//print_global(game);
+	engine(game);
+	//free_data(game);
 	return (0);
 }
 

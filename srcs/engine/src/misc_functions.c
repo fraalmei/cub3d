@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   misc_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 13:34:09 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/28 12:45:17 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/06/29 20:15:08 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/engine.h"
+#include <cub3d.h>
 
 void image_update(t_game * game)
 {

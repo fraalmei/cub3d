@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:56:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/21 13:15:01 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/06/29 20:15:12 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/engine.h"
+#include <cub3d.h>
 
 /**
  * @brief Maneja la entrada del usuario.

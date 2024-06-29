@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:44:02 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/28 14:27:13 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/06/30 00:52:50 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 # define ENGINE_H
 
 # include <cub3d.h>
+# include "../vector/src/vector.h"
+# include "structs.h"
 
 # define S_WIDTH 1200 /**< Ancho de la pantalla */
 # define S_HEIGHT 800 /** Alto de la pantalla */
 
-#ifndef M_PI
-# define M_PI 3.14159265358979323846
-#endif
+# ifndef M_PI
+#  define M_PI 3.14159265358979323846
+# endif
 
 // Convierte el ángulo de visión de grados a radianes
 # define FOV 60
@@ -36,13 +38,14 @@
 int		extract_color(t_vector3 color);
 
 // End_program.c
-int 	end_program(t_game *game);
+int		end_program(t_game *game);
 
 // Engine.c
 t_game	*init(t_game *game);
-void	render_wall(t_game *game, int ray);
+//void	render_wall(t_game *game, int ray);
 void	init_color_textures(t_game *game);
 int		update(t_game *game);
+void	engine(t_game *game);
 
 // Player_data.c
 void	player_data(t_game *game);
@@ -54,21 +57,23 @@ float	get_v_inter(t_game *game, double angle);
 void	cast_rays(t_game *game);
 
 // Ray_utils.c
-float   nor_angle(float angle);
-int 	unit_circle(float angle, char c);
+float	nor_angle(float angle);
+int		unit_circle(float angle, char c);
 int		wall_hit(t_game *game, float x, float y);
 
 // Misc_functions.c
 void	image_update(t_game *game);
-int		end_program(t_game *game);
 void	esc_function(t_game *game);
-void	space_funcion();
+void	space_funcion(void);
 
 // Screen_frame.c
 void	my_mlx_pixel_put(t_game *game, int x, int y, int color);
 int		get_color(t_game *game, int flag);
-void	draw_wall(t_game *game, int ray, int t_pix , int b_pix);
+void	draw_wall(t_game *game, int ray, int t_pix, int b_pix);
 void	draw_floor_ceiling(t_game *game, int ray, double b_pix, double t_pix);
 void	render_wall(t_game *game, int ray);
+
+// keys.c
+int		read_keys(int key_pressed, void *param);
 
 #endif

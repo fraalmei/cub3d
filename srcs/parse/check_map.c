@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:33:55 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/29 12:58:09 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/30 01:24:24 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,6 @@ char	**read_map(int fd)
 		return (NULL);
 	ft_printf(" - - Printing map \n");
 	fill_map(&map);
-	print_arr(map);
 	ft_printf(" - Correct.\n");
 	return (map);
 }
