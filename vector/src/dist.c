@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   addv.c                                             :+:      :+:    :+:   */
+/*   dist.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 20:26:09 by pedromar          #+#    #+#             */
-/*   Updated: 2024/06/12 14:52:17 by cagonzal         ###   ########.fr       */
+/*   Created: 2024/06/12 14:55:14 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/06/13 08:16:33 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 
-t_vector2	ft_addv2(t_vector2 v1, t_vector2 v2)
+double	dist2(t_vector2 a, t_vector2 b)
 {
-	t_vector2	v;
-
-	v.x = v1.x + v2.x;
-	v.y = v1.y + v2.y;
-	return (v);
+    return (sqrtf((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y)));
 }
 
-t_vector3	ft_addv3(t_vector3 v1, t_vector3 v2)
+double	dist3(t_vector3 a, t_vector3 b)
 {
-	t_vector3	v;
-
-	v.x = v1.x + v2.x;
-	v.y = v1.y + v2.y;
-	v.z = v1.z + v2.z;
-	return (v);
+    return (sqrtf((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y)
+			+ (b.z - a.z) * (b.z - a.z)));
 }
 
-t_vector4	ft_addv4(t_vector4 v1, t_vector4 v2)
+double	dist4(t_vector4 a, t_vector4 b)
 {
-	t_vector4	v;
-
-	v.x = v1.x + v2.x;
-	v.y = v1.y + v2.y;
-	v.z = v1.z + v2.z;
-	v.w = v1.w + v2.w;
-	return (v);
+    return (sqrtf((b.x - a.x) * (b.x - a.x) + (b.y - a.y) * (b.y - a.y)
+			+ (b.z - a.z) * (b.z - a.z) + (b.w - a.w) * (b.w - a.w)));
 }

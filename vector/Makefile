@@ -3,7 +3,7 @@ NAME = libvector.a
 
 SRC_DIR := src
 
-SRCS = 	addm.c ident.c addv.c cross.c \
+SRCS = 	addm.c ident.c addv.c cross.c dist.c \
 		divmf.c divv2.c dotv.c eqv.c len.c \
 		lensqr.c linearcomb.c mat.c mulmf.c \
 		mulmm.c mulmv.c mulv.c mulvf.c printm.c \

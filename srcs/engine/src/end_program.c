@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eqv.c                                              :+:      :+:    :+:   */
+/*   end_program.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 20:57:52 by pedromar          #+#    #+#             */
-/*   Updated: 2024/04/19 14:37:06 by cagonzal         ###   ########.fr       */
+/*   Created: 2024/04/13 19:39:57 by cagonzal          #+#    #+#             */
+/*   Updated: 2024/06/24 11:07:15 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vector.h"
+#include "../include/engine.h"
 
-bool	ft_eqv2(t_vector2 v1, t_vector2 v2)
+/* Frees all allocated memory and makes exit(0) */
+int	end_program(t_game *game)
 {
-	return (v1.x == v2.x && v1.y == v2.y);
-}
-
-bool	ft_eqv3(t_vector3 v1, t_vector3 v2)
-{
-	return (v1.x == v2.x && v1.y == v2.y && v1.z == v2.z);
-}
-
-bool	ft_eqv4(t_vector4 v1, t_vector4 v2)
-{
-	return (v1.x == v2.x && v1.y == v2.y && v1.z == v2.z && v1.w == v2.w);
+	(void)game;
+	// mlx_clear_window(game->p_mlx.p_mlx, game->p_mlx.screen);
+	// mlx_destroy_window(game->p_mlx.p_mlx, game->p_mlx.screen);
+	// free_tilemap(game);
+	// game->tilemap = NULL;
+	// free_enemies(game);
+	// game->enemy_list = NULL;
+	// free(game);
+	exit(0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 08:53:58 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/04/14 10:38:48 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/06/13 08:16:33 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,10 @@ float			ft_lenv4(t_vector4 v);
 float			ft_normv2(t_vector2 v);
 float			ft_normv3(t_vector3 v);
 float			ft_normv4(t_vector4 v);
+
+double			dist2(t_vector2 a, t_vector2 b);
+double			dist3(t_vector3 a, t_vector3 b);
+double			dist4(t_vector4 a, t_vector4 b);
 
 t_matrix2		ft_transposem2(t_matrix2 m);
 t_matrix3		ft_transposem3(t_matrix3 m);

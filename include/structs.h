@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/29 13:19:23 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/28 14:29:23 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,99 +16,107 @@
 # include <cub3d.h>
 # include "../vector/src/vector.h"
 
-typedef struct s_size
+typedef enum e_bool
 {
-	size_t		width;
-	size_t		height;
-}				t_size;
+	FALSE,
+	TRUE
+}	t_bool;
 
-typedef struct s_texture
-{
-	char				*name;
-	char				*dir;
-	void				*img;
-	struct s_size		size;
-}				t_texture;
-
-/*
 typedef enum e_directions
 {
-	NORTH = 0,
+	EAST = 0,
 	SOUTH = 1,
 	WEST = 2,
-	EAST = 3
+	NORTH = 3
 }	t_directions;
 
-typedef struct s_tile
+typedef struct s_tilemap
 {
-	void *tect[4];
-	struct t_tile no;
-	struct t_tile so;
-	struct t_tile we;
-	struct t_tile ea;
-}	t_tile;
+	int		pos_x;
+	int		pos_y;
+	char	value;
+}	t_tilemap;
 
-
-	t_vector3 floor;
-	t_vector3 ceiling;
-tile[X][Y];
-
- *tex[NORTH];
- *tex[SOUTH];
- *tex[WEST];
- *tex[EAST];
-
-
-floor.r = 220
-floor.g = 100
-floor.b = 0
- */
-
-typedef struct s_data
+typedef struct s_ray
 {
-	unsigned int	*img;
-	char			*addr;
-	int				bpp; //bits per pixel
-	int				line_length;
-	int				endian;
-}	t_data;
+	int			ray;		///< Ray index
+	int			flag;		///< Indicator if the ray hit a wall
+	double		ray_angle;	///< Angle of the ray
+	double		distance;	///< Distance from the player to the wall intersection
+	// t_vector2	hit;		///< Position of the wall intersection
+	// double		point;		///< Point of impact of the ray on the wall
+	// double		wall;		///< Position of the wall hit
+	// int			ray_at;		///< Ray index in the context of a raycasting loop
+	// bool		hor;		///< Indicator for horizontal intersection
+	// bool		ver;		///< Indicator for vertical intersection
+	// t_vector2	h;			///< Coordinates of the horizontal intersection
+	// t_vector2	step;		///< Incremental step of the ray in the x and y directions
+	// t_vector2	v;			///< Coordinates of the vertical intersection
+	// t_vector2	map;		///< Coordinates of the map tile the ray is currently in
+	// t_vector2	r;			///< Current coordinates of the ray in world space
+	// float		dof;		///< Depth of field
+	// float		disth;		///< Distance to the nearest horizontal intersection
+	// float		distv;		///< Distance to the nearest vertical intersection
+}	t_ray;
+
+
+typedef struct s_mlx
+{
+	void	*p_mlx;
+	void	*window;
+	// t_image	*img;
+}	t_mlx;
 
 typedef struct s_player
 {
-	t_vector2	position;
-	t_vector2	direction;
+	t_vector2	pos;		///< Player position
+	double		angle;		///< Player angle
+	float		fov_rd;		///< Field of view in radians
+	int			rot;		///< Rotation flag
+	int			l_r;		///< Left-right flag
+	int			u_d;		///< Up-down flag
 }	t_player;
 
-typedef struct s_time
+typedef struct s_texture
 {
-	double	time;
-	double	old_time;
-}	t_time;
+	void		*img;
+	char		*name;
+	char		*dir;
+	t_vector2	size;
+}	t_texture;
 
-typedef struct s_win
+typedef struct s_image
 {
-	void			*mlx_ptr;
-	void			*win_ptr;
-	struct s_size	size_map;
-	struct s_size	size_img;
-}				t_win;
+	void	*image;
+	char	*add;
+	int		width;
+	int		height;
+	int		endian;
+	int		bpp;
+	int		length;
+}	t_image;
 
 typedef struct s_game
 {
-	t_win					*window;
-	t_data					data;
-	t_texture				**map_textures;
-	t_player				player;
-	char					**map;
-	t_vector3				map_later;
-	t_vector2				camera_plane; // perpendicular to dir
-	double					fov;
-	double					camx;
-	t_vector2				ray_dir;
-	t_vector2				side_dist; // distance from begin to 1st intersection
-	t_vector2				delta_dist; //  distance from one intersection to next
-	double					per_wall_dist; // for raylenght calc
-	t_vector2				step; // ray direction
-}					t_game;
+	t_mlx		mlx;
+	t_player	player;
+	t_vector2	map_size;		///< Map size
+	t_vector2	player_pos;		///< Player initial position
+	t_ray		*ray;			///< Ray Structure
+	t_image		frame;
+	t_image		mnmap;
+	char		**matrix;
+	int			floor_color;
+	int			roof_color;
+	int			north_texture;
+	int			east_texture;
+	int			south_texture;
+	int			west_texture;
+	t_texture	texture[4];
+	// char		*north_texture;
+	// char		*east_texture;
+	// char		*south_texture;
+	// char		*west_texture;
+}	t_game;
 
 #endif
