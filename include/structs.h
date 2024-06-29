@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/28 14:29:23 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/06/29 17:27:50 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,20 @@
 
 # include <cub3d.h>
 # include "../vector/src/vector.h"
+
+typedef struct s_size
+{
+	size_t		width;
+	size_t		height;
+}				t_size;
+
+typedef struct s_texture
+{
+	char				*name;
+	char				*dir;
+	void				*img;
+	t_vector2			size;
+}				t_texture;
 
 typedef enum e_bool
 {
@@ -77,14 +91,6 @@ typedef struct s_player
 	int			u_d;		///< Up-down flag
 }	t_player;
 
-typedef struct s_texture
-{
-	void		*img;
-	char		*name;
-	char		*dir;
-	t_vector2	size;
-}	t_texture;
-
 typedef struct s_image
 {
 	void	*image;
@@ -98,25 +104,22 @@ typedef struct s_image
 
 typedef struct s_game
 {
-	t_mlx		mlx;
-	t_player	player;
-	t_vector2	map_size;		///< Map size
-	t_vector2	player_pos;		///< Player initial position
-	t_ray		*ray;			///< Ray Structure
-	t_image		frame;
-	t_image		mnmap;
-	char		**matrix;
-	int			floor_color;
-	int			roof_color;
-	int			north_texture;
-	int			east_texture;
-	int			south_texture;
-	int			west_texture;
-	t_texture	texture[4];
-	// char		*north_texture;
-	// char		*east_texture;
-	// char		*south_texture;
-	// char		*west_texture;
-}	t_game;
+	t_mlx			mlx;
+	t_player		player;
+	t_vector2		map_size;		///< Map size
+	t_vector2		player_pos;		///< Player initial position
+	t_ray			*ray;			///< Ray Structure
+	t_image			frame;
+	t_image			mnmap;
+	char			**matrix;
+	int				floor_color;
+	int				roof_color;
+	int				north_texture;
+	int				east_texture;
+	int				south_texture;
+	int				west_texture;
+	t_texture		**map_textures;
+	char			**map;
+}					t_game;
 
 #endif
