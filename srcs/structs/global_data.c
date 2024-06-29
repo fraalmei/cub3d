@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   global_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 13:33:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/21 12:15:41 by p                ###   ########.fr       */
+/*   Updated: 2024/06/29 13:28:35 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ t_game	*init_data(void)
 		ft_printf_fd(1, "height: %s\n", texture->size.width);
 	ft_printf_fd(1, "-----------------------\n");
 }
-
-int	free_data(t_game *data)
+*/
+int	free_data(t_game *game)
 {
-	free_map_textures(data->map_textures);
-	free(data->map_textures);
-	free(data);
+	free_textures(game->map_textures);
+	free_arr((void *)game->map_textures);
+	free(game);
 	return (0);
-} */
+}

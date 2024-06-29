@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 12:26:10 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/28 17:53:17 by p                ###   ########.fr       */
+/*   Updated: 2024/06/29 13:00:11 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*del_char_str(char *str, char c)
 	return (ret);
 }
 
-int		ft_chrcmp_str(char c, char *str)
+int	ft_chrcmp_str(char c, char *str)
 {
 	int		i;
 
@@ -52,9 +52,9 @@ int		ft_chrcmp_str(char c, char *str)
 	return (-1);
 }
 
-int		ft_del_str_arr_chr_cmp(char c, char ***arr)
+int	ft_del_str_arr_chr_cmp(char c, char ***arr)
 {
-	int 	i;
+	int	i;
 
 	if (*arr[0])
 		return (0);
@@ -66,7 +66,7 @@ int		ft_del_str_arr_chr_cmp(char c, char ***arr)
 			if (*arr[i][0] == '0')
 			{
 				*arr[i][0] = '1';
-					return (0);
+				return (0);
 			}
 			else if (*arr[i][0] == '1')
 				return (1);
@@ -75,7 +75,7 @@ int		ft_del_str_arr_chr_cmp(char c, char ***arr)
 	return (1);
 }
 
-int		ft_str_arr_cmp(char *str, char **arr)
+int	ft_str_arr_cmp(char *str, char **arr)
 {
 	int		i;
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: p <p@student.42.fr>                        +#+  +:+       +#+         #
+#    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/06/28 18:16:17 by p                ###   ########.fr        #
+#    Updated: 2024/06/29 13:28:12 by fraalmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,15 +49,16 @@ LIBS		= -L$(LIBFT_DIR) -lft \
 # Directories
 BIN_DIR		= bin
 SRC_DIR		= srcs
-SRCS		= main.c $(PARSE) $(UTILS) #$(WINDOW)
+SRCS		= main.c $(PARSE) $(UTILS) $(STRUCTS) #$(WINDOW)
 #SRCS		= main.c $(ENGINE) $(UTILS)
 ENGINE		= engine/engine.c engine/end_program.c engine/map_generator.c
 PARSE		= parse/check_scene.c parse/check_element.c \
-			parse/check_image.c parse/check_textures.c parse/check_map.c
+			parse/check_image.c parse/check_map.c
 
+STRUCTS		= structs/global_data.c structs/textures.c
 
 UTILS		= utils/set_utils.c utils/file_utils.c utils/free.c utils/node_utils.c \
-			utils/global_data.c utils/print_things.c utils/read_utils.c
+			utils/print_things.c utils/read_utils.c
 
 #WINDOW		= window/window.c
 

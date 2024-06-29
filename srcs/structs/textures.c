@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_textures.c                                   :+:      :+:    :+:   */
+/*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/28 17:14:40 by p                ###   ########.fr       */
+/*   Updated: 2024/06/29 13:08:31 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int	free_textures(t_texture **textures)
 	if (!textures)
 		return (0);
 	i = -1;
-	while(textures[++i])
+	while (textures[++i])
 		if (textures[i])
-			free_texture(textures[i]), free (textures[i]);
+			(free_texture(textures[i]), free (textures[i]));
 	return (free (textures), ft_printf_fd(1, "Liberadas texturas\n"), 0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:33:55 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/28 18:21:08 by p                ###   ########.fr       */
+/*   Updated: 2024/06/29 12:58:09 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,31 @@ static char	**map_to_matrix(int fd)
 	return (map);
 }
 
-static int		check_point(char **map, t_size point, char **unique, char wall)
+static int	check_point(char **map, t_size point, char **unique, char wall)
 {
 	if (!map || !wall)
 		return (1);
-	if (map[point.width][point.height] == wall || map[point.width][point.height] == ' ')
+	if (map[point.width][point.height] == wall || \
+			map[point.width][point.height] == ' ')
 		return (0);
 	if (ft_del_str_arr_chr_cmp(map[point.width][point.height], &unique))
 		return (1);
-	if (!map[point.width - 1][point.height] || map[point.width - 1][point.height] == ' ')
+	if (!map[point.width - 1][point.height] || \
+			map[point.width - 1][point.height] == ' ')
 		return (1);
-	if (!map[point.width][point.height - 1] || map[point.width][point.height - 1] == ' ')
+	if (!map[point.width][point.height - 1] || \
+			map[point.width][point.height - 1] == ' ')
 		return (1);
-	if (!map[point.width + 1][point.height] || map[point.width + 1][point.height] == ' ')
+	if (!map[point.width + 1][point.height] || \
+			map[point.width + 1][point.height] == ' ')
 		return (1);
-	if (!map[point.width][point.height + 1] || map[point.width][point.height + 1] == ' ')
+	if (!map[point.width][point.height + 1] || \
+			map[point.width][point.height + 1] == ' ')
 		return (1);
 	return (0);
 }
 
-static int		check_map(char **map)
+static int	check_map(char **map)
 {
 	t_size		p;
 	char		**str;
@@ -71,7 +76,7 @@ static int		check_map(char **map)
 		return (1);
 	while (map[p.width])
 	{
-		while(map[p.width][p.height])
+		while (map[p.width][p.height])
 		{
 			if (ft_chrcmp_str(map[p.width][p.height], allc) == -1)
 				return (1);

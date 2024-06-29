@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/21 12:12:24 by p                ###   ########.fr       */
+/*   Updated: 2024/06/29 13:19:23 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,10 @@ floor.b = 0
 typedef struct s_data
 {
 	unsigned int	*img;
-	char	*addr;
-	int		bpp; //bits per pixel
-	int		line_length;
-	int		endian;
+	char			*addr;
+	int				bpp; //bits per pixel
+	int				line_length;
+	int				endian;
 }	t_data;
 
 typedef struct s_player

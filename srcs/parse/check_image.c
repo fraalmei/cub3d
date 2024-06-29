@@ -12,12 +12,12 @@
 
 #include "cub3d.h"
 
-int is_color(char *str)
+int	is_color(char *str)
 {
-	int i;
-	int l;
-	int num;
-	char **swap;
+	int		i;
+	int		l;
+	int		num;
+	char	**swap;
 
 	swap = ft_split(str, ',');
 	if (!swap[2] || !swap[1])

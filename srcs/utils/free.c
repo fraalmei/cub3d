@@ -5,20 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 12:50:13 by p                 #+#    #+#             */
-/*   Updated: 2024/06/08 13:42:37 by fraalmei         ###   ########.fr       */
+/*   Created: 2024/06/29 12:56:02 by fraalmei          #+#    #+#             */
+/*   Updated: 2024/06/29 12:56:34 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int free_arr(void **arr)
+int	free_arr(void **arr)
 {
-    int     i;
+	int	i;
 
-    i = -1;
-    while (arr[++i])
-        free (arr[i]);
-    free (arr);
-    return (0);
+	i = -1;
+	while (arr[++i])
+		free (arr[i]);
+	free (arr);
+	return (0);
 }
