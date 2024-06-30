@@ -6,11 +6,11 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/29 20:14:54 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/30 09:50:09 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include "../../../include/engine.h"
 
 /**
  * @brief Puts the pixel in the image.

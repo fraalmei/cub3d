@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include "../../../include/engine.h"
 
 int	extract_color(t_vector3 color)
 {

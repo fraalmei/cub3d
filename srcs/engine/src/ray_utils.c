@@ -6,11 +6,11 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:16:16 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/29 20:15:00 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/30 09:50:06 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include "../../../include/engine.h"
 
 /**
  * @brief Normalizes the given angle between 0 and 2*pi.

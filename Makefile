@@ -6,7 +6,7 @@
 #    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/06/30 00:49:54 by fraalmei         ###   ########.fr        #
+#    Updated: 2024/06/30 09:42:15 by fraalmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ BIN_DIR		= bin
 SRC_DIR		= srcs
 SRCS		= main.c $(ENGINE) $(PARSE) $(UTILS) $(STRUCTS)
 
-ENGINE		= engine/src/color.c engine/end_program.c engine/src/engine.c engine/src/misc_functions.c \
+ENGINE		= engine/src/color.c engine/src/end_program.c engine/src/engine.c engine/src/misc_functions.c \
 			engine/src/player_data.c engine/src/ray_utils.c engine/src/ray.c engine/src/screen_frame.c \
 			engine/keys.c
 

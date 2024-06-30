@@ -6,11 +6,11 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 13:34:09 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/29 20:15:08 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/30 09:50:25 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include "../../../include/engine.h"
 
 void image_update(t_game * game)
 {

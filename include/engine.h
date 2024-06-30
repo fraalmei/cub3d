@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:44:02 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/30 00:52:50 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/06/30 10:23:43 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <cub3d.h>
 # include "../vector/src/vector.h"
-# include "structs.h"
 
 # define S_WIDTH 1200 /**< Ancho de la pantalla */
 # define S_HEIGHT 800 /** Alto de la pantalla */

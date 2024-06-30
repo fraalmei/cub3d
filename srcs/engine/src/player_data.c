@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3d.h>
+#include "../../../include/engine.h"
 
 static void	player_data_aux(t_game *game, int pos_x, int pos_y, char value)
 {
