@@ -6,12 +6,15 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:50:57 by p                 #+#    #+#             */
-/*   Updated: 2024/06/28 18:08:38 by p                ###   ########.fr       */
+/*   Updated: 2024/07/25 14:26:30 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+/// @brief move the pointer i of the buffer if the actual character its a space
+/// @param buffer string to read
+/// @param i character in the buffer
 static void	ignore_no_p(char *buffer, int *i)
 {
 	while (buffer[*i] <= ' ')
@@ -36,6 +39,10 @@ int	check_empty_line(char *line)
 	return (1);
 }
 
+/// @brief read the actual word until find a white space
+/// @param buffer string to read
+/// @param i position to start to read
+/// @return the actual word
 char	*read_word(char *buffer, int *i)
 {
 	char	*word;
@@ -61,6 +68,10 @@ char	*read_word(char *buffer, int *i)
 	return (word);
 }
 
+/// @brief read the string and return the indicated word in it
+/// @param str string to read
+/// @param w position of the word to return
+/// @return 
 char	*get_word(char *str, int w)
 {
 	int		i;
@@ -81,6 +92,9 @@ char	*get_word(char *str, int w)
 	return (word);
 }
 
+/// @brief return the next not empty line of a fd 
+/// @param fd file descriptor to read
+/// @return the next not empty line
 char	*get_next_notempty_line(int fd)
 {
 	char	*line;

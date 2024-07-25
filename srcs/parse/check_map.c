@@ -3,15 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:33:55 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/30 01:24:24 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/07/25 14:24:37 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/// @brief convert the map into a double array
+// check de fd
+// read the next existent line
+// trim the line
+// and read the next line until find a empty line
+/// @param fd 
+/// @return a double array
 static char	**map_to_matrix(int fd)
 {
 	char	**map;
@@ -38,6 +45,12 @@ static char	**map_to_matrix(int fd)
 	return (map);
 }
 
+/// @brief check if the char its near to the correct char
+/// @param map 
+/// @param point 
+/// @param unique 
+/// @param wall 
+/// @return a 0 if the char its correct, a 1 if not
 static int	check_point(char **map, t_size point, char **unique, char wall)
 {
 	if (!map || !wall)
@@ -62,6 +75,12 @@ static int	check_point(char **map, t_size point, char **unique, char wall)
 	return (0);
 }
 
+/// @brief check if the map is correct
+// set a string with all sides
+// set a string with all characters in the map 
+// check all chars of the map 1 by 1
+/// @param map 
+/// @return a 0 if the map its correct
 static int	check_map(char **map)
 {
 	t_size		p;
@@ -70,7 +89,7 @@ static int	check_map(char **map)
 
 	p.width = 0;
 	p.height = 0;
-	str = set_double_arr("0NWES", ';');
+	str = ft_split("0NWES", ';');
 	allc = ft_strdup("0NEWS01 ");
 	if (!map || !map[p.width][p.height])
 		return (1);
@@ -91,6 +110,9 @@ static int	check_map(char **map)
 	return (0);
 }
 
+/// @brief fill the right of the map to set the map a square
+/// @param map 
+/// @return a 0 if it works
 static int	fill_map(char ***map)
 {
 	int		max_row;

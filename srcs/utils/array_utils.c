@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_utils.c                                       :+:      :+:    :+:   */
+/*   array_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 12:26:10 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/29 13:00:11 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/07/25 14:21:16 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,10 @@ char	*del_char_str(char *str, char c)
 	return (ret);
 }
 
+/// @brief check if the character its into the string
+/// @param c 
+/// @param str 
+/// @return a positive int if the char is finded, -1 if not
 int	ft_chrcmp_str(char c, char *str)
 {
 	int		i;
@@ -52,6 +56,10 @@ int	ft_chrcmp_str(char c, char *str)
 	return (-1);
 }
 
+/// @brief delete a node of an array that contains the char
+/// @param c 
+/// @param arr 
+/// @return a 1 no coincidences finded,0 if exist a coincidence
 int	ft_del_str_arr_chr_cmp(char c, char ***arr)
 {
 	int	i;
@@ -75,6 +83,10 @@ int	ft_del_str_arr_chr_cmp(char c, char ***arr)
 	return (1);
 }
 
+/// @brief compare a string to all nodes of an array
+/// @param str 
+/// @param arr 
+/// @return 1 of no coincidences finded, 0 if exist a coincidence
 int	ft_str_arr_cmp(char *str, char **arr)
 {
 	int		i;
@@ -88,6 +100,10 @@ int	ft_str_arr_cmp(char *str, char **arr)
 	return (1);
 }
 
+/// @brief delete a node of an array
+/// @param arr 
+/// @param str 
+/// @return return the array modified
 char	**del_node_arr(char **arr, char *str)
 {
 	int		i;

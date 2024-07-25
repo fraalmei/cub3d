@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   global_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 13:33:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/30 01:31:34 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/07/25 12:50:00 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,20 @@ t_game	*init_data(void)
 	ft_printf_fd(1, "-----------------------\n");
 }
 */
+
 int	free_data(t_game *game)
 {
 	free_textures(game->map_textures);
 	free_arr((void **)game->map);
 	free(game);
+	return (ft_printf_fd(1, "Juego liberado.\n"), 0);
+}
+
+int	print_global(t_game *game)
+{
+	ft_printf_fd (1, " - Texturas - \n");
+	print_textures (game->map_textures);
+	ft_printf_fd (1, " - Mapa - \n");
+	print_arr(game->map);
 	return (0);
 }

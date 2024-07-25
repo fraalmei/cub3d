@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   check_element.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/29 12:58:41 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:43:58 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/// @brief  check if the string side is in of the array sides
+/// @param side 
+/// @param sides 
+/// @return a 0 if side is in sides, a 1 if not
 static int	check_side(char *side, char ***sides)
 {
 	int		i;
@@ -25,6 +29,10 @@ static int	check_side(char *side, char ***sides)
 	return (1);
 }
 
+/// @brief return a pointer to a structure of a structure array
+/// @param textures is the array of textures
+/// @param name the name of the texture to find
+/// @return a pointer to the texture
 static t_texture	*get_texture(t_texture **textures, char *name)
 {
 	if (!ft_strcmp(textures[0]->name, name))
@@ -42,6 +50,11 @@ static t_texture	*get_texture(t_texture **textures, char *name)
 	return (NULL);
 }
 
+/// @brief read the line to check a texture exist
+/// @param texture array of textures
+/// @param line the line to read
+/// @param sides an array of sides to check the readed sides
+/// @return a 0 if the texture its correct, or 1 if an error ocurr
 static int	read_texture(t_texture **texture, char *line, char ***sides)
 {
 	char		*side;
@@ -49,20 +62,23 @@ static int	read_texture(t_texture **texture, char *line, char ***sides)
 
 	side = get_word(line, 0);
 	p_texture = get_texture(texture, side);
-	ft_printf_fd(1, "Comprobando textura %s\n", side);
+	ft_printf_fd(1, " - - Checking texture: %s\n", side);
 	if (check_side(side, sides) && !texture)
 	{
-		ft_printf_fd(2, "Varios elementos iguales o no existentes: %s\n", side);
+		ft_printf_fd(2, " - - - Several identical or non-existent elements: %s\n", side);
 		return (1);
 	}
 	*sides = del_node_arr(*sides, side);
 	p_texture->dir = get_word(line, 1);
 	if (!p_texture->dir)
 		return (1);
-	ft_printf_fd(1, "Textura obtenida %s\n", p_texture->dir);
+	ft_printf_fd(1, " - - Obtained texture: %s\n", p_texture->dir);
 	return (0);
 }
 
+/// @brief check the next lines of the map to read the textures
+/// @param fd the file descriptor of the map
+/// @return an array of textures
 t_texture	**check_elements(int fd)
 {
 	char		*line;
@@ -72,7 +88,7 @@ t_texture	**check_elements(int fd)
 
 	ft_printf_fd(1, " - Checking textures.\n");
 	textures = set_textures();
-	sides = set_double_arr("NO;SO;WE;EA;F;C", ';');
+	sides = ft_split("NO;SO;WE;EA;F;C", ';');
 	i = ft_arraylen((const void **)sides);
 	while (i--)
 	{

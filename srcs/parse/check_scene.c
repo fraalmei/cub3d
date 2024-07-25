@@ -6,13 +6,13 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:11:41 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/28 17:44:30 by p                ###   ########.fr       */
+/*   Updated: 2024/07/25 13:37:31 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// @brief first check the format 
+/// @brief first check the format 
 /// second check the archivo is readable
 /// and check the elements writed in the map
 /// @param t_game

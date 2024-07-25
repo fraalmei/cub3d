@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 12:56:02 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/30 01:30:03 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:43:03 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/// @brief free an array of voids
+/// @param arr 
+/// @return a 0 if end
 int	free_arr(void **arr)
 {
 	int	i;

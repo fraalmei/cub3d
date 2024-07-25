@@ -6,12 +6,16 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 12:46:41 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/28 17:52:47 by p                ###   ########.fr       */
+/*   Updated: 2024/07/25 13:41:45 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
+/// @brief check if the extension of the file its correct
+/// @param file 
+/// @param ext 
+/// @return a 0 if its correct, a 1 if not
 int	check_extension(char *file, char *ext)
 {
 	ft_printf(" - Checking extension file.\n");
@@ -24,6 +28,9 @@ int	check_extension(char *file, char *ext)
 	return (0);
 }
 
+/// @brief open the file and check if is readable
+/// @param file 
+/// @return return a fd if its readable or a -1 if not
 int	check_readable(char *file)
 {
 	int		fd;

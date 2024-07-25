@@ -12,6 +12,9 @@
 
 #include "cub3d.h"
 
+/// @brief checking if is a texture or a solid color
+/// @param str 
+/// @return a 0 if its a color or1 if not
 int	is_color(char *str)
 {
 	int		i;

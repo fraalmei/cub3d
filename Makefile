@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
+#    By: p <p@student.42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/06/30 09:42:15 by fraalmei         ###   ########.fr        #
+#    Updated: 2024/07/25 15:11:05 by p                ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ LEAK_FLAGS	= -fsanitize=address -g3
 
 #MLX_DIR		= minilibx/minilibx_mms_20200219
 #MLX_DIR		= minilibx/minilibx_opengl_20191021
-MLX_DIR		= minilibx/minilibx-linux
+#MLX_DIR		= minilibx/minilibx-linux
+MLX_DIR		= minilibx/mlx_Linux
 MLX_FLAGS	= -L$(MLX_DIR) -lmlx -lmlx_Linux -lXext -lX11 -lm -lz
 INCLUDES	= -I$(INCLUDE_DIR) \
 				-I$(LIBFT_DIR) \
@@ -61,7 +62,7 @@ PARSE		= parse/check_scene.c parse/check_element.c \
 
 STRUCTS		= structs/global_data.c structs/textures.c
 
-UTILS		= utils/set_utils.c utils/file_utils.c utils/free.c utils/node_utils.c \
+UTILS		= utils/set_utils.c utils/file_utils.c utils/free.c utils/array_utils.c \
 			utils/print_things.c utils/read_utils.c
 
 
@@ -100,22 +101,22 @@ $(OBJS): $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
 
 $(MLX_RULE):
 	echo make $(MLX_RULE)
-	@make -C $(MLX_DIR)
+	make -C $(MLX_DIR)
 	$(info CREATED $@)
 
 $(VECTOR_RULE):
 	echo make $(VECTOR_RULE)
-	@make -C $(VECTOR_DIR)
+	make -C $(VECTOR_DIR)
 	$(info CREATED $@)
 
 $(LIBFT_RULE):
 	echo make $(LIBFT_RULE)
-	@make -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR)
 	$(info CREATED $@)
 
 
 #	Libraries compile
-libs: $(LIBFT_RULE) $(VECTOR_RULE) $(MLX_RULE)
+libs: $(LIBFT_RULE) $(MLX_RULE) $(VECTOR_RULE)
 
 re: fclean all
 
