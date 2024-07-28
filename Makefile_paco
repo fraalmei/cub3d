@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    Makefile_paco                                      :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/07/28 16:59:36 by fraalmei         ###   ########.fr        #
+#    Updated: 2024/07/28 15:38:40 by fraalmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@
 #PURPLE	= @echo "\033[0;34m"
 #CYAN	= @echo "\033[0;35m"
 
-RESET		= 	@echo '\033[1;0m'
+RESET	= "\033[1;0m"
+
 NC			=	@echo '\033[0m'
 TITLE		=	@echo '\033[38;5;33m'
 DEFAULT		=	@echo '\033[0;39m'
@@ -44,7 +45,7 @@ CC		= gcc
 RM		= /bin/rm -f
 
 #	flags
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -Wall -Werror -Wextra -D LINUX
 
 LEAK_FLAGS	= -fsanitize=address -g3
 
@@ -56,27 +57,23 @@ MLX_DIR		= minilibx/mlx_Linux
 MLX_FLAGS	= -L$(MLX_DIR) -lmlx -lmlx_Linux -lXext -lX11 -lm -lz
 INCLUDES	= -I$(INCLUDE_DIR) \
 				-I$(LIBFT_DIR) \
-				-I$(VECTOR_DIR) \
 				-I$(MLX_DIR) \
 				-I/usr/include
-LIBS		= -L$(LIBFT_DIR) -lft \
-				-L$(VECTOR_DIR) -lvector\
+LIBS		= -L $(LIBFT_DIR) -lft \
 				-L/usr/lib
 
 
 # Directories
 BIN_DIR		= bin
 SRC_DIR		= srcs
-SRCS		= main.c $(PARSE) $(UTILS) $(STRUCTS) #$(ENGINE)
+SRCS		= main.c $(ENGINE) $(PARSE) $(UTILS) $(STRUCTS)
 
-ENGINE		= engine/src/color.c engine/src/end_program.c engine/src/engine.c engine/src/misc_functions.c \
-			engine/src/player_data.c engine/src/ray_utils.c engine/src/ray.c engine/src/screen_frame.c \
-			engine/keys.c
+ENGINE		= paco_engine/engine.c
 
 PARSE		= parse/check_scene.c parse/check_element.c \
 			parse/check_image.c parse/check_map.c parse/check_player.c
 
-STRUCTS		= structs/global_data.c structs/textures.c structs/player.c structs/map.c
+STRUCTS		= structs/global_data.c structs/textures.c structs/player.c
 
 UTILS		= utils/set_utils.c utils/file_utils.c utils/free.c utils/array_utils.c \
 			utils/print_things.c utils/read_utils.c
@@ -85,19 +82,12 @@ UTILS		= utils/set_utils.c utils/file_utils.c utils/free.c utils/array_utils.c \
 INCLUDE_DIR	= include			# path to headers
 ASSETS_DIR	= assets			# path to assets
 
-MLX 		= lmlx
-MLX_RULE	= $(MLX_DIR)/libmlx.a
+MLX_RULE	= $(MLX_DIR)
 MLX_LIB		= $(MLX_DIR)/libmlx.a
 
-LIBFT 		= libft
-LIBFT_DIR 	= libft
+LIBFT_DIR 	= ./libft
 LIBFT_RULE	= libft/libft.a
 LIBFT_LIB	= $(LIBFT_DIR)/$(LIBFT).a
-
-VECTOR		= libvector
-VECTOR_DIR	= vector
-VECTOR_RULE	= vector/libvector.a
-VECTOR_LIB	= $(VECTOR_DIR)/$(VECTOR).a
 
 # Convert source files to binary
 OBJS = $(SRCS:%.c=$(BIN_DIR)/%.o)
@@ -105,9 +95,9 @@ OBJS = $(SRCS:%.c=$(BIN_DIR)/%.o)
 all: $(NAME)
 
 $(NAME): $(BIN) $(OBJS) | libs
-	@echo "\033[0;32mCompiling cub3D..."
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
-	@echo "\n\033[0mDone !"
+	@echo ${TITLE}"Compiling "$(RED)"cub3D...	\n"
+	$(CC) $(CFLAGS) $(OBJS) $(INCLUDES) $(LIBS) $(MLX_FLAGS) -o $(NAME)
+	@echo ${GREEN}"	[Done] !\n"$(RESET)
 
 #	Objects construction
 $(OBJS): $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
@@ -115,62 +105,54 @@ $(OBJS): $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
 	@printf "\033[0;33mGenerating cub3D objects... %-33.33s\r" $@
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(MLX_RULE):
+mlx:
 	echo make $(MLX_RULE)
 	make -C $(MLX_DIR)
 	$(info CREATED $@)
 
-$(VECTOR_RULE):
-	echo make $(VECTOR_RULE)
-	make -C $(VECTOR_DIR)
-	$(info CREATED $@)
-
-$(LIBFT_RULE):
+libft:
 	echo make $(LIBFT_RULE)
 	make -C $(LIBFT_DIR)
 	$(info CREATED $@)
 
-
 #	Libraries compile
-libs: $(LIBFT_RULE) $(MLX_RULE) $(VECTOR_RULE)
+libs: libft mlx
 
 re: fclean all
 
-leaks: $(OBJS)
-	$(CC) $(CFLAGS) $(LEAK_FLAGS) $(OBJS) $(INCLUDES) $(LIBS) $(MLX_FLAGS) -o $(NAME)
-
-cbuild:
-	$(RM) -r $(BIN_DIR)
+leaks: all
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) maps/map1.cub
 
 clean:
-	@echo "\033[0;31mCleaning mlx..."
+	${LRED} "Cleaning mlx..."
 	make clean -C $(MLX_DIR)
-	@echo "\033[0;31mCleaning libft..."
+	${LRED} "Cleaning libft..."
 	make clean -C $(LIBFT_DIR)
-	@echo "\033[0;31mCleaning vectorlib..."
-	make clean -C $(VECTOR_DIR)
-	@echo "\nRemoving binaries..."
+	${LRED} "Removing binaries..."
 	@$(RM) $(OBJS)
 	@$(RM) -r $(BIN_DIR)
-	@echo "\033[0m"
+	@${GREEN} "Complete!"
+	@${DEFAULT} ""
 
 fclean: clean
-	@echo "\033[0;31mFcleaning libft..."
+	${LRED} "Fcleaning mlx..."
+	@make fclean -C $(MLX_DIR)
+	${LRED} "Fcleaning libft..."
 	@make fclean -C $(LIBFT_DIR)
-	@echo "\033[0;31mFcleaning vectorlib..."
-	@make fclean -C $(VECTOR_DIR)
-	@echo "\nDeleting executable..."
+	${LRED} "Deleting executable..."
 	@$(RM) $(NAME)
-	@echo "\033[0m"
-
+	@${GREEN} "Complete!"
+	@${DEFAULT} ""
 
 show:
 	@printf "UNAME		: $(UNAME)\n"
 	@printf "NAME		: $(NAME)\n"
-	@printf "CC  		: $(CC)\n"
+	@printf "CC			: $(CC)\n"
 	@printf "CFLAGS		: $(CFLAGS)\n"
 	@printf "MLX_FLAGS	: $(MLX_FLAGS)\n"
-	@printf "SRCS		: $(SRC)\n"
+	@printf "INCUDES	: ${INCLUDES}\n"
+	@printf "LIBS		: ${LIBS}\n"
+	@printf "SRCS		: $(SRCS)\n"
 	@printf "OBJS		: $(OBJS)\n"
 
-.PHONY: $(LIBFT) all clean fclean re
+.PHONY: $(LIBS) all clean fclean re libft mlx  libs re leaks

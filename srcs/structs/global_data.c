@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   global_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 13:33:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/25 12:50:00 by p                ###   ########.fr       */
+/*   Updated: 2024/07/28 17:48:04 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,37 @@ t_game	*init_data(void)
 
 int	free_data(t_game *game)
 {
-	free_textures(game->map_textures);
-	free_arr((void **)game->map);
+	ft_printf_fd (1, COLOR_YELLOW);
+	ft_printf_fd (1, "###################################################\n");
+	ft_printf_fd(1, "################### FREEING GAME ###################\n");
+	ft_printf_fd (1, "###################################################\n");
+	ft_printf_fd (1, COLOR_RESET);
+	free_map(game);
+	ft_printf_fd(1, "Map freed.\n");
+	free(game->player);
+	ft_printf_fd(1, "Player freed.\n");
 	free(game);
-	return (ft_printf_fd(1, "Juego liberado.\n"), 0);
+	ft_printf_fd (1, COLOR_YELLOW);
+	ft_printf_fd (1, "###################################################\n");
+	ft_printf_fd(1, "#################### GAME FREED ####################\n");
+	ft_printf_fd (1, "###################################################\n");
+	ft_printf_fd (1, COLOR_RESET);
+	return (0);
 }
 
 int	print_global(t_game *game)
 {
-	ft_printf_fd (1, " - Texturas - \n");
-	print_textures (game->map_textures);
-	ft_printf_fd (1, " - Mapa - \n");
-	print_arr(game->map);
+	ft_printf_fd (1, COLOR_YELLOW);
+	ft_printf_fd (1, "###################################################\n");
+	ft_printf_fd (1, "################## PRINTING DATA ##################\n");
+	ft_printf_fd (1, "###################################################\n");
+	ft_printf_fd (1, COLOR_RESET);
+	print_map(game->map);
+	print_player_inf(game->player);
+	ft_printf_fd (1, COLOR_YELLOW);
+	ft_printf_fd (1, "###################################################\n");
+	ft_printf_fd (1, "################### DATA PRINTED ##################\n");
+	ft_printf_fd (1, "###################################################\n");
+	ft_printf_fd (1, COLOR_RESET);
 	return (0);
 }

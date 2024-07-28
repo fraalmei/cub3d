@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:33:55 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/25 14:24:37 by p                ###   ########.fr       */
+/*   Updated: 2024/07/28 17:25:35 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,6 @@ char	**read_map(int fd)
 		return (NULL);
 	if (check_map(map))
 		return (NULL);
-	ft_printf(" - - Printing map \n");
 	fill_map(&map);
 	ft_printf(" - Correct.\n");
 	return (map);

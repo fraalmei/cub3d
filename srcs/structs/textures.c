@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/25 12:49:39 by p                ###   ########.fr       */
+/*   Updated: 2024/07/28 17:48:18 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	free_textures(t_texture **textures)
 	while (textures[++i])
 		if (textures[i])
 			(free_texture(textures[i]), free (textures[i]));
-	return (free (textures), ft_printf_fd(1, "Liberadas texturas\n"), 0);
+	return (free (textures), ft_printf_fd(1, "Textures freed.\n"), 0);
 }
 
 int	print_textures(t_texture **textures)
@@ -83,7 +83,9 @@ int	print_textures(t_texture **textures)
 			ft_printf_fd(1, "Width: %d\n", textures[i]->size.width);
 		if (textures[i]->size.height)
 			ft_printf_fd(1, "Height: %d\n", textures[i]->size.height);
-		ft_printf_fd(1, "########################################\n");
+		ft_printf_fd (1, COLOR_CYAN);
+		ft_printf_fd (1, "###########################################\n");
+		ft_printf_fd (1, COLOR_RESET);
 	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/25 15:11:06 by p                ###   ########.fr       */
+/*   Updated: 2024/07/28 17:19:43 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ t_texture	**check_elements(int fd);
 		// check_image.c
 int			is_color(char *str);
 
-		// map
+		// check_map
 char		**read_map(int fd);
+
+		// check_player
+int			get_player_pos(t_game *game);
 
 		// scene
 int			check_scene(t_game *game, char *file);
@@ -35,10 +38,19 @@ t_game		*init_data(void);
 int			free_data(t_game *game);
 int			print_global(t_game *game);
 
+		// map.c
+int			print_map(t_map *map);
+int			free_map(t_game *game);
+int			set_map(t_game *game);
+
 		// textures.c
 t_texture	**set_textures(void);
 int			free_textures(t_texture **texture);
 int			print_textures(t_texture **textures);
+
+		// player.c
+int			print_player_inf(t_player *player);
+int			set_player(t_game *game);
 
 	/// utils
 		// array_utils.c
@@ -67,11 +79,15 @@ char		*read_word(char *buffer, int *i);
 char		*get_word(char *str, int w);
 int			check_empty_line(char *line);
 
-
-
 		// print_things
-
 char		*del_char_str(char *str, char c);
 char		**del_node_arr(char **arr, char *str);
+
+
+		// paco_engine
+void		engine(t_game *game);
+t_game		*init(t_game *game);
+int			end_program(t_game *game);
+int			read_keys(int key_pressed, void *param);
 
 #endif

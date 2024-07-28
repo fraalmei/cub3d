@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   color.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/25 09:06:24 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/28 17:38:15 by fraalmei         ###   ########.fr       */
+/*   Created: 2024/07/28 17:36:29 by fraalmei          #+#    #+#             */
+/*   Updated: 2024/07/28 17:37:53 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef COLOR_H
+# define COLOR_H
 
-
-# include <mlx.h>
-
-# include "../vector/src/vector.h"
-# include "../libft/include/libft.h"
-
-# include "structs.h"
-# include "engine.h"
-# include "key_linux.h"
-# include "keys.h"
-# include "functions.h"
-# include "color.h"
-
-#define PRINT_DEBUG(fmt, ...) printf("DEBUG: %s:%d: " fmt "\n", __FILE__, __LINE__, __VA_ARGS__)
-// PRINT_DEBUG("Funcion [%s]:", __func__);
+# define COLOR_RED     "\x1b[31m"
+# define COLOR_GREEN   "\x1b[32m"
+# define COLOR_YELLOW  "\x1b[33m"
+# define COLOR_BLUE    "\x1b[34m"
+# define COLOR_MAGENTA "\x1b[35m"
+# define COLOR_CYAN    "\x1b[36m"
+# define COLOR_RESET   "\x1b[0m"
 
 #endif

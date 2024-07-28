@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/29 21:54:46 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/07/28 16:30:03 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ typedef struct s_size
 	size_t		width;
 	size_t		height;
 }				t_size;
+
+typedef struct s_fsize
+{
+	float		width;
+	float		height;
+}			t_fsize;
 
 typedef struct s_texture
 {
@@ -82,6 +88,7 @@ typedef struct s_mlx
 
 typedef struct s_player
 {
+	int			init_grid_pos[2];
 	t_vector2	pos;		///< Player position
 	double		angle;		///< Player angle
 	float		fov_rd;		///< Field of view in radians
@@ -101,24 +108,36 @@ typedef struct s_image
 	int		length;
 }	t_image;
 
+typedef struct s_map
+{
+	t_texture		**map_textures;
+	char			**map;
+	t_fsize			tile_size;
+	t_size			map_size;
+}			t_map;
+
 typedef struct s_game
 {
 	t_mlx			mlx;
-	t_player		player;
-	t_vector2		map_size;		///< Map size
-	t_vector2		player_pos;		///< Player initial position
+// 	t_player		player;
+	t_player		*player;		// paco engine
 	t_ray			*ray;			///< Ray Structure
+
 	t_image			frame;
 	t_image			mnmap;
 	char			**matrix;
+
+	t_vector2		map_size;		///< Map size
+	t_vector2		player_pos;		///< Player initial position
+	char			player_or;
 	int				floor_color;
 	int				roof_color;
 	int				north_texture;
 	int				east_texture;
 	int				south_texture;
 	int				west_texture;
-	t_texture		**map_textures;
-	char			**map;
+
+	t_map			*map;
 }					t_game;
 
 #endif
