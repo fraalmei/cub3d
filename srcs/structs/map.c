@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:21:48 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/29 16:23:43 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/07/29 20:39:46 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	set_map(t_game *game, int fd)
 	game->map = (t_map *)ft_calloc(1, sizeof(t_map));
 	if (!game->map)
 		return (1);
-	game->map->tile_size.width = 100.00;
-	game->map->tile_size.height = 100.00;
+	game->map->tile_size.width = T_SIZE;
+	game->map->tile_size.height = T_SIZE;
 	game->map->map_textures = check_elements(fd);
 	if (!game->map->map_textures)
 		return (1);
