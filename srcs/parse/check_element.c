@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_element.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/25 13:43:58 by p                ###   ########.fr       */
+/*   Updated: 2024/07/29 15:56:11 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	read_texture(t_texture **texture, char *line, char ***sides)
 
 	side = get_word(line, 0);
 	p_texture = get_texture(texture, side);
-	ft_printf_fd(1, " - - Checking texture: %s\n", side);
+	//ft_printf_fd(1, " - - Checking texture: %s\n", side);
 	if (check_side(side, sides) && !texture)
 	{
 		ft_printf_fd(2, " - - - Several identical or non-existent elements: %s\n", side);
@@ -72,7 +72,7 @@ static int	read_texture(t_texture **texture, char *line, char ***sides)
 	p_texture->dir = get_word(line, 1);
 	if (!p_texture->dir)
 		return (1);
-	ft_printf_fd(1, " - - Obtained texture: %s\n", p_texture->dir);
+	//ft_printf_fd(1, " - - Obtained texture: %s\n", p_texture->dir);
 	return (0);
 }
 
@@ -86,7 +86,7 @@ t_texture	**check_elements(int fd)
 	t_texture	**textures;
 	int			i;
 
-	ft_printf_fd(1, " - Checking textures.\n");
+	ft_printf_fd(1, "Checking textures.\n");
 	textures = set_textures();
 	sides = ft_split("NO;SO;WE;EA;F;C", ';');
 	i = ft_arraylen((const void **)sides);

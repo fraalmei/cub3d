@@ -6,7 +6,7 @@
 #    By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/07/28 16:59:36 by fraalmei         ###   ########.fr        #
+#    Updated: 2024/07/29 16:29:32 by fraalmei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ PARSE		= parse/check_scene.c parse/check_element.c \
 STRUCTS		= structs/global_data.c structs/textures.c structs/player.c structs/map.c
 
 UTILS		= utils/set_utils.c utils/file_utils.c utils/free.c utils/array_utils.c \
-			utils/print_things.c utils/read_utils.c
+			utils/print_things.c utils/read_utils.c utils/matrix_utils.c
 
 
 INCLUDE_DIR	= include			# path to headers

@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/28 17:19:43 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:49:06 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			print_global(t_game *game);
 		// map.c
 int			print_map(t_map *map);
 int			free_map(t_game *game);
-int			set_map(t_game *game);
+int			set_map(t_game *game, int fd);
 
 		// textures.c
 t_texture	**set_textures(void);
@@ -53,6 +53,11 @@ int			print_player_inf(t_player *player);
 int			set_player(t_game *game);
 
 	/// utils
+
+		// matrix_utils.c
+int			fill_matrix(char ***matrix, char c);
+t_size		matrix_len(char **matrix);
+
 		// array_utils.c
 char		*del_char_str(char *str, char c);
 int			ft_chrcmp_str(char c, char *str);

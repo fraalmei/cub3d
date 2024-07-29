@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:33:55 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/28 17:25:35 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/07/29 17:49:32 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,37 +110,6 @@ static int	check_map(char **map)
 	return (0);
 }
 
-/// @brief fill the right of the map to set the map a square
-/// @param map 
-/// @return a 0 if it works
-static int	fill_map(char ***map)
-{
-	int		max_row;
-	int		i;
-	int		swap_max;
-
-	i = 0;
-	max_row = 0;
-	while (map[0][i])
-	{
-		swap_max = 0;
-		while (map[0][i][swap_max])
-			swap_max++;
-		if (swap_max > max_row)
-			max_row = swap_max;
-		i++;
-	}
-	i = -1;
-	while (map[0][++i])
-	{
-		swap_max = -1;
-		while (++swap_max < max_row)
-			if (!map[0][i][swap_max])
-				map[0][i] = ft_chrjoin(map[0][i], ' ');
-	}
-	return (0);
-}
-
 /// @brief first check the format 
 /// second check the archivo is readable
 /// and check the elements writed in the map
@@ -156,7 +125,7 @@ char	**read_map(int fd)
 		return (NULL);
 	if (check_map(map))
 		return (NULL);
-	fill_map(&map);
+	fill_matrix(&map, ' ');
 	ft_printf(" - Correct.\n");
 	return (map);
 }

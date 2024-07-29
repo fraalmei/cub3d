@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:21:48 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/28 17:48:59 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/07/29 16:23:43 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ int	print_map(t_map *map)
 	ft_printf_fd (1, "################### MAP ###################\n");
 	ft_printf_fd (1, COLOR_RESET);
 	print_arr(map->map);
-	printf("Tile size: [%f] [%f]\n", \
+	printf("\nTile size: [%f] [%f]\n", \
 		map->tile_size.width, map->tile_size.height);
-	printf("Map size: [%li] [%li]\n", map->map_size.height, map->map_size.width);
+	printf("Map size: [%li] [%li]\n", \
+		map->map_size.height, map->map_size.width);
 	ft_printf_fd (1, COLOR_BLUE);
 	ft_printf_fd (1, "###########################################\n");
 	ft_printf_fd (1, COLOR_RESET);
@@ -39,12 +40,19 @@ int	free_map(t_game *game)
 	return (0);
 }
 
-int	set_map(t_game *game)
+int	set_map(t_game *game, int fd)
 {
 	game->map = (t_map *)ft_calloc(1, sizeof(t_map));
 	if (!game->map)
 		return (1);
 	game->map->tile_size.width = 100.00;
 	game->map->tile_size.height = 100.00;
+	game->map->map_textures = check_elements(fd);
+	if (!game->map->map_textures)
+		return (1);
+	game->map->map = read_map(fd);
+	if (!game->map->map)
+		return (1);
+	game->map->map_size = matrix_len(game->map->map);
 	return (0);
 }
