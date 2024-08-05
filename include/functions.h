@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   functions.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/29 17:49:06 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:53:54 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int			set_player(t_game *game);
 
 		// matrix_utils.c
 int			fill_matrix(char ***matrix, char c);
-t_size		matrix_len(char **matrix);
+t_vector2	matrix_len(char **matrix);
+//t_size		matrix_len(char **matrix);
 
 		// array_utils.c
 char		*del_char_str(char *str, char c);

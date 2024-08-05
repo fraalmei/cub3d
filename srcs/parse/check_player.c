@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:24 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/28 16:57:25 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:33:45 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static double	get_player_angle(char c)
 {
 	if (c == 'N')
-		return (0);
+		return (3 * M_PI / 2);
 	else if (c == 'E')
-		return (90);
+		return (0);
 	else if (c == 'S')
-		return (180);
+		return (M_PI / 2);
 	else if (c == 'W')
-		return (270);
+		return (M_PI);
 	return (-1);
 }
 
@@ -29,6 +29,8 @@ int	get_player_pos(t_game *game)
 {
 	int		i[2];
 
+	ft_printf_fd(1, "Checking player.\n");
+	double	center = T_SIZE / 2;
 	i[0] = 0;
 	while (game->map->map[i[0]][0])
 	{
@@ -39,8 +41,11 @@ int	get_player_pos(t_game *game)
 			{
 				game->player->angle = \
 					get_player_angle(game->map->map[i[0]][i[1]]);
-				game->player->init_grid_pos[0] = i[0];
-				game->player->init_grid_pos[1] = i[1];
+
+				printf("Pos x: %f | Pos y: %f/n", i[1] * center, i[0] * center);
+				game->player->pos = ft_vector2(i[0] * center, i[1] * center);
+				game->player_init_pos = game->player->pos;
+				ft_printf_fd(1, " - Correct.\n");
 				return (0);
 			}
 			i[1]++;

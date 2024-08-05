@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/28 17:48:18 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:39:55 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	print_textures(t_texture **textures)
 {
 	int		i;
 
+	ft_printf_fd(1, "Name:\n");
 	if (!textures)
 		return (0);
 	i = -1;

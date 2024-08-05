@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   global_data.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 13:33:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/29 15:59:37 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:48:59 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,10 @@ int	print_global(t_game *game)
 	ft_printf_fd (1, "################## PRINTING DATA ##################\n");
 	ft_printf_fd (1, "###################################################\n");
 	ft_printf_fd (1, COLOR_RESET);
-	print_map(game->map);
-	print_player_inf(game->player);
+	if (game->map)
+		print_map(game->map);
+	if(game->player)
+		print_player_inf(game->player);
 	ft_printf_fd (1, COLOR_YELLOW);
 	ft_printf_fd (1, "###################################################\n");
 	ft_printf_fd (1, "################### DATA PRINTED ##################\n");

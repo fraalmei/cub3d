@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/28 16:30:03 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:54:06 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ typedef struct s_size
 	size_t		height;
 }				t_size;
 
+typedef struct s_isize
+{
+	int			width;
+	int			height;
+}				t_isize;
+ 
 typedef struct s_fsize
 {
 	float		width;
@@ -113,7 +119,8 @@ typedef struct s_map
 	t_texture		**map_textures;
 	char			**map;
 	t_fsize			tile_size;
-	t_size			map_size;
+	t_vector2		map_size;
+//	t_size			map_size;
 }			t_map;
 
 typedef struct s_game
@@ -127,8 +134,7 @@ typedef struct s_game
 	t_image			mnmap;
 	char			**matrix;
 
-	t_vector2		map_size;		///< Map size
-	t_vector2		player_pos;		///< Player initial position
+	t_vector2		player_init_pos;		///< Player initial position
 	char			player_or;
 	int				floor_color;
 	int				roof_color;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 07:58:21 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/30 09:50:08 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:30:10 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ float get_h_inter(t_game *game, double angle)
 	int  		pixel;
 
 	step = ft_vector2(T_SIZE, T_SIZE / tan(angle));
-	h.y = floor(game->player.pos.y / T_SIZE) * T_SIZE;
+	h.y = floor(game->player->pos.y / T_SIZE) * T_SIZE;
 	pixel = inter_check(angle, &h.y, &step.y, 1);
-	h.x = game->player.pos.x + (h.y - game->player.pos.y) / tan(angle);
+	h.x = game->player->pos.x + (h.y - game->player->pos.y) / tan(angle);
 	if ((unit_circle(angle, 'y') && step.x > 0) || (!unit_circle(angle, 'y') && step.x < 0)) // check x_step value
 		step.x *= -1;
 	while (wall_hit(game, h.x, h.y - pixel)) // check the wall hit whit the pixel value
 		h = ft_addv2(h, step);
-	return (sqrt(pow(h.x - game->player.pos.x, 2) + pow(h.y - game->player.pos.y, 2)));
+	return (sqrt(pow(h.x - game->player->pos.x, 2) + pow(h.y - game->player->pos.y, 2)));
 }
 
 /**
@@ -76,14 +76,14 @@ float get_v_inter(t_game *game, double angle)
 	int  		pixel;
 
 	step = ft_vector2(T_SIZE, T_SIZE / tan(angle));
-	v.x = floor(game->player.pos.x / T_SIZE) * T_SIZE;
+	v.x = floor(game->player->pos.x / T_SIZE) * T_SIZE;
 	pixel = inter_check(angle, &v.x, &step.x, 0);
-	v.y = game->player.pos.y + (v.x - game->player.pos.x) / tan(angle);
+	v.y = game->player->pos.y + (v.x - game->player->pos.x) / tan(angle);
 	if ((unit_circle(angle, 'y') && step.x > 0) || (!unit_circle(angle, 'y') && step.x < 0)) // check x_step value
 		step.x *= -1;
 	while (wall_hit(game, v.x, v.y - pixel)) // check the wall hit whit the pixel value
 		v = ft_addv2(v, step);
-	return (sqrt(pow(v.x - game->player.pos.x, 2) + pow(v.y - game->player.pos.y, 2)));
+	return (sqrt(pow(v.x - game->player->pos.x, 2) + pow(v.y - game->player->pos.y, 2)));
 }
 
 /**
@@ -99,7 +99,7 @@ void cast_rays(t_game *game)
 
 	mlx_clear_window(game->mlx.p_mlx, game->mlx.window);
 	ray = 0;
-	game->ray->ray_angle = game->player.angle - (game->player.fov_rd / 2);
+	game->ray->ray_angle = game->player->angle - (game->player->fov_rd / 2);
 	while (ray < S_WIDTH)
 	{
 		game->ray->flag = 0;
@@ -115,6 +115,6 @@ void cast_rays(t_game *game)
 		}
 		render_wall(game, ray);
 		ray++;
-		game->ray->ray_angle += (game->player.fov_rd / S_WIDTH);
+		game->ray->ray_angle += (game->player->fov_rd / S_WIDTH);
 	}
 }

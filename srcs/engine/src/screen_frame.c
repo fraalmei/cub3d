@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen_frame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/30 09:50:09 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:30:19 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	render_wall(t_game *game, int ray)
 	double b_pix;
 	double t_pix;
 
-	game->ray->distance = cos(nor_angle(game->ray->ray_angle - game->player.angle));
+	game->ray->distance = cos(nor_angle(game->ray->ray_angle - game->player->angle));
 	wall_h = (T_SIZE / game->ray->distance) * ((S_WIDTH / 2) / tan(FOV_RAD / 2));
 	b_pix = S_HEIGHT / 2 + wall_h / 2;
 	t_pix = S_HEIGHT / 2 - wall_h / 2;

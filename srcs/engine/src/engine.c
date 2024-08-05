@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:12:31 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/30 09:50:31 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:00:33 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int	update(t_game *game)
 {
 	// hook(game->mlx, 0, 0);
 	cast_rays(game);
-	PRINT_DEBUG("Funcion [%s]: Pre-image to screen", __func__);
+	// PRINT_DEBUG("Funcion [%s]: Pre-image to screen", __func__);
 	// mlx_put_image_to_window(&game->mlx.p_mlx, &game->mlx.window, &game->frame.image, 0, 0);
-	PRINT_DEBUG("Funcion [%s] Final:", __func__);
+	// PRINT_DEBUG("Funcion [%s] Final:", __func__);
 	return (0);
 }
 
@@ -80,7 +80,7 @@ void	engine(t_game *game)
 {
 	game = init(game);
 	// mlx_key_hook(game->mlx.p_mlx, &update, (void *)&game->mlx);
-	PRINT_DEBUG("Funcion [%s]: Map pos [%0.2f][%0.2f]", __func__, game->player_pos.x, game->player_pos.y);
+	// PRINT_DEBUG("Funcion [%s]: Map pos [%0.2f][%0.2f]", __func__, game->player_init_pos.x, game->player_init_pos.y);
 	mlx_key_hook(game->mlx.window, read_keys, game);
 	mlx_hook(game->mlx.window, 17, 0, end_program, &game->mlx);
 	mlx_loop_hook(game->mlx.p_mlx, &update, &game->mlx);

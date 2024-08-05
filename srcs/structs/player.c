@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:38:32 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/28 17:47:50 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:34:06 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	print_player_inf(t_player *player)
 	ft_printf_fd (1, "################# PLAYER #################\n");
 	ft_printf_fd (1, COLOR_RESET);
 	ft_printf_fd(1, "Player information:\n");
-	printf(" - Player postion: [%i] [%i]\n", \
-		player->init_grid_pos[0], player->init_grid_pos[1]);
+	printf(" - Player postion: [%f] [%f]\n", \
+		player->pos.elements[0], player->pos.elements[1]);
 	printf(" - Player orientation: %lf\n", player->angle);
 	ft_printf_fd(1, "Player rotation:\n");
 	ft_printf_fd (1, COLOR_GREEN);

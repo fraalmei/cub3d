@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:21:48 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/29 20:39:46 by p                ###   ########.fr       */
+/*   Updated: 2024/08/05 17:58:06 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@ int	print_map(t_map *map)
 	ft_printf_fd (1, COLOR_CYAN);
 	ft_printf_fd (1, "################# TEXTURES #################\n");
 	ft_printf_fd (1, COLOR_RESET);
-	print_textures(map->map_textures);
+	if (map->map_textures)
+		print_textures(map->map_textures);
 	ft_printf_fd (1, COLOR_BLUE);
 	ft_printf_fd (1, "################### MAP ###################\n");
 	ft_printf_fd (1, COLOR_RESET);
-	print_arr(map->map);
+	if (map->map)
+		print_arr(map->map);
 	printf("\nTile size: [%f] [%f]\n", \
 		map->tile_size.width, map->tile_size.height);
-	printf("Map size: [%li] [%li]\n", \
+	printf("Map size: [%f] [%f]\n", \
 		map->map_size.height, map->map_size.width);
 	ft_printf_fd (1, COLOR_BLUE);
 	ft_printf_fd (1, "###########################################\n");

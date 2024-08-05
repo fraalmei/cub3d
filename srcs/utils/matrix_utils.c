@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:20:23 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/29 17:48:36 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/08/05 17:57:52 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,39 @@ int	fill_matrix(char ***matrix, char c)
 	return (0);
 }
 
-t_size	matrix_len(char **matrix)
+/* t_size	matrix_len(char **matrix)
 {
 	t_size		len;
 
 	len.height = ft_arraylen((const void **)matrix);
 	len.width = ft_strlen(matrix[0]);
+	return (len);
+} */
+
+static float	ft_arraylen_f(const void **array)
+{
+	size_t	i;
+
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
+}
+
+static float	ft_strlen_f(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+t_vector2	matrix_len(char **matrix)
+{
+	t_vector2		len;
+
+	len = ft_vector2(ft_arraylen_f((const void **)matrix), ft_strlen_f(matrix[0]));
 	return (len);
 }
