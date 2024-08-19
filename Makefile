@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: p <p@student.42.fr>                        +#+  +:+       +#+         #
+#    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/15 09:09:48 by cagonzal          #+#    #+#              #
-#    Updated: 2024/08/05 16:18:28 by p                ###   ########.fr        #
+#    Updated: 2024/08/19 13:32:38 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,12 +48,13 @@ CFLAGS	= -Wall -Werror -Wextra
 
 LEAK_FLAGS	= -fsanitize=address -g3
 
-
-#MLX_DIR		= minilibx/minilibx_mms_20200219
-#MLX_DIR		= minilibx/minilibx_opengl_20191021
-#MLX_DIR		= minilibx/minilibx-linux
-MLX_DIR		= minilibx/mlx_Linux
-MLX_FLAGS	= -L$(MLX_DIR) -lmlx -lmlx_Linux -lXext -lX11 -lm -lz
+# MLX_DIR		= minilibx/minilibx_mms_20200219
+# MLX_DIR		= minilibx/minilibx_opengl_20191021
+# MLX_DIR		= minilibx/minilibx-linux
+# MLX_DIR		= minilibx/mlx_Linux
+MLX_DIR		= minilibx/MLX42
+# MLX_FLAGS	= -L$(MLX_DIR) -lmlx -lmlx_Linux -lXext -lX11 -lm -lz
+MLX_FLAGS	= -L$(MLX_DIR) -Ilibmlx42.a -Iinclude -ldl -lglfw -pthread -lm
 INCLUDES	= -I$(INCLUDE_DIR) \
 				-I$(LIBFT_DIR) \
 				-I$(VECTOR_DIR) \
@@ -104,6 +105,9 @@ OBJS = $(SRCS:%.c=$(BIN_DIR)/%.o)
 
 all: $(NAME)
 
+libmlx:
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+
 $(NAME): $(BIN) $(OBJS) | libs
 	@echo "\033[0;32mCompiling cub3D..."
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) $(MLX_FLAGS) -o $(NAME)
@@ -117,7 +121,8 @@ $(OBJS): $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
 
 $(MLX_RULE):
 	echo make $(MLX_RULE)
-	make -C $(MLX_DIR)
+#	make -C $(MLX_DIR)
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 	$(info CREATED $@)
 
 $(VECTOR_RULE):
