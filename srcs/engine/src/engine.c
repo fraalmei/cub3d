@@ -6,41 +6,11 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:12:31 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/08/22 08:57:20 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/08/22 12:39:50 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <engine.h>
-
-/** Substitute for parser once completed */
-/* static char	**create_example_map(t_game *game)
-{
-	char	**map2d;
-
-	game->map_size = ft_vector2(10, 25);
-	map2d = ft_calloc(game->map_size.height, sizeof(char *));
-	map2d[0] = strdup("111111111111111111111111");
-	map2d[1] = strdup("100000000000000000000001");
-	map2d[2] = strdup("100000000000000000000001");
-	map2d[3] = strdup("100000000000000000000001");
-	map2d[4] = strdup("100000000000000000000001");
-	map2d[5] = strdup("100000000000000000000001");
-	map2d[6] = strdup("100000000000E00000000001");
-	map2d[7] = strdup("100000000000000000000001");
-	map2d[8] = strdup("100000000000000000000001");
-	map2d[9] = strdup("111111111111111111111111");
-	// map2d[0] = strdup("111111111111111111111111");
-	// map2d[1] = strdup("100000010001010001000001");
-	// map2d[2] = strdup("100000011001010011000001");
-	// map2d[3] = strdup("100000001101010110000001");
-	// map2d[4] = strdup("100000000101010100000001");
-	// map2d[5] = strdup("100000000000000000000001");
-	// map2d[6] = strdup("100000001100E00110000001");
-	// map2d[7] = strdup("100000000010001000000001");
-	// map2d[8] = strdup("100000000001010000000001");
-	// map2d[9] = strdup("111111111111111111111111");
-	return (map2d);
-} */
 
 /** Change for texture loading */
 void	init_color_textures(t_game *game)
@@ -58,7 +28,7 @@ t_game	*init(t_game *game)
 {
 	//game->matrix = create_example_map(game);	
 	game->ray = calloc(1, sizeof(t_ray));
-	game->mlx.p_mlx = mlx_init();
+	// game->mlx.p_mlx = mlx_init();
 	game->mlx.window = mlx_new_window(game->mlx.p_mlx, S_WIDTH, S_HEIGHT, "Cub3D");
 	game->frame.image = mlx_new_image(game->mlx.p_mlx, S_WIDTH, S_HEIGHT);
 	player_data(game);

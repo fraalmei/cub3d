@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:06:24 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/08/22 09:24:41 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/08/22 12:39:26 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 
 // # include <mlx.h>
-# include <MLX42.h>
+# include "../MLX42/include/MLX42/MLX42.h"
 
-# include <vector.h>
+# include "../vector/src/vector.h"
 # include "../libft/include/libft.h"
 
 # include "structs.h"

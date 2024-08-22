@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/08/05 17:54:06 by p                ###   ########.fr       */
+/*   Updated: 2024/08/22 13:04:16 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,8 @@ typedef struct s_ray
 
 typedef struct s_mlx
 {
-	void	*p_mlx;
-	void	*window;
-	// t_image	*img;
+	mlx_image_t	*img;
+	mlx_t		*p_mlx;
 }	t_mlx;
 
 typedef struct s_player

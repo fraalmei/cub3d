@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:44:02 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/08/22 09:23:49 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/08/22 12:34:57 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define ENGINE_H
 
 # include <cub3d.h>
-# include <vector.h>
 
 # define S_WIDTH 1200 /**< Ancho de la pantalla */
 # define S_HEIGHT 800 /** Alto de la pantalla */
