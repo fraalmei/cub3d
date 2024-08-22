@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:06:24 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/28 17:38:15 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/08/22 09:24:41 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define CUB3D_H
 
 
-# include <mlx.h>
+// # include <mlx.h>
+# include <MLX42.h>
 
-# include "../vector/src/vector.h"
+# include <vector.h>
 # include "../libft/include/libft.h"
 
 # include "structs.h"
