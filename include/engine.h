@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:44:02 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/08/22 12:34:57 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/08/26 10:50:18 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ t_game	*init(t_game *game);
 //void	render_wall(t_game *game, int ray);
 void	init_color_textures(t_game *game);
 int		update(t_game *game);
-void	engine(t_game *game);
-
 // Player_data.c
 void	player_data(t_game *game);
 

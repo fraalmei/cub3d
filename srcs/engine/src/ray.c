@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 07:58:21 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/08/05 16:30:10 by p                ###   ########.fr       */
+/*   Updated: 2024/08/26 10:27:47 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void cast_rays(t_game *game)
 	double v_inter;
 	int ray;
 
-	mlx_clear_window(game->mlx.p_mlx, game->mlx.window);
+	// mlx_clear_window(game->mlx.p_mlx, game->mlx.img);
 	ray = 0;
 	game->ray->ray_angle = game->player->angle - (game->player->fov_rd / 2);
 	while (ray < S_WIDTH)

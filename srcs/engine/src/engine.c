@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:12:31 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/08/22 12:39:50 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/08/26 11:08:02 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,18 @@ void	init_color_textures(t_game *game)
 
 t_game	*init(t_game *game)
 {
-	//game->matrix = create_example_map(game);	
 	game->ray = calloc(1, sizeof(t_ray));
-	// game->mlx.p_mlx = mlx_init();
-	game->mlx.window = mlx_new_window(game->mlx.p_mlx, S_WIDTH, S_HEIGHT, "Cub3D");
-	game->frame.image = mlx_new_image(game->mlx.p_mlx, S_WIDTH, S_HEIGHT);
-	player_data(game);
+	game->mlx.p_mlx = mlx_init(S_WIDTH, S_HEIGHT, "Cub3D", 0);
+	// player_data(game);
 	init_color_textures(game);
 	return (game);
 }
 
 int	update(t_game *game)
 {
+	(void)game;
 	// hook(game->mlx, 0, 0);
-	cast_rays(game);
+	// cast_rays(game);
 	// PRINT_DEBUG("Funcion [%s]: Pre-image to screen", __func__);
 	// mlx_put_image_to_window(&game->mlx.p_mlx, &game->mlx.window, &game->frame.image, 0, 0);
 	// PRINT_DEBUG("Funcion [%s] Final:", __func__);
@@ -51,8 +49,8 @@ void	engine(t_game *game)
 	game = init(game);
 	// mlx_key_hook(game->mlx.p_mlx, &update, (void *)&game->mlx);
 	// PRINT_DEBUG("Funcion [%s]: Map pos [%0.2f][%0.2f]", __func__, game->player_init_pos.x, game->player_init_pos.y);
-	mlx_key_hook(game->mlx.window, read_keys, game);
-	mlx_hook(game->mlx.window, 17, 0, end_program, &game->mlx);
-	mlx_loop_hook(game->mlx.p_mlx, &update, &game->mlx);
+	// mlx_key_hook(game->mlx.window, read_keys, game);
+	// mlx_hook(game->mlx.window, 17, 0, end_program, &game->mlx);
+	// mlx_loop_hook(game->mlx.p_mlx, &update, &game->mlx);
 	mlx_loop(game->mlx.p_mlx);
 }

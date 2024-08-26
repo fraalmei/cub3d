@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen_frame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/08/05 16:30:19 by p                ###   ########.fr       */
+/*   Updated: 2024/08/26 10:28:23 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@
  */
 void my_mlx_pixel_put(t_game *game, int x, int y, int color)
 {
+	(void)game;
+	(void)color;
 	if (x < 0 || x >= S_WIDTH || y < 0 || y >= S_HEIGHT)
 		return ;
-	mlx_pixel_put(game->mlx.p_mlx, game->mlx.window, x, y, color); // put the pixel
+	// mlx_pixel_put(game->mlx.p_mlx, game->mlx.window, x, y, color); // put the pixel
 }
 
 /**

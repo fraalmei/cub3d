@@ -51,4 +51,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 .vscode
+cub3d
 srcs/main.c
+libs/MLX42
