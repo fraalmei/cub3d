@@ -52,6 +52,8 @@ int	set_map(t_game *game, int fd)
 	game->map->map_textures = check_elements(fd);
 	if (!game->map->map_textures)
 		return (1);
+	/*if (check_images(game))
+		return (1);*/
 	game->map->map = read_map(fd);
 	if (!game->map->map)
 		return (1);

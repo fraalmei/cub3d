@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./assets/textures/the_scream.png
+SO ./assets/textures/girl_with_a_pearl_earring.png
+WE ./assets/textures/Mona_Lisa.png
+EA ./assets/textures/the_tower_of_babel.png
 
 F 220,100,0
 C 225,30,000

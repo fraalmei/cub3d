@@ -1,7 +1,7 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO ./assets/textures/Impression_Sunrise.png
+SO ./assets/textures/Sunflowers.png
+WE ./assets/textures/the_starry_night.png
+EA ./assets/textures/115.png
 
 F 220,100,0
 C 225,30,000

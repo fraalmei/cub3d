@@ -17,11 +17,13 @@
 
 /// scrs
 	/// parse
-		// check_elements.c
+		// check_elemensts.c
 t_texture	**check_elements(int fd);
 
 		// check_image.c
 int			is_color(char *str);
+int			get_rgba(char *color);
+int			check_images(t_game *game);
 
 		// check_map
 char		**read_map(int fd);

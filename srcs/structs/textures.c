@@ -16,8 +16,11 @@ static t_texture	*set_texture(char *name)
 {
 	t_texture	*texture;
 
-	texture = (t_texture *)ft_calloc(sizeof(t_texture *), 1);
+	texture = (t_texture *)ft_calloc(sizeof(t_texture), 1);
 	texture->name = name;
+	texture->dir = NULL;
+	texture->img = NULL;
+	texture->color = -1;
 	return (texture);
 }
 

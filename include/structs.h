@@ -38,6 +38,7 @@ typedef struct s_texture
 	char				*name;
 	char				*dir;
 	void				*img;
+	int					color;
 	t_vector2			size;
 }				t_texture;
 

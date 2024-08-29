@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	if (check_scene(game, argv[1]))
 		return (ft_printf_fd(2, "Map error.\n"),1);
 	print_global(game);
-	engine(game);	
+	//engine(game);
 	free_data(game);
 	return (0);
 }

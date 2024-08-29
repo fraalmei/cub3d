@@ -94,7 +94,7 @@ t_texture	**check_elements(int fd)
 	{
 		line = get_next_notempty_line(fd);
 		if (read_texture(textures, line, &sides))
-			return (free_textures(textures), \
+			return (free_textures(textures), free_arr ((void **)sides), free (line), \
 				ft_printf_fd(2, " - Texture error\n"), NULL);
 		free (line);
 	}
