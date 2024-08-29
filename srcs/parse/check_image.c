@@ -17,34 +17,28 @@
 /// @return a 0 if its a color or1 if not
 int	is_color(char *str)
 {
-	int		i;
-	int		l;
-	int		num;
-	char	**swap;
+	char	**rgba;
 
-	swap = ft_split(str, ',');
-	if (!swap[2] || !swap[1])
-		return (free_arr((void **)swap), 1);
-	i = -1;
-	while (swap[++i] && i < 4)
-	{
-		l = -1;
-		while (swap[i][++l])
-			if (!(swap[i][l] >= 48 && swap[i][l] <= 57))
-				return (1);
-		num = ft_atoi(swap[i]);
-		if (!(num >= 0 && num <= 255))
-			return (free_arr((void **)swap), 1);
-	}
-	free_arr((void **)swap);
+	ft_printf_fd(1, "Comprobando si es color\n");
+	rgba = ft_split(str, ',');
+	if (ft_arraylen((const void **)rgba) < 3 || ft_arraylen((const void **)rgba) > 4)
+		return (ft_printf_fd(1, "Error cantidad datos de color\n"), free_arr((void **)rgba), 1);
+	if (!(ft_atoi(rgba[0]) >= 0 && ft_atoi(rgba[0]) <= 255 && ft_atoi(rgba[1]) >= 0  && \
+			ft_atoi(rgba[1]) <= 255 && ft_atoi(rgba[2]) >= 0 && ft_atoi(rgba[2]) <= 255))
+		return (ft_printf_fd(1, "Rango de color incorrecto\n"), free_arr((void **)rgba), 1);
+	if (rgba[3])
+		if (!(ft_atoi(rgba[3]) >= 0 && ft_atoi(rgba[3]) <= 255))
+			return (ft_printf_fd(1, "Rango alfa incorrecto\n"), free_arr((void **)rgba), 1);
+	free_arr((void **)rgba);
+	ft_printf_fd(1, "Es color\n");
 	return (0);
 }
 
-int	get_rgba(char *color)
+/* unsigned int	get_rgba(char *color)
 {
-	int		i;
-	int		ret;
-	char	**colors;
+	int					i;
+	long		ret;
+	char				**colors;
 
 	i = 255;
 	colors = ft_split(color, ',');
@@ -55,24 +49,37 @@ int	get_rgba(char *color)
 	ret = (ft_atoi(colors[0]) << 24) | (ft_atoi(colors[1]) << 16) \
 		| (ft_atoi(colors[2]) << 8) | (i);
 	free_arr((void **) colors);
+	ft_printf_fd(1, "RGBA obtenido: %d\n", ret);
+	return (ret);
+} */
+
+static int	get_rgba(char *color)
+{
+	int					i;
+	long				ret;
+	char				**colors;
+
+	i = 255;
+	colors = ft_split(color, ',');
+	if (!colors)
+		return (0);
+	if (colors[3])
+		i = ft_atoi(colors[3]);
+	ret = (ft_atoi(colors[0]) << 24) | (ft_atoi(colors[1]) << 16) \
+		| (ft_atoi(colors[2]) << 8) | (i);
+	ft_printf_fd(1, "RGBA obtenido: %d\n", ret);
 	return (ret);
 }
 
-int	check_images(t_game *game)
+int	check_images(t_texture *texture)
 {
-	int		i;
-
-	i = -1;
-	while (game->map->map_textures[++i])
-	{
-		if (check_extension(game->map->map_textures[i]->dir, ".png"))
-			game->map->map_textures[i]->img = mlx_load_png(game->map->map_textures[i]->dir);
-		else if (check_extension(game->map->map_textures[i]->dir, ".xpm"))
-			game->map->map_textures[i]->img = mlx_load_xpm42(game->map->map_textures[i]->dir);
-		else if (is_color(game->map->map_textures[i]->dir))
-			game->map->map_textures[i]->color = get_rgba(game->map->map_textures[i]->dir);
-		else
-			return (1);
-	}
+	if (!check_extension(texture->dir, ".png"))
+		texture->img = mlx_load_png(texture->dir);
+	else if (!check_extension(texture->dir, ".xpm"))
+		texture->img = mlx_load_xpm42(texture->dir);
+	else if (is_color(texture->dir) == 0)
+		texture->color = get_rgba(texture->dir);
+	else
+		return (ft_printf_fd(1, "Error obteniendo imagen / color\n"));
 	return (0);
 }

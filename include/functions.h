@@ -22,8 +22,7 @@ t_texture	**check_elements(int fd);
 
 		// check_image.c
 int			is_color(char *str);
-int			get_rgba(char *color);
-int			check_images(t_game *game);
+int			check_images(t_texture *texture);
 
 		// check_map
 char		**read_map(int fd);

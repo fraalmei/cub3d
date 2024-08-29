@@ -72,6 +72,8 @@ static int	read_texture(t_texture **texture, char *line, char ***sides)
 	p_texture->dir = get_word(line, 1);
 	if (!p_texture->dir)
 		return (1);
+	if (check_images(p_texture))
+		return (1);
 	//ft_printf_fd(1, " - - Obtained texture: %s\n", p_texture->dir);
 	return (0);
 }

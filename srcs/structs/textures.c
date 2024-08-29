@@ -82,11 +82,15 @@ int	print_textures(t_texture **textures)
 			ft_printf_fd(1, "Img?: %d\n", is_color(textures[i]->dir));
 		}
 		if (textures[i]->img)
+			ft_printf_fd(1, "Img: %p\n", textures[i]->img);
+		else if (textures[i]->color != 0)
+			ft_printf_fd(1, "Color: %d\n", textures[i]->color);
+		if (textures[i]->img)
 			ft_printf_fd(1, "Img: OK\n");
-		if (textures[i]->size.width)
+		/*if (textures[i]->size.width)
 			ft_printf_fd(1, "Width: %d\n", textures[i]->size.width);
 		if (textures[i]->size.height)
-			ft_printf_fd(1, "Height: %d\n", textures[i]->size.height);
+			ft_printf_fd(1, "Height: %d\n", textures[i]->size.height);*/
 		ft_printf_fd (1, COLOR_CYAN);
 		ft_printf_fd (1, "###########################################\n");
 		ft_printf_fd (1, COLOR_RESET);
