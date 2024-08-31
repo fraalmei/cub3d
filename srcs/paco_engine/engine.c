@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   engine.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/27 13:57:18 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/08/30 16:44:44 by p                ###   ########.fr       */
+/*   Updated: 2024/08/31 17:45:34 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+static int	end_check_program(t_game *game)
+{
+	//mlx_close_window(game->mlx.p_mlx);
+	//mlx_destroy_window(game->mlx.p_mlx, game->mlx.p_mlx->window);
+	mlx_close_window(game->mlx.p_mlx);
+    mlx_terminate(game->mlx.p_mlx);
+	free_data(game);
+	ft_printf_fd(1, "Se finaliza ventana\n");
+	exit(EXIT_SUCCESS);
+}
 
 static t_game	*init_check(t_game *game)
 {
@@ -18,20 +29,11 @@ static t_game	*init_check(t_game *game)
 	game->mlx.p_mlx = mlx_init(S_WIDTH, S_HEIGHT, "Cub3D", 0);
 	if (game->mlx.p_mlx)
 		end_check_program(game);
-	game->mlx.p_mlx->window = mlx_new_window(game->mlx.p_mlx, S_WIDTH, S_HEIGHT, "Cub3D");
+	//game->mlx.p_mlx->window = mlx_new_window(game->mlx.p_mlx, S_WIDTH, S_HEIGHT, "Cub3D");
 	//game->frame.image = mlx_new_image(game->mlx.p_mlx, S_WIDTH, S_HEIGHT);
 	return (game);
 }
 
-static int	end_check_program(t_game *game)
-{
-	(void)game;
-	mlx_close_window(game->mlx.p_mlx);
-	mlx_destroy_window(game->mlx.p_mlx, game->mlx.p_mlx->window);
-	free_data(game);
-	ft_printf_fd(1, "Se finaliza ventana\n");
-	exit(EXIT_SUCCESS);
-}
 /*
 static int	read_keys_check(int key_pressed, void *param)
 {
