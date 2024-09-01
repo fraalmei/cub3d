@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 16:12:40 by p                 #+#    #+#             */
-/*   Updated: 2024/08/31 17:39:38 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/09/01 17:07:11 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-/* static void	leaks(void)
+static void	leaks(void)
 {
 	system("leaks -q cub3d");
 }
@@ -37,9 +37,9 @@ int	main(int argc, char **argv)
 	engine_check(game);
 	free_data(game);
 	return (0);
-} */
+}
 
-int main(void)
+/* int main(void)
 {
     mlx_t *mlx_ptr;         // Puntero para la conexión a la sesión de la ventana
     mlx_image_t *img_ptr;   // Puntero para la imagen
@@ -87,4 +87,4 @@ int main(void)
     mlx_terminate(mlx_ptr);
 
     return (EXIT_SUCCESS);
-}
+} */

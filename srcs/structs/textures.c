@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/08/05 17:39:55 by p                ###   ########.fr       */
+/*   Updated: 2024/09/01 16:42:50 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ static t_texture	*set_texture(char *name)
 	texture = (t_texture *)ft_calloc(sizeof(t_texture), 1);
 	texture->name = name;
 	texture->dir = NULL;
-	texture->img = NULL;
+	texture->png_img = NULL;
+	texture->xpm_img = NULL;
+	texture->png_xmp = 0;
 	texture->color = -1;
 	return (texture);
 }
@@ -46,8 +48,10 @@ static int	free_texture(t_texture *texture)
 		free (texture->name);
 	if (texture->dir)
 		free (texture->dir);
-	if (texture->img)
-		free (texture->img);
+	if (texture->png_img)
+		free (texture->png_img);
+	if (texture->xpm_img)
+		free (texture->xpm_img);
 	return (0);
 }
 
@@ -81,12 +85,12 @@ int	print_textures(t_texture **textures)
 			ft_printf_fd(1, "Dir: %s\n", textures[i]->dir);
 			ft_printf_fd(1, "Img?: %d\n", is_color(textures[i]->dir));
 		}
-		if (textures[i]->img)
-			ft_printf_fd(1, "Img: %p\n", textures[i]->img);
+		if (textures[i]->png_img)
+			ft_printf_fd(1, "Img png: %p\n", textures[i]->png_img);
+		else if (textures[i]->xpm_img)
+			ft_printf_fd(1, "Img xpm: %p\n", textures[i]->xpm_img);
 		else if (textures[i]->color != 0)
 			ft_printf_fd(1, "Color: %d\n", textures[i]->color);
-		if (textures[i]->img)
-			ft_printf_fd(1, "Img: OK\n");
 		/*if (textures[i]->size.width)
 			ft_printf_fd(1, "Width: %d\n", textures[i]->size.width);
 		if (textures[i]->size.height)

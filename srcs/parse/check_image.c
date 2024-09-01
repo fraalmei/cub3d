@@ -74,11 +74,23 @@ static int	get_rgba(char *color)
 int	check_images(t_texture *texture)
 {
 	if (!check_extension(texture->dir, ".png"))
-		texture->img = mlx_load_png(texture->dir);
+	{
+		texture->png_img = mlx_load_png(texture->dir);
+		if (!texture->png_img)
+			return (ft_printf_fd(2, "Fallo cargando imagen %s\n", texture->dir), 1);
+	}
 	else if (!check_extension(texture->dir, ".xpm"))
-		texture->img = mlx_load_xpm42(texture->dir);
+	{
+		texture->xpm_img = mlx_load_xpm42(texture->dir);
+		if (!texture->xpm_img)
+			return (ft_printf_fd(2, "Fallo cargando imagen %s\n", texture->dir), 1);
+	}
 	else if (is_color(texture->dir) == 0)
+	{
 		texture->color = get_rgba(texture->dir);
+		if (!texture->color)
+			return (ft_printf_fd(2, "Fallo cargando color\n"), 1);
+	}
 	else
 		return (ft_printf_fd(1, "Error obteniendo imagen / color\n"));
 	return (0);

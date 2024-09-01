@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/08/29 16:15:38 by p                ###   ########.fr       */
+/*   Updated: 2024/09/01 17:17:35 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_isize
 	int			width;
 	int			height;
 }				t_isize;
- 
+
 typedef struct s_fsize
 {
 	float		width;
@@ -37,7 +37,9 @@ typedef struct s_texture
 {
 	char				*name;
 	char				*dir;
-	void				*img;
+	mlx_texture_t		*png_img;
+	xpm_t				*xpm_img;
+	int					png_xmp;	// if 0 is a png image, if 1 is a xmp image
 	int					color;
 	t_vector2			size;
 }				t_texture;
@@ -89,8 +91,14 @@ typedef struct s_ray
 typedef struct s_mlx
 {
 	mlx_image_t	*img;
-	mlx_t		*p_mlx;
+	mlx_t		*mlx;
 }	t_mlx;
+
+/* typedef struct s_mlx
+{
+	mlx_image_t	*img;
+	mlx_t		*p_mlx;
+}	t_mlx; */
 
 typedef struct s_player
 {
@@ -125,7 +133,8 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	t_mlx			mlx;
+	t_mlx			window;
+//	t_mlx			mlx;
 // 	t_player		player;
 	t_player		*player;		// paco engine
 	t_ray			*ray;			///< Ray Structure
