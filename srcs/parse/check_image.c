@@ -79,12 +79,6 @@ int	check_images(t_texture *texture)
 		if (!texture->png_img)
 			return (ft_printf_fd(2, "Fallo cargando imagen %s\n", texture->dir), 1);
 	}
-	else if (!check_extension(texture->dir, ".xpm"))
-	{
-		texture->xpm_img = mlx_load_xpm42(texture->dir);
-		if (!texture->xpm_img)
-			return (ft_printf_fd(2, "Fallo cargando imagen %s\n", texture->dir), 1);
-	}
 	else if (is_color(texture->dir) == 0)
 	{
 		texture->color = get_rgba(texture->dir);

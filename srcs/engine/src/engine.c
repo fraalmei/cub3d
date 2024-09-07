@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:12:31 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/08/30 16:30:51 by p                ###   ########.fr       */
+/*   Updated: 2024/09/07 13:31:15 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init_color_textures(t_game *game)
 t_game	*init(t_game *game)
 {
 	game->ray = calloc(1, sizeof(t_ray));
-	game->mlx.p_mlx = mlx_init(S_WIDTH, S_HEIGHT, "Cub3D", 0);
+	game->window.mlx = mlx_init(S_WIDTH, S_HEIGHT, "Cub3D", 0);
 	// player_data(game);
 	init_color_textures(game);
 	return (game);
@@ -52,5 +52,5 @@ void	engine(t_game *game)
 	// mlx_key_hook(game->mlx.window, read_keys, game);
 	// mlx_hook(game->mlx.window, 17, 0, end_program, &game->mlx);
 	// mlx_loop_hook(game->mlx.p_mlx, &update, &game->mlx);
-	mlx_loop(game->mlx.p_mlx);
+	mlx_loop(game->window.mlx);
 }
