@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:16:16 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/30 09:50:06 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/09/20 12:32:25 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@
  * @param angle The angle to be normalized.
  * @return The normalized angle between 0 and 2*pi.
  */
-float nor_angle(float angle)
+
+float	nor_angle(float angle)	// normalize the angle
 {
-	angle = fmod(angle, 2 * M_PI); // normalize angle between 0 and 2*pi
 	if (angle < 0)
-		angle += 2 * M_PI; // ensure positive angle
+		angle += (2 * M_PI);
+	if (angle > (2 * M_PI))
+		angle -= (2 * M_PI);
 	return (angle);
 }
 
@@ -44,27 +46,68 @@ int unit_circle(float angle, char c)
 			return (1);
 	return (0);
 }
+
 /**
- * Checks if a wall is hit by the casted ray.
+ * @brief Checks for intersections based on the given angle and steps.
  *
- * @param game Pointer to the game structure.
- * @param x The x-coordinate of the point to check.
- * @param y The y-coordinate of the point to check.
- * @return 1 if a wall is hit, 0 otherwise.
+ * This function determines if there is an intersection at a given angle
+ * and updates the intersection coordinates and steps accordingly.
+ *
+ * @param angle The angle at which to check for intersections.
+ * @param inter Pointer to the intersection coordinates.
+ * @param step Pointer to the step values for the intersection.
+ * @param is_horizon Flag indicating if the check is for a horizontal intersection.
+ *                   If non-zero, the check is for a horizontal intersection.
+ *                   If zero, the check is for a vertical intersection.
+ *
+ * @return An integer indicating the result of the intersection check.
  */
-int wall_hit(t_game *game, float x, float y)
+int	inter_check(float angle, float *inter, float *step, int is_horizon)
 {
-	t_vector2  m;
+	if (is_horizon)
+	{
+		if (angle > 0 && angle < M_PI)
+		{
+			*inter += T_SIZE;
+			return (-1);
+		}
+		*step *= -1;
+	}
+	else
+	{
+		if (!(angle > M_PI / 2 && angle < 3 * M_PI / 2)) 
+		{
+			*inter += T_SIZE;
+			return (-1);
+		}
+		*step *= -1;
+	}
+	return (1);
+}
+
+/**
+ * @brief Checks if a wall is hit at the given coordinates.
+ *
+ * This function determines whether the specified (x, y) coordinates
+ * correspond to a wall in the game environment.
+ *
+ * @param x The x-coordinate to check.
+ * @param y The y-coordinate to check.
+ * @param game A pointer to the game structure containing the map and other game data.
+ *
+ * @return An integer indicating whether a wall is hit (1) or not (0).
+ */
+int	wall_hit(t_game *game, float x, float y)
+{
+	t_vector2	map_pos;
 
 	if (x < 0 || y < 0)
 		return (0);
-	m = ft_vector2(floor(x / T_SIZE), floor(y / T_SIZE)); // get the y position in the map
-	if ((m.y >= game->map_size.height || m.x >= game->map_size.width))
+	map_pos = ft_vector2(floor(x / T_SIZE), floor(y / T_SIZE));
+	if (map_pos.y >= game->map->map_size.height || map_pos.x >= game->map->map_size.width)
 		return (0);
-	if (game->matrix[(int)m.y] && m.x <= (int)ft_strlen(game->matrix[(int)m.y]))
-	{
-		if (game->matrix[(int)m.y][(int)m.x] == '1')
+	if (game->map->map[(int)map_pos.y] && map_pos.x <= (int)ft_strlen(game->map->map[(int)map_pos.y]))
+		if (game->map->map[(int)map_pos.y][(int)map_pos.x] == '1')
 			return (0);
-	}
 	return (1);
 }

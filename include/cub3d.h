@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:06:24 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/08/26 10:52:25 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/20 12:36:57 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define CUB3D_H
 
 
-// # include <mlx.h>
+# include <math.h>
+
 # include "../libs/MLX42/include/MLX42/MLX42.h"
 # include "../libs/libft/include/libft.h"
 

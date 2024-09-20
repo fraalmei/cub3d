@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:24 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/08/05 17:33:45 by p                ###   ########.fr       */
+/*   Updated: 2024/09/19 14:56:59 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	get_player_pos(t_game *game)
 				game->player->angle = \
 					get_player_angle(game->map->map[i[0]][i[1]]);
 
-				printf("Pos x: %f | Pos y: %f/n", i[1] * center, i[0] * center);
-				game->player->pos = ft_vector2(i[0] * center, i[1] * center);
+				ft_printf_fd(1, "Pos x: %d | Pos y: %d\n", i[1], i[0]);
+				game->player->pos = ft_vector2(i[1] * T_SIZE + center, i[0] * T_SIZE + center);
 				game->player_init_pos = game->player->pos;
 				ft_printf_fd(1, " - Correct.\n");
 				return (0);

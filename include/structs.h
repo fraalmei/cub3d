@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/08/22 13:04:16 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/20 13:57:06 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,16 @@ typedef struct s_tilemap
 
 typedef struct s_ray
 {
-	int			ray;		///< Ray index
-	int			flag;		///< Indicator if the ray hit a wall
-	double		ray_angle;	///< Angle of the ray
-	double		distance;	///< Distance from the player to the wall intersection
-	// t_vector2	hit;		///< Position of the wall intersection
+	int			ray;			///< Ray index
+	int			flag;			///< Indicator if the ray hit a wall
+	double		ray_angle;		///< Angle of the ray
+	double		dist;			///< Distance from the player to the wall intersection
+	// t_vector2	hit;			///< Position of the wall intersection
 	// double		point;		///< Point of impact of the ray on the wall
 	// double		wall;		///< Position of the wall hit
 	// int			ray_at;		///< Ray index in the context of a raycasting loop
-	// bool		hor;		///< Indicator for horizontal intersection
-	// bool		ver;		///< Indicator for vertical intersection
+	// bool			hor;		///< Indicator for horizontal intersection
+	// bool			ver;		///< Indicator for vertical intersection
 	// t_vector2	h;			///< Coordinates of the horizontal intersection
 	// t_vector2	step;		///< Incremental step of the ray in the x and y directions
 	// t_vector2	v;			///< Coordinates of the vertical intersection
@@ -119,14 +119,12 @@ typedef struct s_map
 	char			**map;
 	t_fsize			tile_size;
 	t_vector2		map_size;
-//	t_size			map_size;
 }			t_map;
 
 typedef struct s_game
 {
-	t_mlx			mlx;
-// 	t_player		player;
-	t_player		*player;		// paco engine
+	t_mlx			win;
+	t_player		*player;
 	t_ray			*ray;			///< Ray Structure
 
 	t_image			frame;

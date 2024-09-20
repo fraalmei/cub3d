@@ -3,24 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   misc_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 13:34:09 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/30 09:50:25 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/09/20 13:56:58 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/engine.h"
 
-void image_update(t_game * game)
+#include "structs.h"
+
+void	init_ray(t_ray *ray, int ray_index, double ray_angle)
 {
-	game->frame.image = mlx_new_image(game->mlx.p_mlx, S_WIDTH, S_HEIGHT);
-	game->frame.add = mlx_get_data_addr(game->frame.image, &game->frame.bpp,
-		&game->frame.length, &game->frame.endian);
-	game->mnmap.image = mlx_new_image(game->mlx.p_mlx, game->map_size.width * T_SIZE,
-		game->map_size.height * T_SIZE);
-	game->mnmap.add = mlx_get_data_addr(game->mnmap.image, &game->mnmap.bpp,
-		&game->mnmap.length, &game->mnmap.endian);
+	ray->ray = ray_index;
+	ray->flag = 0; // 0 means no wall hit
+	ray->ray_angle = ray_angle;
+	ray->dist = 0.0;
+	// ray->hit = ft_vector2(0.0, 0.0);
+	// Initialize other fields if needed
+	// ray->point = 0.0;
+	// ray->wall = 0.0;
+	// ray->ray_at = ray_index;
+	// ray->hor = false;
+	// ray->ver = false;
+	// ray->h = (t_vector2){0.0, 0.0};
+	// ray->step = (t_vector2){0.0, 0.0};
+	// ray->v = (t_vector2){0.0, 0.0};
+	// ray->map = (t_vector2){0.0, 0.0};
+	// ray->r = (t_vector2){0.0, 0.0};
+	// ray->dof = 0.0;
+	// ray->disth = 0.0;
+	// ray->distv = 0.0;
 }
 
 // Declaración de funciones para cada opción
