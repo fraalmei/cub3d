@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/20 15:19:53 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:26:36 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
 		return ;
 	else if (x >= S_WIDTH || y >= S_HEIGHT)
 		return ;
-	mlx_put_pixel(game->win.img, x, y, color); // put the pixel
+	mlx_put_pixel(game->mlx.img, x, y, color); // put the pixel
 }
 
 /**

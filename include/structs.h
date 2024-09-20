@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/20 15:24:20 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:28:32 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,8 @@ typedef struct s_ray
 typedef struct s_mlx
 {
 	mlx_image_t	*img;
-	mlx_t		*mlx;
-}	t_mlx;
-
-/* typedef struct s_mlx
-{
-	mlx_image_t	*img;
 	mlx_t		*p_mlx;
-}	t_mlx; */
+}	t_mlx;
 
 typedef struct s_player
 {
@@ -133,7 +127,6 @@ typedef struct s_map
 typedef struct s_game
 {
 	t_mlx			mlx;
-// 	t_player		player;
 	t_player		*player;		// paco engine
 	t_ray			*ray;			///< Ray Structure
 

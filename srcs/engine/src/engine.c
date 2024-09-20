@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:12:31 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/20 15:24:34 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:30:47 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,23 +38,23 @@ void	update(void *g)
 	t_game	*game;
 
 	game = g;
-	mlx_delete_image(game->win.p_mlx, game->win.img);
-	game->win.img = mlx_new_image(game->win.p_mlx, S_WIDTH, S_HEIGHT);
+	mlx_delete_image(game->mlx.p_mlx, game->mlx.img);
+	game->mlx.img = mlx_new_image(game->mlx.p_mlx, S_WIDTH, S_HEIGHT);
 	// Update game logic
-	// hook(game->win, 0, 0);
+	// hook(game->mlx, 0, 0);
 	// Update 
 	cast_rays(game);
-	mlx_image_to_window(game->win.p_mlx, game->win.img, 0, 0);
+	mlx_image_to_window(game->mlx.p_mlx, game->mlx.img, 0, 0);
 	PRINT_DEBUG("Funcion [%s] Final:", __func__);
 }
 
 void	engine(t_game *game)
 {
 	game = init(game);
-	// mlx_key_hook(game->mlx.p_mlx, &update, (void *)&game->mlx);
-	// PRINT_DEBUG("Funcion [%s]: Map pos [%0.2f][%0.2f]", __func__, game->player_init_pos.x, game->player_init_pos.y);
-	// mlx_key_hook(game->mlx.window, read_keys, game);
-	// mlx_hook(game->mlx.window, 17, 0, end_program, &game->mlx);
-	// mlx_loop_hook(game->mlx.p_mlx, &update, &game->mlx);
-	mlx_loop(game->mlx.p_mlx);
+	mlx_loop_hook(game->mlx.p_mlx, &update, game);
+	// Control keys and mouse
+	mlx_key_hook(game->mlx.p_mlx, &read_keys_check, game);
+    mlx_mouse_hook(game->mlx.p_mlx, &read_mouse_check, game);
+	// Control program exit
+	mlx_loop(game->mlx.p_mlx); 
 }
