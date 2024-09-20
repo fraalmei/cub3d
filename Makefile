@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/26 10:38:51 by cagonzal          #+#    #+#              #
-#    Updated: 2024/09/13 13:53:32 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/09/20 15:24:11 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,10 @@ LIBS_FLAGS = $(LIBFT_FLAGS) $(LMX_FLAGS) $(VECTOR_FLAGS)
 
 
 SRCS		= main.c $(PARSE) $(UTILS) $(STRUCTS) $(ENGINE)
+SRCS_BONUS	= main_bonus.c $(PARSE) $(UTILS) $(STRUCTS) $(ENGINE)
+SRCS_CHECK	= main_check.c $(PARSE) $(UTILS) $(STRUCTS) $(ENGINE) $(PACO_ENGINE)
+
+PACO_ENGINE	= paco_engine/engine.c
 
 ENGINE		= engine/src/color.c engine/src/end_program.c engine/src/engine.c engine/src/misc_functions.c \
 			engine/src/player_data.c engine/src/ray_utils.c engine/src/ray_casting.c engine/src/screen_frame.c \
@@ -91,7 +95,9 @@ UTILS		= utils/set_utils.c utils/file_utils.c utils/free.c utils/array_utils.c \
 ASSETS_DIR	= assets			# path to assets
 
 # Convert source files to binary
-OBJS = $(SRCS:%.c=$(BIN_DIR)/%.o)
+OBJS		= $(SRCS:%.c=$(BIN_DIR)/%.o)
+OBJS_CHECK	= $(SRCS_CHECK:%.c=$(BIN_DIR)/%.o)
+OBJS_BONUS	= $(SRCS_BONUS:%.c=$(BIN_DIR)/%.o)
 
 all: clone_mlx42 $(NAME)
 
@@ -110,6 +116,16 @@ $(OBJS): $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
 	@printf "\033[0;33mGenerating cub3D objects... %-33.33s\r" $@
 	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 
+$(OBJS_CHECK): $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(@D)
+	@printf "\033[0;33mGenerating cub3D objects... %-33.33s\r" $@
+	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
+
+$(OBJS_BONUS): $(BIN_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(@D)
+	@printf "\033[0;33mGenerating cub3D objects... %-33.33s\r" $@
+	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
+
 # Clone the external repo if not already cloned
 clone_mlx42:
 	@if [ ! -d "$(LIBMLX)" ]; then \
@@ -119,12 +135,42 @@ clone_mlx42:
 
 re: fclean all
 
+recheck: fclean check
+
+rebonus: fclean bonus
+
+check: $(OBJS_CHECK)
+	@echo "\033[0;32mCompiling cub3D..."
+	@cmake $(LIBMLX) -B $(LIBMLX)/build
+	@make -C $(LIBMLX)/build -j4
+	@make -C $(LIBFT)
+	@make -C $(VECTOR_DIR)
+	$(CC) $(OBJS_CHECK) $(CFLAGS) $(LIBS_FLAGS) $(HEADERS) -o $(NAME)
+	@echo "\n\033[0mDone !"
+
+bonus: $(OBJS_BONUS)
+	@echo "\033[0;32mCompiling cub3D..."
+	@cmake $(LIBMLX) -B $(LIBMLX)/build
+	@make -C $(LIBMLX)/build -j4
+	@make -C $(LIBFT)
+	@make -C $(VECTOR_DIR)
+	$(CC) $(OBJS_BONUS) $(CFLAGS) $(LIBS_FLAGS) $(HEADERS) -o $(NAME)
+	@echo "\n\033[0mDone !"
+
 leaks: $(OBJS)
 	@echo "\033[0;32mCompiling cub3D..."
 	@cmake $(LIBMLX) -B $(LIBMLX)/build
 	@make -C $(LIBMLX)/build -j4
 	@make -C $(LIBFT)
 	$(CC) $(OBJS) $(CFLAGS) $(LEAK_FLAGS) $(LIBS_FLAGS) $(HEADERS) -o $(NAME)
+	@echo "\n\033[0mDone !"
+
+bleaks: $(OBJS_BONUS)
+	@echo "\033[0;32mCompiling cub3D..."
+	@cmake $(LIBMLX) -B $(LIBMLX)/build
+	@make -C $(LIBMLX)/build -j4
+	@make -C $(LIBFT)
+	$(CC) $(OBJS_BONUS) $(CFLAGS) $(LEAK_FLAGS) $(LIBS_FLAGS) $(HEADERS) -o $(NAME)
 	@echo "\n\033[0mDone !"
 
 clean:
@@ -136,6 +182,8 @@ clean:
 	@make clean -C $(VECTOR_DIR)
 	@echo "\nRemoving binaries..."
 	@$(RM) $(OBJS)
+	@$(RM) $(OBJS_CHECK)
+	@$(RM) $(OBJS_BONUS)
 	@$(RM) -r $(BIN_DIR)
 	@echo "\033[0m"
 

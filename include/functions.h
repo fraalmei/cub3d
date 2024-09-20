@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/08/05 17:53:54 by p                ###   ########.fr       */
+/*   Updated: 2024/08/30 16:17:40 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@
 
 /// scrs
 	/// parse
-		// check_elements.c
+		// check_elemensts.c
 t_texture	**check_elements(int fd);
 
 		// check_image.c
 int			is_color(char *str);
+int			check_images(t_texture *texture);
 
 		// check_map
 char		**read_map(int fd);
@@ -91,9 +92,6 @@ char		**del_node_arr(char **arr, char *str);
 
 
 		// paco_engine
-void		engine(t_game *game);
-t_game		*init(t_game *game);
-int			end_program(t_game *game);
-int			read_keys(int key_pressed, void *param);
+void		engine_check(t_game *game);
 
 #endif

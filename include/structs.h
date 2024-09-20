@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/20 13:57:06 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:24:20 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_isize
 	int			width;
 	int			height;
 }				t_isize;
- 
+
 typedef struct s_fsize
 {
 	float		width;
@@ -37,7 +37,10 @@ typedef struct s_texture
 {
 	char				*name;
 	char				*dir;
-	void				*img;
+	mlx_texture_t		*png_img;
+	xpm_t				*xpm_img;
+	int					png_xmp;	// if 0 is a png image, if 1 is a xmp image
+	int					color;
 	t_vector2			size;
 }				t_texture;
 
@@ -88,8 +91,14 @@ typedef struct s_ray
 typedef struct s_mlx
 {
 	mlx_image_t	*img;
-	mlx_t		*p_mlx;
+	mlx_t		*mlx;
 }	t_mlx;
+
+/* typedef struct s_mlx
+{
+	mlx_image_t	*img;
+	mlx_t		*p_mlx;
+}	t_mlx; */
 
 typedef struct s_player
 {
@@ -123,8 +132,9 @@ typedef struct s_map
 
 typedef struct s_game
 {
-	t_mlx			win;
-	t_player		*player;
+	t_mlx			mlx;
+// 	t_player		player;
+	t_player		*player;		// paco engine
 	t_ray			*ray;			///< Ray Structure
 
 	t_image			frame;

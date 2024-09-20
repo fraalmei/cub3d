@@ -17,103 +17,75 @@
 /// @return a 0 if its a color or1 if not
 int	is_color(char *str)
 {
-	int		i;
-	int		l;
-	int		num;
-	char	**swap;
+	char	**rgba;
 
-	swap = ft_split(str, ',');
-	if (!swap[2] || !swap[1])
-		return (free_arr((void **)swap), 1);
-	i = -1;
-	while (swap[++i] && i < 3)
-	{
-		l = -1;
-		while (swap[i][++l])
-			if (!(swap[i][l] >= 48 && swap[i][l] <= 57))
-				return (1);
-		num = ft_atoi(swap[i]);
-		if (!(num >= 0 && num <= 255))
-			return (free_arr((void **)swap), 1);
-	}
-	free_arr((void **)swap);
+	ft_printf_fd(1, "Comprobando si es color\n");
+	rgba = ft_split(str, ',');
+	if (ft_arraylen((const void **)rgba) < 3 || ft_arraylen((const void **)rgba) > 4)
+		return (ft_printf_fd(1, "Error cantidad datos de color\n"), free_arr((void **)rgba), 1);
+	if (!(ft_atoi(rgba[0]) >= 0 && ft_atoi(rgba[0]) <= 255 && ft_atoi(rgba[1]) >= 0  && \
+			ft_atoi(rgba[1]) <= 255 && ft_atoi(rgba[2]) >= 0 && ft_atoi(rgba[2]) <= 255))
+		return (ft_printf_fd(1, "Rango de color incorrecto\n"), free_arr((void **)rgba), 1);
+	if (rgba[3])
+		if (!(ft_atoi(rgba[3]) >= 0 && ft_atoi(rgba[3]) <= 255))
+			return (ft_printf_fd(1, "Rango alfa incorrecto\n"), free_arr((void **)rgba), 1);
+	free_arr((void **)rgba);
+	ft_printf_fd(1, "Es color\n");
 	return (0);
 }
 
-// function to calculate the size of an image
-// static t_size	count_image_size(int i, int file, t_size size)
-// {
-// 	char	*line;
-
-// 	line = get_next_line(file);
-// 	while (line)
-// 	{
-// 		if (ft_strncmp(line, "/* pixels */", 12) == 0 && i == -1)
-// 			i = 0;
-// 		else if (ft_strncmp(line, "};", 2) > -1 && i == 0)
-// 		{
-// 			i = -1;
-// 			free (line);
-// 			return (size);
-// 		}
-// 		else if (i == 0)
-// 		{
-// 			if (ft_strlen(line) - 4 > size.width)
-// 				size.width = ft_strlen(line) - 4;
-// 			size.height++;
-// 		}
-// 		line = (free (line), get_next_line(file));
-// 	}
-// 	free (line);
-// 	return (size);
-// }
-
-// 	// open the .xmp files and detect the pixels
-// static int	detect_image_size(char *dir, t_size *size)
-// {
-// 	int		file;
-// 	int		i;
-
-// 	i = -1;
-// 	size->width = 0;
-// 	size->height = 0;
-// 	file = open(dir, O_RDONLY);
-// 	if (file == -1)
-// 		return (1);
-// 	*size = count_image_size(i, file, *size);
-// 	close (file);
-// 	return (0);
-// }
-
-/*
-	// travel all visible characters to detect all files
-	// and detect the  maximun size between them
-t_size	higher_size_assets(void)
+/* unsigned int	get_rgba(char *color)
 {
-	t_size	size;data
-	c = 32;
-	size.width = 0;
-	size.height = 0;
-	while (c < 126)
+	int					i;
+	long		ret;
+	char				**colors;
+
+	i = 255;
+	colors = ft_split(color, ',');
+	if (!colors)
+		return (-1);
+	if (colors[3])
+		i = ft_atoi(colors[3]);
+	ret = (ft_atoi(colors[0]) << 24) | (ft_atoi(colors[1]) << 16) \
+		| (ft_atoi(colors[2]) << 8) | (i);
+	free_arr((void **) colors);
+	ft_printf_fd(1, "RGBA obtenido: %d\n", ret);
+	return (ret);
+} */
+
+static int	get_rgba(char *color)
+{
+	int					i;
+	long				ret;
+	char				**colors;
+
+	i = 255;
+	colors = ft_split(color, ',');
+	if (!colors)
+		return (0);
+	if (colors[3])
+		i = ft_atoi(colors[3]);
+	ret = (ft_atoi(colors[0]) << 24) | (ft_atoi(colors[1]) << 16) \
+		| (ft_atoi(colors[2]) << 8) | (i);
+	ft_printf_fd(1, "RGBA obtenido: %d\n", ret);
+	return (ret);
+}
+
+int	check_images(t_texture *texture)
+{
+	if (!check_extension(texture->dir, ".png"))
 	{
-		if (check_map_image(c))
-			size_swap = detect_image_size(check_map_image(c));
-		else if (check_object_image(c))
-			size_swap = detect_image_size(check_object_image(c));
-		if (size_swap.width > size.width)
-			size.width = size_swap.width;
-		if (size_swap.height > size.height)
-			size.height = size_swap.height;
-		c++;
+		texture->png_img = mlx_load_png(texture->dir);
+		if (!texture->png_img)
+			return (ft_printf_fd(2, "Fallo cargando imagen %s\n", texture->dir), 1);
 	}
-	return (size);
-} */
-
-/* int	check_image(char *dir, t_texture *img)
-{
-	img->dir = dir;
-	if (check_extension(dir, ".xpm"))
-		return (ft_printf("Error: extension\n"), 1);
-	detect_image_size(dir, &img->size);
+	else if (is_color(texture->dir) == 0)
+	{
+		texture->color = get_rgba(texture->dir);
+		if (!texture->color)
+			return (ft_printf_fd(2, "Fallo cargando color\n"), 1);
+	}
+	else
+		return (ft_printf_fd(1, "Error obteniendo imagen / color\n"));
 	return (0);
-} */
+}

@@ -1,10 +1,10 @@
-NO ./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
+NO /home/fraalmei/Documents/Proyects/Cursus/cub3d/assets/textures/Impression_Sunrise.png
+SO /home/fraalmei/Documents/Proyects/Cursus/cub3d/assets/textures/the_scream.png
+WE /home/fraalmei/Documents/Proyects/Cursus/cub3d/assets/textures/Mona_Lisa.png
+EA /home/fraalmei/Documents/Proyects/Cursus/cub3d/assets/textures/Wheat_Field.png
 
-F 220,100,0
-C 225,30,000
+F 255,255,255
+C 000,000,000
 
         1111111111111111111111111
         1000000000110000000000001

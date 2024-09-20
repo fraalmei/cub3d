@@ -72,6 +72,8 @@ static int	read_texture(t_texture **texture, char *line, char ***sides)
 	p_texture->dir = get_word(line, 1);
 	if (!p_texture->dir)
 		return (1);
+	if (check_images(p_texture))
+		return (1);
 	//ft_printf_fd(1, " - - Obtained texture: %s\n", p_texture->dir);
 	return (0);
 }
@@ -94,7 +96,7 @@ t_texture	**check_elements(int fd)
 	{
 		line = get_next_notempty_line(fd);
 		if (read_texture(textures, line, &sides))
-			return (free_textures(textures), \
+			return (free_textures(textures), free_arr ((void **)sides), free (line), \
 				ft_printf_fd(2, " - Texture error\n"), NULL);
 		free (line);
 	}

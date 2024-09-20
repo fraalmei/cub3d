@@ -21,7 +21,7 @@ int	check_extension(char *file, char *ext)
 	ft_printf("Checking extension file.\n");
 	if (ft_str_last_cmp(file, ext))
 	{
-		ft_printf_fd(2, " - Incorrect extension of the file.\n");
+		ft_printf_fd(2, " - Incorrect extension (%s) of the file.\n", ext);
 		return (1);
 	}
 	ft_printf(" - Correct extension.\n");
