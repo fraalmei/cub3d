@@ -1,7 +1,7 @@
-NO /home/fraalmei/Documents/Proyects/Cursus/cub3d/assets/textures/Impression_Sunrise.png
-SO /home/fraalmei/Documents/Proyects/Cursus/cub3d/assets/textures/the_scream.png
-WE /home/fraalmei/Documents/Proyects/Cursus/cub3d/assets/textures/Mona_Lisa.png
-EA /home/fraalmei/Documents/Proyects/Cursus/cub3d/assets/textures/Wheat_Field.png
+NO assets/textures/Impression_Sunrise.png
+SO assets/textures/the_scream.png
+WE assets/textures/Mona_Lisa.png
+EA assets/textures/Wheat_Field.png
 
 F 255,255,255
 C 000,000,000

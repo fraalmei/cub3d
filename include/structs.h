@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/20 15:28:32 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/23 13:29:38 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 typedef struct s_size
 {
-	size_t		width;
-	size_t		height;
+	size_t		width;			///< Width of the size
+	size_t		height;			///< Height of the size
 }				t_size;
 
 typedef struct s_isize
@@ -35,13 +35,13 @@ typedef struct s_fsize
 
 typedef struct s_texture
 {
-	char				*name;
-	char				*dir;
-	mlx_texture_t		*png_img;
-	xpm_t				*xpm_img;
-	int					png_xmp;	// if 0 is a png image, if 1 is a xmp image
-	int					color;
-	t_vector2			size;
+	char				*name;		// name of the texture
+	char				*dir;		// directory of the texture
+	mlx_texture_t		*png_img;	// 0 = png, 1 = xpm
+	xpm_t				*xpm_img;	// 0 = png, 1 = xpm
+	int					png_xmp;	// 0 = png, 1 = xpm
+	int					color;		// 0 = no color, 1 = color
+	t_vector2			size;		// size of the texture
 }				t_texture;
 
 typedef enum e_bool
@@ -52,98 +52,89 @@ typedef enum e_bool
 
 typedef enum e_directions
 {
-	EAST = 0,
-	SOUTH = 1,
-	WEST = 2,
-	NORTH = 3
+	EAST = 0,	///< East direction
+	SOUTH = 1,	///< South direction
+	WEST = 2,	///< West direction
+	NORTH = 3	///< North direction
 }	t_directions;
 
 typedef struct s_tilemap
 {
-	int		pos_x;
-	int		pos_y;
-	char	value;
+	int		pos_x;		///< X position of the tile
+	int		pos_y;		///< Y position of the tile
+	char	value;		///< Value of the tile
 }	t_tilemap;
 
 typedef struct s_ray
 {
 	int			ray;			///< Ray index
-	int			flag;			///< Indicator if the ray hit a wall
+	int			hit;			///< Indicator if the ray hit a wall
+	int			side;			///< Indicator for the side of the wall hit
 	double		ray_angle;		///< Angle of the ray
 	double		dist;			///< Distance from the player to the wall intersection
-	// t_vector2	hit;			///< Position of the wall intersection
-	// double		point;		///< Point of impact of the ray on the wall
-	// double		wall;		///< Position of the wall hit
-	// int			ray_at;		///< Ray index in the context of a raycasting loop
-	// bool			hor;		///< Indicator for horizontal intersection
-	// bool			ver;		///< Indicator for vertical intersection
-	// t_vector2	h;			///< Coordinates of the horizontal intersection
-	// t_vector2	step;		///< Incremental step of the ray in the x and y directions
-	// t_vector2	v;			///< Coordinates of the vertical intersection
-	// t_vector2	map;		///< Coordinates of the map tile the ray is currently in
-	// t_vector2	r;			///< Current coordinates of the ray in world space
-	// float		dof;		///< Depth of field
-	// float		disth;		///< Distance to the nearest horizontal intersection
-	// float		distv;		///< Distance to the nearest vertical intersection
+	t_vector2	ray_dir;		///< Direction of the ray
+	t_vector2	delta_dist;		///< Distance between the x and y intersections
+	t_vector2	step;			///< Step size for the ray
+	t_vector2	side_dist;		///< Distance to the next x or y intersection
 }	t_ray;
 
 
 typedef struct s_mlx
 {
-	mlx_image_t	*img;
-	mlx_t		*p_mlx;
+	mlx_image_t	*img;			///< Image pointer
+	mlx_t		*p_mlx;			///< MLX pointer
 }	t_mlx;
 
 typedef struct s_player
 {
-	int			init_grid_pos[2];
-	t_vector2	pos;		///< Player position
-	double		angle;		///< Player angle
-	float		fov_rd;		///< Field of view in radians
-	int			rot;		///< Rotation flag
-	int			l_r;		///< Left-right flag
-	int			u_d;		///< Up-down flag
+	int			init_grid_pos[2];	///< Initial grid position
+	t_vector2	pos;				///< Player position
+	double		angle;				///< Player angle
+	float		fov_rd;				///< Field of view in radians
+	int			rot;				///< Rotation flag
+	int			l_r;				///< Left-right flag
+	int			u_d;				///< Up-down flag
 }	t_player;
 
 typedef struct s_image
 {
-	void	*image;
-	char	*add;
-	int		width;
-	int		height;
-	int		endian;
-	int		bpp;
-	int		length;
+	void	*image;		///< Image pointer
+	char	*add;		///< Image address
+	int		width;		///< Image width
+	int		height;		///< Image height
+	int		endian;		///< Endian
+	int		bpp;		///< Bits per pixel
+	int		length;		///< Length
 }	t_image;
 
 typedef struct s_map
 {
-	t_texture		**map_textures;
-	char			**map;
-	t_fsize			tile_size;
-	t_vector2		map_size;
-}			t_map;
+	t_texture		**map_textures;		///< Map textures
+	char			**map;				///< Map matrix
+	t_fsize			tile_size;			///< Tile size
+	t_vector2		map_size;			///< Map size
+}	t_map;
 
 typedef struct s_game
 {
-	t_mlx			mlx;
-	t_player		*player;		// paco engine
-	t_ray			*ray;			///< Ray Structure
+	t_mlx			mlx;				///< MLX Structure
+	t_player		*player;			///< Player Structure
+	t_ray			*ray;				///< Ray Structure
+	t_map			*map;				///< Map structure
 
-	t_image			frame;
-	t_image			mnmap;
-	char			**matrix;
+	t_image			frame;				///< Frame image
+	t_image			mnmap;				///< Minimap image
+	char			**matrix;			///< Matrix of the map
 
-	t_vector2		player_init_pos;		///< Player initial position
-	char			player_or;
-	int				floor_color;
-	int				roof_color;
-	int				north_texture;
-	int				east_texture;
-	int				south_texture;
-	int				west_texture;
+	t_vector2		player_init_pos;	///< Player initial position
+	char			player_or;			///< Player orientation
+	int				floor_color;		///< Floor color
+	int				roof_color;			///< Roof color
+	int				north_texture;		///< North texture
+	int				east_texture;		///< East texture
+	int				south_texture;		///< South texture
+	int				west_texture;		///< West texture
 
-	t_map			*map;
-}					t_game;
+}	t_game;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:44:02 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/20 13:54:55 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/23 14:00:16 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@
 int		extract_color(t_vector3 color);
 
 // End_program.c
-int		end_program(t_game *game);
+void	end_program(void *g);
 
 // Engine.c
 t_game	*init(t_game *game);
 void	init_color_textures(t_game *game);
 void	update(void *g);
+void	engine(t_game *game);
 
 // Player_data.c
 void	player_data(t_game *game);
@@ -49,12 +50,14 @@ void	player_data(t_game *game);
 void	read_keys_check(mlx_key_data_t keydata, void *param);
 void	read_mouse_check(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
 
-// Ray.c
-double	get_h_inter(t_game *game, double angle);
-double	get_v_inter(t_game *game, double angle);
+// Ray_casting.c
 void	cast_rays(t_game *game);
-
-void	render_scene(t_game *game, int i);
+void	render_scene(t_game *game, t_ray *ray);
+void	calculate_distances(t_game *game, t_ray *ray, t_vector2 map_pos);
+void	perform_dda(t_game *game, t_ray *ray, t_vector2 *map_pos);
+void	calculate_wall_distance(t_game *game, t_ray *ray, t_vector2 map_pos);
+// double	get_h_inter(t_game *game, double angle);
+// double	get_v_inter(t_game *game, double angle);
 
 // Ray_utils.c
 float	nor_angle(float angle);

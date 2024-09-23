@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/26 10:38:51 by cagonzal          #+#    #+#              #
-#    Updated: 2024/09/20 15:24:11 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/09/23 11:01:51 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ SRCS		= main.c $(PARSE) $(UTILS) $(STRUCTS) $(ENGINE)
 SRCS_BONUS	= main_bonus.c $(PARSE) $(UTILS) $(STRUCTS) $(ENGINE)
 SRCS_CHECK	= main_check.c $(PARSE) $(UTILS) $(STRUCTS) $(ENGINE) $(PACO_ENGINE)
 
-PACO_ENGINE	= paco_engine/engine.c
+# PACO_ENGINE	= paco_engine/engine.c
 
 ENGINE		= engine/src/color.c engine/src/end_program.c engine/src/engine.c engine/src/misc_functions.c \
 			engine/src/player_data.c engine/src/ray_utils.c engine/src/ray_casting.c engine/src/screen_frame.c \

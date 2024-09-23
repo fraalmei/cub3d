@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/20 15:26:36 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/23 14:12:50 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int get_color(t_game *game, t_ray *ray)
 {
 	(void)game;
 	ray->ray_angle = nor_angle(ray->ray_angle); // normalize the angle
-	if (ray->flag == 0)
+	if (ray->hit == 0)
 	{
 		if (ray->ray_angle > M_PI / 2 && ray->ray_angle < 3 * (M_PI / 2))
 			return (0xB5B5B5FF); // west wall (gray)
@@ -84,10 +84,10 @@ void render_floor_ceiling(t_game *game, t_ray *ray, int t_pix , int b_pix)
 {
 	int		i;
 
-	i = b_pix;
-	while (i < S_HEIGHT)
-		my_mlx_pixel_put(game, ray->ray, i++, game->floor_color); // floor
 	i = 0;
 	while (i < t_pix)
 		my_mlx_pixel_put(game, ray->ray, i++, game->roof_color); // ceiling
+	i = b_pix;
+	while (i < S_HEIGHT)
+		my_mlx_pixel_put(game, ray->ray, i++, game->floor_color); // floor
 }

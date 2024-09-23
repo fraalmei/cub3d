@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 00:37:58 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/20 11:06:11 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/23 08:21:06 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ static int	change_img(t_game *game)
 	// i = 0;
 	// if (i > 3 || i < 0)
 	// 	i = 0;
-	// if (game->win.img)
-	// 	mlx_delete_image(game->win.p_mlx, game->win.img);
+	// if (game->mlx.img)
+	// 	mlx_delete_image(game->mlx.p_mlx, game->mlx.img);
 	// if (game->map->map_textures[i])
-	// 	game->win.img = mlx_texture_to_image(game->win.p_mlx, game->map->map_textures[i]->img);
-	// if (mlx_image_to_window(game->win.p_mlx, game->win.img, 0, 0) == -1)
+	// 	game->mlx.img = mlx_texture_to_image(game->mlx.p_mlx, game->map->map_textures[i]->img);
+	// if (mlx_image_to_window(game->mlx.p_mlx, game->mlx.img, 0, 0) == -1)
 	// 	end_program(game);
 	// i++;
 	return (0);
@@ -55,7 +55,7 @@ void read_keys_check(mlx_key_data_t keydata, void *param)
 		str = (char *)ft_calloc(sizeof(char), 100);
 		sprintf(str, "Pulsado tecla teclado %d\n", keydata.key);
 		// (ft_printf_fd(1, str), change_img(data));
-		mlx_put_string(data->win.p_mlx, str, 0, 0);
+		mlx_put_string(data->mlx.p_mlx, str, 0, 0);
 		free (str);
 	}
 }
@@ -71,7 +71,7 @@ void read_mouse_check(mouse_key_t button, action_t action, modifier_key_t mods, 
         str = (char *)ft_calloc(sizeof(char), 100);
         sprintf(str, "Pulsado tecla raton %d\n", button);
         (ft_printf_fd(1, str), change_img(data));
-        mlx_put_string(data->win.p_mlx, str, 0, 0);
+        mlx_put_string(data->mlx.p_mlx, str, 0, 0);
         free (str);
     }
 }
