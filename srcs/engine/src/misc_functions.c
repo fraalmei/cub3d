@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 13:34:09 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/23 12:52:15 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/25 10:05:26 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,13 @@ void esc_function(t_game *game)
 void space_funcion()
 {
     printf("Space keydown\n");
+}
+
+void	null_check(void *ptr, const char *message)
+{
+	if (ptr == NULL)
+	{
+		fprintf(stderr, "Error: %s\n", message);
+		exit(EXIT_FAILURE);
+	}
 }
