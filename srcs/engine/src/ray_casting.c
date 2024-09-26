@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 07:58:21 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/25 14:12:30 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:21:15 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int	wall_hit(t_game *game, double x, double y)
 
 	if (x < 0 || y < 0)
 		return (0);
-	x_m = floor(x / game->map->tile_size.width);
-	y_m = floor(y / game->map->tile_size.height);
+	x_m = floor(x / T_SIZE);
+	y_m = floor(y / T_SIZE);
 	if (y_m >= game->map->map_size.height || x_m >= game->map->map_size.width)
 		return (0);
 	if (game->map->map[y_m] && x_m <= (int)strlen(game->map->map[y_m]))
@@ -66,7 +66,8 @@ double	get_h_inter(t_game *game, double angl)
 		step.x *= -1;
 	while (wall_hit(game, h.x, h.y - pixel)) // check the wall hit with the pixel value
 		h = ft_addv2(h, step);
-	return (ft_lenv2(ft_subv2(h, game->player->pos)));
+	return (sqrt(pow(h.x - game->player->pos.x, 2) + pow(h.y - game->player->pos.y, 2)));
+	// return (ft_lenv2(ft_subv2(h, game->player->pos)));
 }
 
 double	get_v_inter(t_game *game, double angl)
@@ -83,7 +84,8 @@ double	get_v_inter(t_game *game, double angl)
 		step.y *= -1;
 	while (wall_hit(game, v.x - pixel, v.y)) // check the wall hit with the pixel value
 		v = ft_addv2(v, step);
-	return (ft_lenv2(ft_subv2(v, game->player->pos)));
+	return (sqrt(pow(v.x - game->player->pos.x, 2) + pow(v.y - game->player->pos.y, 2)));
+	// return (ft_lenv2(ft_subv2(v, game->player->pos)));
 }
 
 void	cast_rays(t_game *game)

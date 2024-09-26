@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/25 13:55:24 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/26 13:31:52 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
 {
-	if (x < 0 || y < 0)
+	if (x < 0 || x >= S_WIDTH)
 		return ;
-	else if (x >= S_WIDTH || y >= S_HEIGHT)
+	else if (y < 0 || y >= S_HEIGHT)
 		return ;
 	mlx_put_pixel(game->mlx.img, x, y, color); // put the pixel
 }
@@ -95,13 +95,13 @@ void render_floor_ceiling(t_game *game, t_ray *ray, double t_pix , double b_pix)
 void render_scene(t_game *game, t_ray *ray)
 {
 	double wall_height;
-	double t_pix;
 	double b_pix;
+	double t_pix;
 
 	ray->dist *= cos(ray->ray_angle - game->player->angle);
 	wall_height = (T_SIZE / ray->dist) * ((S_WIDTH / 2) / tan(game->player->fov_rd / 2));
-	t_pix = (S_HEIGHT / 2) - (wall_height / 2);
 	b_pix = (S_HEIGHT / 2) + (wall_height / 2);
+	t_pix = (S_HEIGHT / 2) - (wall_height / 2);
 	if (b_pix > S_HEIGHT)
 		b_pix = S_HEIGHT;
 	if (t_pix < 0)

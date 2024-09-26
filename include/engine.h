@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:44:02 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/25 13:42:43 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/26 14:27:26 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 // Convierte el ángulo de visión de grados a radianes
 # define FOV 60
 # define FOV_RAD ((double)FOV * M_PI / 180.0)  /** FOV in radians */
-# define T_SIZE 32
+# define T_SIZE 64
+# define CENTER (T_SIZE / 2)
 # define ROTATION_SPEED 0.045 // rotation speed
 # define PLAYER_SPEED 4 // player speed
 # define EPSILON 0.000001
@@ -48,7 +49,8 @@ void	player_data(t_game *game);
 
 // Keys.c
 void	read_keys_check(mlx_key_data_t keydata, void *param);
-void	read_mouse_check(mouse_key_t button, action_t action, modifier_key_t mods, void *param);
+void	key_release(mlx_key_data_t keydata, t_game *game);
+void	player_rotate(t_game *game);
 
 // Ray_casting.c
 int		inter_check(double angle, float *inter, float *step, int is_horizon);
@@ -73,8 +75,5 @@ int		get_color(t_game *game, t_ray *ray);
 void	render_wall(t_game *game, t_ray *ray, double t_pix, double b_pix);
 void	render_floor_ceiling(t_game *game, t_ray *ray, double t_pix , double b_pix);
 void	render_scene(t_game *game, t_ray *ray);
-
-// keys.c
-int		read_keys(int key_pressed, void *param);
 
 #endif
