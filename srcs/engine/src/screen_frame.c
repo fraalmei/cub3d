@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/26 13:31:52 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:12:26 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,20 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
  */
 int get_color(t_game *game, t_ray *ray)
 {
-	(void)game;
 	ray->ray_angle = nor_angle(ray->ray_angle); // normalize the angle
 	if (ray->side == 0)
 	{
 		if (ray->ray_angle > M_PI / 2 && ray->ray_angle < 3 * (M_PI / 2))
-			return (0xB5B5B5FF); // west wall
+			return (game->west_texture); // west wall
 		else
-			return (0xB5B5B5FF); // east wall
+			return (game->east_texture); // east wall
 	}
 	else
 	{
 		if (ray->ray_angle > 0 && ray->ray_angle < M_PI)
-			return (0xF5F5F5FF); // south wall
+			return (game->south_texture); // south wall
 		else
-			return (0xF5F5F5FF); // north wall
+			return (game->north_texture); // north wall
 	}
 }
 

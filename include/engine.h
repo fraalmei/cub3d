@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:44:02 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/30 12:18:48 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:19:04 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,15 @@
 # define PLAYER_SPEED 4 // player speed
 # define EPSILON 0.000001
 
-
-// Color.c
-int		extract_color(t_vector3 color);
-
 // End_program.c
 void	end_program(void *g);
 
 // Engine.c
 t_game	*init(t_game *game);
 void	init_color_textures(t_game *game);
-void	update(void *g);
-void	engine(t_game *game);
-
-// Player_data.c
-void	player_data(t_game *game);
+void    update(void *g);
+void    frame_counter(t_game *game);
+void    engine(t_game *game);
 
 // Keys.c
 void	read_keys_check(mlx_key_data_t keydata, void *param);
@@ -64,11 +58,7 @@ float	nor_angle(float angle);
 int		unit_circle(float angle, char c);
 
 // Misc_functions.c
-// void	image_update(t_game *game);
-void	init_ray(t_ray *ray, int ray_index, double ray_angle);
-void	esc_function(t_game *game);
-void	space_funcion(void);
-void	null_check(void *ptr, const char *message);
+void	frame_counter(t_game *game);
 
 // Screen_frame.c
 int		get_color(t_game *game, t_ray *ray);

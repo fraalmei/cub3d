@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 00:37:58 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/26 14:26:50 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:00:11 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void read_keys_check(mlx_key_data_t keydata, void *param)
 	t_game	*game;
 	
 	game = (t_game *)param;
-	if (keydata.key == MLX_KEY_ESCAPE && (keydata.action == MLX_PRESS) && keydata.action == MLX_REPEAT)
+	if (keydata.key == MLX_KEY_ESCAPE && (keydata.action == MLX_PRESS))
 		end_program(game);
 	else if (keydata.action == MLX_PRESS)
 	{

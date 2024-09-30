@@ -6,7 +6,7 @@
 #    By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/26 10:38:51 by cagonzal          #+#    #+#              #
-#    Updated: 2024/09/23 11:01:51 by cagonzal         ###   ########.fr        #
+#    Updated: 2024/09/30 15:17:45 by cagonzal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,9 +79,9 @@ SRCS_CHECK	= main_check.c $(PARSE) $(UTILS) $(STRUCTS) $(ENGINE) $(PACO_ENGINE)
 
 # PACO_ENGINE	= paco_engine/engine.c
 
-ENGINE		= engine/src/color.c engine/src/end_program.c engine/src/engine.c engine/src/misc_functions.c \
-			engine/src/player_data.c engine/src/ray_utils.c engine/src/ray_casting.c engine/src/screen_frame.c \
-			engine/src/keys.c
+ENGINE		= engine/src/end_program.c engine/src/engine.c engine/src/input.c\
+			engine/src/misc_functions.c engine/src/ray_utils.c engine/src/ray_casting.c \
+			engine/src/screen_frame.c engine/src/keys.c
 
 PARSE		= parse/check_scene.c parse/check_element.c \
 			parse/check_image.c parse/check_map.c parse/check_player.c
