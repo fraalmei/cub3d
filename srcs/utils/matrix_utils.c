@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:20:23 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/19 13:55:55 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/30 13:34:10 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,6 @@ t_vector2	matrix_len(char **matrix)
 {
 	t_vector2		len;
 
-	len = ft_vector2(ft_arraylen_f((const void **)matrix), ft_strlen_f(matrix[0]));
+	len = ft_vector2(ft_strlen_f(matrix[0]), ft_arraylen_f((const void **)matrix));
 	return (len);
 }
