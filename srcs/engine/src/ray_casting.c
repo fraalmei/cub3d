@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 07:58:21 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/26 13:21:15 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/30 11:42:56 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,9 @@ double	get_h_inter(t_game *game, double angl)
 	h.x = game->player->pos.x + (h.y - game->player->pos.y) / tan(angl);
 	if ((unit_circle(angl, 'y') && step.x > 0) || (!unit_circle(angl, 'y') && step.x < 0)) // check x_step value
 		step.x *= -1;
-	while (wall_hit(game, h.x, h.y - pixel)) // check the wall hit with the pixel value
+	while (wall_hit(game, h.x, h.y - pixel))
 		h = ft_addv2(h, step);
+	// PRINT_DEBUG("Function %s: Step H Stop\n", __func__);
 	return (sqrt(pow(h.x - game->player->pos.x, 2) + pow(h.y - game->player->pos.y, 2)));
 	// return (ft_lenv2(ft_subv2(h, game->player->pos)));
 }
@@ -82,8 +83,9 @@ double	get_v_inter(t_game *game, double angl)
 	v.y = game->player->pos.y + (v.x - game->player->pos.x) * tan(angl);
 	if ((unit_circle(angl, 'x') && step.y < 0) || (!unit_circle(angl, 'x') && step.y > 0)) // check y_step value
 		step.y *= -1;
-	while (wall_hit(game, v.x - pixel, v.y)) // check the wall hit with the pixel value
+	while (wall_hit(game, v.x - pixel, v.y))
 		v = ft_addv2(v, step);
+	// PRINT_DEBUG("Function %s: Step V Stop\n", __func__);
 	return (sqrt(pow(v.x - game->player->pos.x, 2) + pow(v.y - game->player->pos.y, 2)));
 	// return (ft_lenv2(ft_subv2(v, game->player->pos)));
 }
@@ -97,11 +99,13 @@ void	cast_rays(t_game *game)
 
 	ray = -1;
 	ray_angle = game->player->angle - (game->player->fov_rd / 2); // start angle
-	while (++ray < S_WIDTH)
+	PRINT_DEBUG("Function %s: Ray_n %d\n", __func__, game->n_ray);
+	while (++ray < game->n_ray) // S_WIDTH)
 	{
 		game->ray[ray].side = 0;
 		game->ray[ray].ray = ray;
 		game->ray[ray].ray_angle = ray_angle;
+		// PRINT_DEBUG("Function %s: Ray %d\n", __func__, ray);
 		h_inter = get_h_inter(game, nor_angle(game->ray[ray].ray_angle));
 		v_inter = get_v_inter(game, nor_angle(game->ray[ray].ray_angle));
 		if (v_inter <= h_inter)

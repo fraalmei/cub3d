@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:12:31 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/26 13:37:03 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/30 12:13:22 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,22 @@ t_game	*init(t_game *game)
 void	update(void *g)
 {
 	t_game	*game;
-
+	
 	game = g;
+	PRINT_DEBUG("Function %s: Frame %d\n", __func__, game->n_frame);
+	if (game->n_frame < 60)
+	{
+		if (game->n_ray < S_WIDTH)
+			game->n_ray += S_WIDTH / 60;
+		game->n_frame++;
+	}
+	else if (game->n_frame++ < 600);
+	else
+	{
+		game->n_ray = 0;
+		game->n_frame = 0;
+	}
+	// Clear the image
 	mlx_delete_image(game->mlx.p_mlx, game->mlx.img);
 	game->mlx.img = mlx_new_image(game->mlx.p_mlx, S_WIDTH, S_HEIGHT);
 	// Update game logic

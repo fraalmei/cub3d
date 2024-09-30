@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/23 13:29:38 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/30 11:43:50 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,9 @@ typedef struct s_game
 	int				east_texture;		///< East texture
 	int				south_texture;		///< South texture
 	int				west_texture;		///< West texture
+
+	int				n_frame;
+	int				n_ray;
 
 }	t_game;
 
