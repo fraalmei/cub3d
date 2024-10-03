@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/03 13:53:29 by p                ###   ########.fr       */
+/*   Updated: 2024/10/03 15:04:57 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ int	print_textures(t_texture **textures)
 		if (textures[i]->png_img)
 		{
 			ft_printf_fd(1, "Img png: %p\n", textures[i]->png_img);
-			ft_printf_fd(1, "Width: %d\n", textures[i]->size.width);
-			ft_printf_fd(1, "Height: %d\n", textures[i]->size.height);
+			ft_printf_fd(1, "Width: %d\n", textures[i]->png_img->width);
+			ft_printf_fd(1, "Height: %d\n", textures[i]->png_img->height);
 		}
 		else if (textures[i]->color != 0)
 			ft_printf_fd(1, "Color: %d\n", textures[i]->color);
