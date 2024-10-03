@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/01 16:42:50 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:48:50 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,10 @@ int	print_textures(t_texture **textures)
 			ft_printf_fd(1, "Img xpm: %p\n", textures[i]->xpm_img);
 		else if (textures[i]->color != 0)
 			ft_printf_fd(1, "Color: %d\n", textures[i]->color);
-		/*if (textures[i]->size.width)
+		if (textures[i]->png_img->width)
 			ft_printf_fd(1, "Width: %d\n", textures[i]->size.width);
-		if (textures[i]->size.height)
-			ft_printf_fd(1, "Height: %d\n", textures[i]->size.height);*/
+		if (textures[i]->png_img->height)
+			ft_printf_fd(1, "Height: %d\n", textures[i]->size.height);
 		ft_printf_fd (1, COLOR_CYAN);
 		ft_printf_fd (1, "###########################################\n");
 		ft_printf_fd (1, COLOR_RESET);

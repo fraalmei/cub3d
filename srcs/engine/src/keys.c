@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 00:37:58 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/30 15:00:11 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/03 11:03:34 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ void read_keys_check(mlx_key_data_t keydata, void *param)
 		end_program(game);
 	else if (keydata.action == MLX_PRESS)
 	{
-		if (keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT) // move left
+		if (keydata.key == MLX_KEY_A) // move left
 			game->player->l_r = -1;
-		else if (keydata.key == MLX_KEY_D  || keydata.key == MLX_KEY_RIGHT) // move right
+		else if (keydata.key == MLX_KEY_D) // move right
 			game->player->l_r = 1;
 		else if (keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN) // move down
 			game->player->u_d = -1;
 		else if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP) // move up
 			game->player->u_d = 1;
-		else if (keydata.key == MLX_KEY_Q) // rotate left
+		else if (keydata.key == MLX_KEY_Q || keydata.key == MLX_KEY_LEFT) // rotate left
 			game->player->rot = -1;
-		else if (keydata.key == MLX_KEY_E) // rotate right
+		else if (keydata.key == MLX_KEY_E  || keydata.key == MLX_KEY_RIGHT) // rotate right
 			game->player->rot = 1;
 	}
 	key_release(keydata, game);
@@ -45,20 +45,28 @@ void	key_release(mlx_key_data_t keydata, t_game *game)
 			game->player->l_r = 0;
 		else if (keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_W)
 			game->player->u_d = 0;
+		else if (keydata.key == MLX_KEY_UP || keydata.key == MLX_KEY_DOWN)
+			game->player->u_d = 0;
 		else if (keydata.key == MLX_KEY_LEFT || keydata.key == MLX_KEY_RIGHT)
+			game->player->rot = 0;
+		else if (keydata.key == MLX_KEY_Q || keydata.key == MLX_KEY_E)
 			game->player->rot = 0;
 	}
 }
 
 void	player_rotate(t_game *game)
 {
-	if (game->player->rot)
+	if (game->player->rot == 1)
 	{
-		game->player->angle += ROTATION_SPEED;
-		if (game->player->angle >= 2 * M_PI)
-			game->player->angle -= 2 * M_PI;
-		else if (game->player->angle < 0)
-			game->player->angle += 2 * M_PI;
+		game->player->angle += ROTATION_SPEED; // rotate right
+		if (game->player->angle > 2 * M_PI)
+			game->player->angle = nor_angle(game->player->angle);
+	}
+	else if (game->player->rot == -1)
+	{
+		game->player->angle -= ROTATION_SPEED; // rotate left
+		if (game->player->angle < 0)
+			game->player->angle = nor_angle(game->player->angle);
 	}
 }
 

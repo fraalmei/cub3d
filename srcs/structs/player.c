@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:38:32 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/25 13:39:58 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:52:42 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ int	print_player_inf(t_player *player)
 int	set_player(t_game *game)
 {
 	game->player = (t_player *)ft_calloc(1, sizeof(t_player));
+	game->player->l_r = 0;
+	game->player->u_d = 0;
+	game->player->rot = 0;
 	game->player->fov_rd = FOV_RAD;
 	if (!game->player)
 		return (1);
