@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/03 13:51:34 by p                ###   ########.fr       */
+/*   Updated: 2024/10/03 13:53:29 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,13 @@ int	print_textures(t_texture **textures)
 			ft_printf_fd(1, "Img?: %d\n", is_color(textures[i]->dir));
 		}
 		if (textures[i]->png_img)
+		{
 			ft_printf_fd(1, "Img png: %p\n", textures[i]->png_img);
-		else if (textures[i]->xpm_img)
-			ft_printf_fd(1, "Img xpm: %p\n", textures[i]->xpm_img);
+			ft_printf_fd(1, "Width: %d\n", textures[i]->size.width);
+			ft_printf_fd(1, "Height: %d\n", textures[i]->size.height);
+		}
 		else if (textures[i]->color != 0)
 			ft_printf_fd(1, "Color: %d\n", textures[i]->color);
-		if (textures[i]->png_img->width)
-			ft_printf_fd(1, "Width: %d\n", textures[i]->size.width);
-		if (textures[i]->png_img->height)
-			ft_printf_fd(1, "Height: %d\n", textures[i]->size.height);
 		ft_printf_fd (1, COLOR_CYAN);
 		ft_printf_fd (1, "###########################################\n");
 		ft_printf_fd (1, COLOR_RESET);
