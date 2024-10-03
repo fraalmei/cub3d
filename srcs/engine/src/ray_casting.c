@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 07:58:21 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/30 15:19:44 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:33:22 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	cast_rays(t_game *game)
 
 	ray = -1;
 	ray_angle = game->player->angle - (game->player->fov_rd / 2);
-	while (++ray < game->n_ray) // S_WIDTH)
+	while (++ray < S_WIDTH) // S_WIDTH)
 	{
 		game->ray[ray].side = 0;
 		game->ray[ray].ray = ray;

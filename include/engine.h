@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:44:02 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/30 15:19:04 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:36:25 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,16 @@ void    update(void *g);
 void    frame_counter(t_game *game);
 void    engine(t_game *game);
 
+// Input.c
+void	hook(t_game *game);
+
 // Keys.c
 void	read_keys_check(mlx_key_data_t keydata, void *param);
 void	key_release(mlx_key_data_t keydata, t_game *game);
 void	player_rotate(t_game *game);
+
+// Misc_functions.c
+void	frame_counter(t_game *game);
 
 // Ray_casting.c
 int		inter_check(double angle, float *inter, float *step, int is_horizon);
@@ -57,13 +63,10 @@ void	cast_rays(t_game *game);
 float	nor_angle(float angle);
 int		unit_circle(float angle, char c);
 
-// Misc_functions.c
-void	frame_counter(t_game *game);
-
 // Screen_frame.c
-int		get_color(t_game *game, t_ray *ray);
-void	render_wall(t_game *game, t_ray *ray, double t_pix, double b_pix);
-void	render_floor_ceiling(t_game *game, t_ray *ray, double t_pix , double b_pix);
-void	render_scene(t_game *game, t_ray *ray);
+mlx_texture_t*		get_color(t_game *game, t_ray *ray);
+void	            render_wall(t_game *game, t_ray *ray, double t_pix, double b_pix);
+void	            render_floor_ceiling(t_game *game, t_ray *ray, double t_pix , double b_pix);
+void	            render_scene(t_game *game, t_ray *ray);
 
 #endif

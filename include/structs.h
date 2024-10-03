@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/30 14:44:08 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:36:11 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ typedef struct s_fsize
 
 typedef struct s_texture
 {
-	char				*name;		// name of the texture
-	char				*dir;		// directory of the texture
-	mlx_texture_t		*png_img;	// 0 = png, 1 = xpm
-	xpm_t				*xpm_img;	// 0 = png, 1 = xpm
-	int					png_xmp;	// 0 = png, 1 = xpm
-	int					color;		// 0 = no color, 1 = color
-	t_vector2			size;		// size of the texture
+	char				*name;		///< Name of the texture
+	char				*dir;		///< Directory of the texture
+	mlx_texture_t		*png_img;	///< PNG image pointer
+	xpm_t				*xpm_img;	///< XPM image pointer
+	int					png_xmp;	///< Indicator if the texture is PNG or XPM
+	int					color;		///< Color of the texture
+	t_vector2			size;		///< Size of the texture
 }				t_texture;
 
 typedef enum e_bool
@@ -52,10 +52,10 @@ typedef enum e_bool
 
 typedef enum e_directions
 {
-	EAST = 0,	///< East direction
+	NORTH = 0,	///< North direction
 	SOUTH = 1,	///< South direction
-	WEST = 2,	///< West direction
-	NORTH = 3	///< North direction
+	EAST = 2,    ///< East direction
+	WEST = 3		///< West direction
 }	t_directions;
 
 typedef struct s_tilemap

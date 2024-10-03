@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/30 15:12:26 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/03 13:32:42 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,22 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
  * @param flag The flag to determine the color.
  * @return The color of the wall.
  */
-int get_color(t_game *game, t_ray *ray)
+mlx_texture_t* get_color(t_game *game, t_ray *ray)
 {
 	ray->ray_angle = nor_angle(ray->ray_angle); // normalize the angle
 	if (ray->side == 0)
 	{
 		if (ray->ray_angle > M_PI / 2 && ray->ray_angle < 3 * (M_PI / 2))
-			return (game->west_texture); // west wall
+			return (game->map->map_textures[WEST]->png_img); // west wall
 		else
-			return (game->east_texture); // east wall
+			return (game->map->map_textures[EAST]->png_img); // east wall
 	}
 	else
 	{
 		if (ray->ray_angle > 0 && ray->ray_angle < M_PI)
-			return (game->south_texture); // south wall
+			return (game->map->map_textures[SOUTH]->png_img); // south wall
 		else
-			return (game->north_texture); // north wall
+			return (game->map->map_textures[NORTH]->png_img); // north wall
 	}
 }
 
@@ -61,11 +61,28 @@ int get_color(t_game *game, t_ray *ray)
  */
 void render_wall(t_game *game, t_ray *ray, double t_pix , double b_pix)
 {
-	int color;
+	double			x_o;
+	double			y_o;
+	mlx_texture_t	*texture;
+	uint32_t		*arr;
+	double			factor;
 
-	color = get_color(game, ray);
+	texture = get_color(game, ray);
+	arr = (uint32_t *)texture->pixels;
+	factor = (double)texture->height / (b_pix - t_pix);
+	if (ray->side == 0)
+		x_o = ray->ray_dir.y;
+	else
+		x_o = ray->ray_dir.x;
+	x_o -= floor(x_o);
+	x_o *= texture->width;
+	y_o = 0;
 	while (t_pix < b_pix)
-		my_mlx_pixel_put(game, ray->ray, t_pix++, color);
+	{
+		my_mlx_pixel_put(game, ray->ray, t_pix, arr[(int)y_o * texture->width + (int)x_o]);
+		y_o += factor;
+		t_pix++;
+	}
 }
 
 /**
