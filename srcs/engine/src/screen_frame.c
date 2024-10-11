@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/03 13:32:42 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/11 09:58:24 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void render_wall(t_game *game, t_ray *ray, double t_pix , double b_pix)
 	uint32_t		*arr;
 	double			factor;
 
+	(void)factor;
 	texture = get_color(game, ray);
 	arr = (uint32_t *)texture->pixels;
 	factor = (double)texture->height / (b_pix - t_pix);
@@ -80,7 +81,7 @@ void render_wall(t_game *game, t_ray *ray, double t_pix , double b_pix)
 	while (t_pix < b_pix)
 	{
 		my_mlx_pixel_put(game, ray->ray, t_pix, arr[(int)y_o * texture->width + (int)x_o]);
-		y_o += factor;
+		y_o += 1;
 		t_pix++;
 	}
 }

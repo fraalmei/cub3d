@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 16:56:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/30 15:51:59 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/10 13:48:00 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,16 @@ void rotate_player(t_game *game, int rot)
 
 void move_player(t_game *game, double move_x, double move_y)
 {
-	int  map_grid_y;
-	int  map_grid_x;
-	int  new_x;
-	int  new_y;
+	t_vector2 new_pos;
+	int map_grid_x;
+	int map_grid_y;
 
-	new_x = roundf(game->player->pos.x + move_x); // get the new x position
-	new_y = roundf(game->player->pos.y + move_y); // get the new y position
-	map_grid_x = (new_x / T_SIZE); // get the x position in the map
-	map_grid_y = (new_y / T_SIZE); // get the y position in the map
-	if (game->map->map[map_grid_y][map_grid_x] != '1' && \
-	(game->map->map[map_grid_y][map_grid_x] != '1' && \
-	game->map->map[map_grid_y][map_grid_x] != '1')) // check the wall hit and the diagonal wall hit
-	{
-		game->player->pos.x = new_x; // move the player
-		game->player->pos.y = new_y; // move the player
-	}
+	new_pos = ft_addv2(game->player->pos, ft_vector2(move_x, move_y)); // get the new position
+	map_grid_x = floor(new_pos.x / T_SIZE); // get the x position in the map
+	map_grid_y = floor(new_pos.y / T_SIZE); // get the y position in the map
+
+	if (game->map->map[map_grid_y][map_grid_x] != '1') // check the wall hit
+		game->player->pos = new_pos; // move the player
 }
 
 void hook(t_game *game)
