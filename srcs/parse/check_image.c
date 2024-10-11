@@ -78,6 +78,10 @@ int	check_images(t_texture *texture)
 		texture->png_img = mlx_load_png(texture->dir);
 		if (!texture->png_img)
 			return (ft_printf_fd(2, "Fallo cargando imagen %s\n", texture->dir), 1);
+		ft_printf_fd(2, "Guardado de imagen correcto: width %d\n", texture->png_img->width);
+		ft_printf_fd(2, "Guardado de imagen correcto: height %d\n", texture->png_img->height);
+		ft_printf_fd(2, "Guardado de imagen correcto: bytes_per_pixel %d\n", texture->png_img->bytes_per_pixel);
+		ft_printf_fd(2, "Guardado de imagen correcto: pixels %d\n", texture->png_img->pixels);
 	}
 	else if (is_color(texture->dir) == 0)
 	{
