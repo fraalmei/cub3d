@@ -53,20 +53,36 @@ int	is_color(char *str)
 	return (ret);
 } */
 
+/* static unsigned long createRGB(int r, int g, int b)
+{
+	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+} */
+
+static unsigned long createRGBA(int r, int g, int b, int a)
+{
+	return (((r & 0xff) << 24) + ((g & 0xff) << 16) + ((b & 0xff) << 8) + (a & 0xff));
+}
+
 static int	get_rgba(char *color)
 {
 	int					i;
 	long				ret;
 	char				**colors;
 
+	ft_printf_fd(1, "Entra get_rgba");
 	i = 255;
 	colors = ft_split(color, ',');
 	if (!colors)
 		return (0);
 	if (colors[3])
 		i = ft_atoi(colors[3]);
-	ret = (ft_atoi(colors[0]) << 24) | (ft_atoi(colors[1]) << 16) \
-		| (ft_atoi(colors[2]) << 8) | (i);
+	ft_printf_fd(1, "Entra get_rgba %s\n", color);
+	ft_printf_fd(1, "R = %s\nG = %s\nB = %s\nA = %s\n", colors[0], colors[1], colors[2]);
+	ft_printf_fd(1, "R = %d\nG = %d\nB = %d\nA = %d\n", ft_atoi(colors[0]), ft_atoi(colors[1]), ft_atoi(colors[2]));
+	ft_printf_fd(1, "Entra get_rgba");
+	ret = createRGBA(ft_atoi(colors[0]), ft_atoi(colors[1]), ft_atoi(colors[2]), i);
+	/* ret = (ft_atoi(colors[0]) << 24) | (ft_atoi(colors[1]) << 16) \
+		| (ft_atoi(colors[2]) << 8) | (i); */
 	ft_printf_fd(1, "RGBA obtenido: %d\n", ret);
 	return (ret);
 }
@@ -78,10 +94,6 @@ int	check_images(t_texture *texture)
 		texture->png_img = mlx_load_png(texture->dir);
 		if (!texture->png_img)
 			return (ft_printf_fd(2, "Fallo cargando imagen %s\n", texture->dir), 1);
-		ft_printf_fd(2, "Guardado de imagen correcto: width %d\n", texture->png_img->width);
-		ft_printf_fd(2, "Guardado de imagen correcto: height %d\n", texture->png_img->height);
-		ft_printf_fd(2, "Guardado de imagen correcto: bytes_per_pixel %d\n", texture->png_img->bytes_per_pixel);
-		ft_printf_fd(2, "Guardado de imagen correcto: pixels %d\n", texture->png_img->pixels);
 	}
 	else if (is_color(texture->dir) == 0)
 	{

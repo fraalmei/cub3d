@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/08/30 16:17:40 by p                ###   ########.fr       */
+/*   Updated: 2024/10/11 12:10:01 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int			free_arr(void **arr);
 
 		// print_things.c
 int			print_arr(char **str);
+int			print_arr_uint8_t(uint8_t *i);
 
 		// read_utils.c
 char		*get_next_notempty_line(int fd);
