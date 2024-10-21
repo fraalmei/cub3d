@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/11 09:58:24 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/21 09:16:30 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ mlx_texture_t* get_color(t_game *game, t_ray *ray)
  * @param ray Pointer to the ray structure containing raycasting information.
  * @param t_pix The top pixel coordinate where the wall segment starts.
  * @param b_pix The bottom pixel coordinate where the wall segment ends.
+ * @param w_h The height of the wall segment to render.
  */
-void render_wall(t_game *game, t_ray *ray, double t_pix , double b_pix)
+void render_wall(t_game *game, t_ray *ray, double t_p , double b_p, double w_h)
 {
 	double			x_o;
 	double			y_o;
@@ -67,22 +68,18 @@ void render_wall(t_game *game, t_ray *ray, double t_pix , double b_pix)
 	uint32_t		*arr;
 	double			factor;
 
-	(void)factor;
 	texture = get_color(game, ray);
 	arr = (uint32_t *)texture->pixels;
-	factor = (double)texture->height / (b_pix - t_pix);
-	if (ray->side == 0)
-		x_o = ray->ray_dir.y;
-	else
-		x_o = ray->ray_dir.x;
-	x_o -= floor(x_o);
-	x_o *= texture->width;
-	y_o = 0;
-	while (t_pix < b_pix)
+	factor = (double)texture->height / w_h;
+	x_o = get_x_o(ray, texture);
+	y_o = (t_p - (S_HEIGHT / 2) + (w_h / 2)) * factor;
+	if (y_o < 0)
+		y_o = 0;
+	while (t_p < b_p)
 	{
-		my_mlx_pixel_put(game, ray->ray, t_pix, arr[(int)y_o * texture->width + (int)x_o]);
-		y_o += 1;
-		t_pix++;
+		my_mlx_pixel_put(game, ray->ray, t_p, arr[(int)y_o + (int)x_o]);
+		y_o += factor;
+		t_p++;
 	}
 }
 
@@ -123,6 +120,6 @@ void render_scene(t_game *game, t_ray *ray)
 		b_pix = S_HEIGHT;
 	if (t_pix < 0)
 		t_pix = 0;
-	render_wall(game, ray, t_pix, b_pix);
+	render_wall(game, ray, t_pix, b_pix, wall_height);
 	render_floor_ceiling(game, ray, t_pix, b_pix);
 }

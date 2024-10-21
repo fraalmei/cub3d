@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:12:31 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/03 11:08:56 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/21 11:03:45 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	update(void *g)
 	
 	game = g;
     frame_counter(game);
+	PRINT_DEBUG("Player pos[%f][%f]\n", game->player->pos.x, game->player->pos.y);
+	PRINT_DEBUG("Player_rot in degrees = %d\n", (int)floor(game->player->angle * 180 / M_PI));
     // Clear the image
 	mlx_delete_image(game->mlx.p_mlx, game->mlx.img);
 	game->mlx.img = mlx_new_image(game->mlx.p_mlx, S_WIDTH, S_HEIGHT);

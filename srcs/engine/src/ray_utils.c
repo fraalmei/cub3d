@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:16:16 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/25 10:51:22 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/21 09:15:53 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,20 @@ int unit_circle(float angle, char c)
 		if (angle > (M_PI / 2) && angle < (3 * M_PI) / 2)
 			return (1);
 	return (0);
+}
+/** 
+ * @brief Returns the x coordinate of the texture to be rendered.
+ * 
+ * @param game Pointer to the game structure.
+ * @param ray Pointer to the ray structure containing raycasting information.
+ * @param texture Pointer to the texture structure.
+*/
+double get_x_o(t_ray *ray, mlx_texture_t *texture)
+{
+	if (ray->side == 1)
+		return (int)fmodf((ray->ray_hor.x * 
+			(texture->width / T_SIZE)), texture->width);
+	else
+		return (int)fmodf((ray->ray_ver.y * 
+			(texture->width / T_SIZE)), texture->width);
 }
