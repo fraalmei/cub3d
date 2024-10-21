@@ -77,8 +77,8 @@ static int	get_rgba(char *color)
 	if (colors[3])
 		i = ft_atoi(colors[3]);
 	ft_printf_fd(1, "Entra get_rgba %s\n", color);
-	ft_printf_fd(1, "R = %s\nG = %s\nB = %s\nA = %s\n", colors[0], colors[1], colors[2]);
-	ft_printf_fd(1, "R = %d\nG = %d\nB = %d\nA = %d\n", ft_atoi(colors[0]), ft_atoi(colors[1]), ft_atoi(colors[2]));
+	ft_printf_fd(1, "R = %s\nG = %s\nB = %s\nA = %d\n", colors[0], colors[1], colors[2], i);
+	ft_printf_fd(1, "R = %d\nG = %d\nB = %d\nA = %d\n", ft_atoi(colors[0]), ft_atoi(colors[1]), ft_atoi(colors[2]), i);
 	ft_printf_fd(1, "Entra get_rgba");
 	ret = createRGBA(ft_atoi(colors[0]), ft_atoi(colors[1]), ft_atoi(colors[2]), i);
 	/* ret = (ft_atoi(colors[0]) << 24) | (ft_atoi(colors[1]) << 16) \
