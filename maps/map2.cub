@@ -1,7 +1,7 @@
-NO /home/fraalmei/Documents/Proyects/Cursus/cub3d/assets/textures/Impression_Sunrise.png
-SO /home/fraalmei/Documents/Proyects/Cursus/cub3d/assets/textures/Sunflowers.png
-WE /home/fraalmei/Documents/Proyects/Cursus/cub3d/assets/textures/the_starry_night.png
-EA /home/fraalmei/Documents/Proyects/Cursus/cub3d/assets/textures/115.png
+NO assets/textures/Impression_Sunrise.png
+SO assets/textures/Sunflowers.png
+WE assets/textures/the_starry_night.png
+EA assets/textures/115.png
 
 F 220,100,10
 C 225,30,000
