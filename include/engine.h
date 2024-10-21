@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:44:02 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/03 13:36:25 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/21 09:16:07 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,11 @@ void	cast_rays(t_game *game);
 // Ray_utils.c
 float	nor_angle(float angle);
 int		unit_circle(float angle, char c);
+double  get_x_o(t_ray *ray, mlx_texture_t *texture);
 
 // Screen_frame.c
 mlx_texture_t*		get_color(t_game *game, t_ray *ray);
-void	            render_wall(t_game *game, t_ray *ray, double t_pix, double b_pix);
+void                render_wall(t_game *game, t_ray *ray, double t_p , double b_p, double w_h);
 void	            render_floor_ceiling(t_game *game, t_ray *ray, double t_pix , double b_pix);
 void	            render_scene(t_game *game, t_ray *ray);
 
