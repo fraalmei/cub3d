@@ -58,12 +58,12 @@ int	is_color(char *str)
 	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
 } */
 
-static unsigned long createRGBA(int r, int g, int b, int a)
+/* static unsigned int createRGBA(int r, int g, int b, int a)
 {
 	return (((r & 0xff) << 24) + ((g & 0xff) << 16) + ((b & 0xff) << 8) + (a & 0xff));
-}
+} */
 
-static int	get_rgba(char *color)
+static unsigned int	get_rgba(char *color)
 {
 	int					i;
 	long				ret;
@@ -77,13 +77,13 @@ static int	get_rgba(char *color)
 	if (colors[3])
 		i = ft_atoi(colors[3]);
 	ft_printf_fd(1, "Entra get_rgba %s\n", color);
-	ft_printf_fd(1, "R = %s\nG = %s\nB = %s\nA = %d\n", colors[0], colors[1], colors[2], i);
-	ft_printf_fd(1, "R = %d\nG = %d\nB = %d\nA = %d\n", ft_atoi(colors[0]), ft_atoi(colors[1]), ft_atoi(colors[2]), i);
-	ft_printf_fd(1, "Entra get_rgba");
-	ret = createRGBA(ft_atoi(colors[0]), ft_atoi(colors[1]), ft_atoi(colors[2]), i);
-	/* ret = (ft_atoi(colors[0]) << 24) | (ft_atoi(colors[1]) << 16) \
-		| (ft_atoi(colors[2]) << 8) | (i); */
-	ft_printf_fd(1, "RGBA obtenido: %d\n", ret);
+	ft_printf_fd(1, "string R = %s\nstring G = %s\nstring B = %s\nA = %d\n", colors[0], colors[1], colors[2], i);
+	ft_printf_fd(1, "int R = %d\nint G = %d\nint B = %d\nint A = %d\n", ft_atoi(colors[0]), ft_atoi(colors[1]), ft_atoi(colors[2]), i);
+	/* ft_printf_fd(1, "hex R = %d\nhex G = %d\nhex B = %d\nhex A = %d\n", (ft_atoi(colors[0]) & 0xff) << 24, (ft_atoi(colors[1]) & 0xff) << 16, (ft_atoi(colors[2]) & 0xff) << 8, i);
+	ret = createRGBA(ft_atoi(colors[0]), ft_atoi(colors[1]), ft_atoi(colors[2]), i); */
+	ret = (ft_atoi(colors[0]) << 24) | (ft_atoi(colors[1]) << 16) \
+		| (ft_atoi(colors[2]) << 8) | (i);
+	ft_printf_fd(1, "RGBA obtenido: %u\n", ret);
 	return (ret);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen_frame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/21 12:45:40 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:39:04 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,10 @@ void render_floor_ceiling(t_game *game, t_ray *ray, double t_pix , double b_pix)
 
 	i = b_pix;
 	while (i < S_HEIGHT)
-		my_mlx_pixel_put(game, ray->ray, i++, game->floor_color); // floor (grass green)
+		my_mlx_pixel_put(game, ray->ray, i++, game->map->map_textures[4]->color); // floor (grass green)
 	i = 0;
 	while (i < t_pix)
-		my_mlx_pixel_put(game, ray->ray, i++, game->roof_color); // ceiling (sky blue)
+		my_mlx_pixel_put(game, ray->ray, i++, game->map->map_textures[5]->color); // ceiling (sky blue)
 }
 
 void render_scene(t_game *game, t_ray *ray)

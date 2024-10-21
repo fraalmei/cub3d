@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/21 11:27:00 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:40:42 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_texture
 	mlx_texture_t		*png_img;	///< PNG image pointer
 	xpm_t				*xpm_img;	///< XPM image pointer
 	int					png_xmp;	///< Texture is PNG or XPM
-	int					color;		///< Color of the texture
+	unsigned int		color;		///< Color of the texture
 	t_vector2			size;		///< Size of the texture
 }				t_texture;
 

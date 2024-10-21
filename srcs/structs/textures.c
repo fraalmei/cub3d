@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/11 12:12:43 by p                ###   ########.fr       */
+/*   Updated: 2024/10/21 15:33:55 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	print_textures(t_texture **textures)
 			//print_arr_uint8_t(textures[i]->png_img->pixels);
 		}
 		else if (textures[i]->color != 0)
-			ft_printf_fd(1, "Color: %d\n", textures[i]->color);
+			ft_printf_fd(1, "Color: %u\n", textures[i]->color);
 		ft_printf_fd (1, COLOR_CYAN);
 		ft_printf_fd (1, "###########################################\n");
 		ft_printf_fd (1, COLOR_RESET);
