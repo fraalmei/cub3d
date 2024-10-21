@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 00:37:58 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/21 10:55:01 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/21 11:12:45 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,36 +52,6 @@ void	key_release(mlx_key_data_t keydata, t_game *game)
 		else if (keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_D)
 			game->player->rot = 0;
 	}
-}
-
-void	player_rotate(t_game *game)
-{
-	if (game->player->rot == 1)
-	{
-		game->player->angle += ROTATION_SPEED; // rotate right
-	// 	if (game->player->angle > 2 * M_PI)
-	// 		game->player->angle = nor_angle(game->player->angle);
-	}
-	else if (game->player->rot == -1)
-	{
-		game->player->angle -= ROTATION_SPEED; // rotate left
-	// 	if (game->player->angle < 0)
-	// 		game->player->angle = nor_angle(game->player->angle);
-	}
-}
-
-void player_move(t_game *game)
-{
-	t_vector2	new_pos;
-	t_vector2	move;
-
-	move = ft_vector2(PLAYER_SPEED * cos(game->player->angle), PLAYER_SPEED * sin(game->player->angle));
-	new_pos = ft_addv2(game->player->pos, move);
-	if (wall_hit(game, new_pos.x, game->player->pos.y))
-		game->player->pos.x = new_pos.x;
-	new_pos = ft_addv2(game->player->pos, ft_vector2(PLAYER_SPEED * cos(game->player->angle + (M_PI / 2)), PLAYER_SPEED * sin(game->player->angle + (M_PI / 2))));
-	if (wall_hit(game, game->player->pos.x, new_pos.y))
-		game->player->pos.y = new_pos.y;
 }
 
 // void read_mouse_check(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
