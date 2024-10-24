@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:16:16 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/21 09:15:53 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:54:17 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,34 @@ int unit_circle(float angle, char c)
  * @param ray Pointer to the ray structure containing raycasting information.
  * @param texture Pointer to the texture structure.
 */
-double get_x_o(t_ray *ray, mlx_texture_t *texture)
+double get_x_o(t_game *game, mlx_texture_t *texture)
 {
-	if (ray->side == 1)
-		return (int)fmodf((ray->ray_hor.x * 
+	double x_o;
+
+	if (game->ray->side == 1)
+		x_o = fmodf((game->ray->ray_hor * 
 			(texture->width / T_SIZE)), texture->width);
 	else
-		return (int)fmodf((ray->ray_ver.y * 
+		x_o = fmodf((game->ray->ray_ver * 
 			(texture->width / T_SIZE)), texture->width);
+	PRINT_DEBUG("x_o = %f; ray->hor = %f | ray->ver = %f\n", x_o, game->ray->ray_hor, game->ray->ray_ver);
+	return (x_o);
+}
+/**
+ * @brief Reverses the bytes of an integer.
+ * 			- The function takes an integer as input and returns the integer with the bytes reversed.
+ *	
+ * @param c The integer to reverse the bytes of.
+ * @return The integer with the bytes reversed.
+ */
+int	reverse_bytes(int c)
+{
+	unsigned int	b;
+
+	b = 0;
+	b |= (c & 0xFF) << 24;
+	b |= (c & 0xFF00) << 8;
+	b |= (c & 0xFF0000) >> 8;
+	b |= (c & 0xFF000000) >> 24;
+	return (b);
 }

@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:12:31 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/21 12:42:38 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:55:22 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ void	update(void *g)
  */
 void	engine(t_game *game)
 {
+	game->n_frame = 0;
 	game->ray = calloc(S_WIDTH, sizeof(t_ray));
 	game->mlx.p_mlx = mlx_init(S_WIDTH, S_HEIGHT, "Cub3D", 0);
-	game->n_frame = 0;
 	mlx_loop_hook(game->mlx.p_mlx, &update, game);
 	mlx_key_hook(game->mlx.p_mlx, &read_keys_check, game);
 	mlx_loop(game->mlx.p_mlx);

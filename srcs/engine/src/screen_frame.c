@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen_frame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/21 15:39:04 by p                ###   ########.fr       */
+/*   Updated: 2024/10/24 15:53:49 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
 		return ;
 	else if (y < 0 || y >= S_HEIGHT)
 		return ;
-	mlx_put_pixel(game->mlx.img, x, y, color); // put the pixel
+	mlx_put_pixel(game->mlx.img, x, y, color);
 }
 
 /**
@@ -28,7 +28,7 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
  * @param flag The flag to determine the color.
  * @return The color of the wall.
  */
-mlx_texture_t* get_color(t_game *game, t_ray *ray)
+mlx_texture_t* get_side_texture(t_game *game, t_ray *ray)
 {
 	ray->ray_angle = nor_angle(ray->ray_angle); // normalize the angle
 	if (ray->side == 0)
@@ -68,16 +68,17 @@ void render_wall(t_game *game, t_ray *ray, double t_p , double b_p, double w_h)
 	uint32_t		*arr;
 	double			factor;
 
-	texture = get_color(game, ray);
+	texture = get_side_texture(game, ray);
 	arr = (uint32_t *)texture->pixels;
-	factor = (double)texture->height / w_h;			
-	x_o = get_x_o(ray, texture);
+	factor = (double)texture->height / w_h;
+	x_o = get_x_o(game, texture);
 	y_o = (t_p - (S_HEIGHT / 2) + (w_h / 2)) * factor;
 	if (y_o < 0)
 		y_o = 0;
 	while (t_p < b_p)
 	{
-		my_mlx_pixel_put(game, ray->ray, t_p, arr[(int)y_o + (int)x_o]);
+		my_mlx_pixel_put(game, ray->ray, t_p, reverse_bytes \
+			(arr[(int)y_o * texture->width + (int)x_o]));
 		y_o += factor;
 		t_p++;
 	}

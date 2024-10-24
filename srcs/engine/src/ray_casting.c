@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 07:58:21 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/21 09:04:04 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:57:52 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ double	get_h_inter(t_game *game, double angl)
 		step.x *= -1;
 	while (wall_hit(game, h.x, h.y - pixel))
 		h = ft_addv2(h, step);
-	game->ray->ray_hor = h;
+	game->ray->ray_hor = h.x;
 	return (sqrt(pow(h.x - game->player->pos.x, 2) + pow(h.y - game->player->pos.y, 2)));
 }
 
@@ -84,7 +84,7 @@ double	get_v_inter(t_game *game, double angl)
 		step.y *= -1;
 	while (wall_hit(game, v.x - pixel, v.y))
 		v = ft_addv2(v, step);
-	game->ray->ray_ver = v;
+	game->ray->ray_ver = v.y;
 	return (sqrt(pow(v.x - game->player->pos.x, 2) + pow(v.y - game->player->pos.y, 2)));
 }
 

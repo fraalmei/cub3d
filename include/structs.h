@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/21 15:40:42 by p                ###   ########.fr       */
+/*   Updated: 2024/10/24 15:39:35 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ typedef struct s_ray
 	int			side;		///< Indicator for the side of the wall hit
 	double		ray_angle;	///< Angle of the ray
 	double		dist;		///< Distance player to the wall intersection
-	t_vector2	ray_hor;	///< Horizontal intersection point
-	t_vector2	ray_ver;	///< Vertical intersection point
+	double		ray_hor;	///< Horizontal intersection point
+	double		ray_ver;	///< Vertical intersection point
 	t_vector2	ray_dir;	///< Direction of the ray
 	t_vector2	delta_dist;	///< Distance between the x and y intersections
 	t_vector2	step;		///< Step size for the ray
