@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:16:16 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/24 15:54:17 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:15:12 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,17 +53,17 @@ int unit_circle(float angle, char c)
  * @param ray Pointer to the ray structure containing raycasting information.
  * @param texture Pointer to the texture structure.
 */
-double get_x_o(t_game *game, mlx_texture_t *texture)
+double get_x_o(t_game *game, t_ray *ray, mlx_texture_t *texture)
 {
 	double x_o;
 
-	if (game->ray->side == 1)
-		x_o = fmodf((game->ray->ray_hor * 
+	(void)game;
+	if (ray->side == 1)
+		x_o = fmodf((ray->ray_hor.x * 
 			(texture->width / T_SIZE)), texture->width);
 	else
-		x_o = fmodf((game->ray->ray_ver * 
+		x_o = fmodf((ray->ray_ver.y * 
 			(texture->width / T_SIZE)), texture->width);
-	PRINT_DEBUG("x_o = %f; ray->hor = %f | ray->ver = %f\n", x_o, game->ray->ray_hor, game->ray->ray_ver);
 	return (x_o);
 }
 /**

@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/24 15:53:49 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:06:51 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void render_wall(t_game *game, t_ray *ray, double t_p , double b_p, double w_h)
 	texture = get_side_texture(game, ray);
 	arr = (uint32_t *)texture->pixels;
 	factor = (double)texture->height / w_h;
-	x_o = get_x_o(game, texture);
+	x_o = get_x_o(game, ray, texture);
 	y_o = (t_p - (S_HEIGHT / 2) + (w_h / 2)) * factor;
 	if (y_o < 0)
 		y_o = 0;

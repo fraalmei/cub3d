@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 16:44:02 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/24 15:54:35 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:10:49 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,14 @@ void	player_rotate(t_game *game);
 // Ray_casting.c
 int		inter_check(double angle, float *inter, float *step, int is_horizon);
 int		wall_hit(t_game *game, double x, double y);
-double	get_h_inter(t_game *game, double angl);
-double	get_v_inter(t_game *game, double angl);
+double	get_h_inter(t_game *game, t_ray *ray, double angl);
+double	get_v_inter(t_game *game, t_ray *ray, double angl);
 void	cast_rays(t_game *game);
 
 // Ray_utils.c
 float	nor_angle(float angle);
 int		unit_circle(float angle, char c);
-double	get_x_o(t_game *game, mlx_texture_t *texture);
+double	get_x_o(t_game *game, t_ray *ray, mlx_texture_t *texture);
 int     reverse_bytes(int c);
 
 // Screen_frame.c

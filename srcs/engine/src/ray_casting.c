@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 07:58:21 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/24 15:57:52 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:12:12 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	wall_hit(t_game *game, double x, double y)
 	return (1);
 }
 
-double	get_h_inter(t_game *game, double angl)
+double	get_h_inter(t_game *game, t_ray *ray, double angl)
 {
 	t_vector2	h;
 	t_vector2	step;
@@ -66,11 +66,11 @@ double	get_h_inter(t_game *game, double angl)
 		step.x *= -1;
 	while (wall_hit(game, h.x, h.y - pixel))
 		h = ft_addv2(h, step);
-	game->ray->ray_hor = h.x;
+	ray->ray_hor = h;
 	return (sqrt(pow(h.x - game->player->pos.x, 2) + pow(h.y - game->player->pos.y, 2)));
 }
 
-double	get_v_inter(t_game *game, double angl)
+double	get_v_inter(t_game *game, t_ray *ray, double angl)
 {
 	t_vector2	v;
 	t_vector2	step;
@@ -84,7 +84,7 @@ double	get_v_inter(t_game *game, double angl)
 		step.y *= -1;
 	while (wall_hit(game, v.x - pixel, v.y))
 		v = ft_addv2(v, step);
-	game->ray->ray_ver = v.y;
+	ray->ray_ver = v;
 	return (sqrt(pow(v.x - game->player->pos.x, 2) + pow(v.y - game->player->pos.y, 2)));
 }
 
@@ -97,13 +97,13 @@ void	cast_rays(t_game *game)
 
 	ray = -1;
 	ray_angle = game->player->angle - (game->player->fov_rd / 2);
-	while (++ray < S_WIDTH) // S_WIDTH)
+	while (++ray < S_WIDTH)
 	{
 		game->ray[ray].side = 0;
 		game->ray[ray].ray = ray;
 		game->ray[ray].ray_angle = ray_angle;
-		h_inter = get_h_inter(game, nor_angle(game->ray[ray].ray_angle));
-		v_inter = get_v_inter(game, nor_angle(game->ray[ray].ray_angle));
+		h_inter = get_h_inter(game, &game->ray[ray], nor_angle(game->ray[ray].ray_angle));
+		v_inter = get_v_inter(game, &game->ray[ray], nor_angle(game->ray[ray].ray_angle));
 		if (v_inter <= h_inter)
 			game->ray[ray].dist = v_inter;
 		else
