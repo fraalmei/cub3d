@@ -1,7 +1,7 @@
-NO assets/textures/Impression_Sunrise.png
-SO assets/textures/the_scream.png
-WE assets/textures/Mona_Lisa.png
-EA assets/textures/Wheat_Field.png
+NO assets/castle/castle_N.png
+SO assets/castle/castle_S.png
+WE assets/castle/castle_W.png
+EA assets/castle/castle_E.png
 
 F 200,125,005
 C 230,020,100

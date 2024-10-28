@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:06:24 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/30 11:54:56 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:48:43 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # include "functions.h"
 # include "color.h"
 
-
-#define PRINT_DEBUG(fmt, ...) printf("DEBUG: %s:%d: " fmt "\n", __FILE__, __LINE__, __VA_ARGS__)
-// PRINT_DEBUG("Funcion [%s]:", __func__);
+#define PRINT_FPS	PRINT_DEBUG("Frames = %d", game->n_frame);
+#define PRINT_POS	PRINT_DEBUG("Player pos[%d][%d]", (int)floor(game->player->pos.x), (int)floor(game->player->pos.y));
+#define PRINT_ROT	PRINT_DEBUG("Player_rot in degrees = %d", (int)floor(game->player->angle * 180 / M_PI));
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:12:31 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/24 12:55:22 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/28 11:26:18 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void frame_counter(t_game *game)
 {
 	if (game->n_frame++ > 60)
 		game->n_frame = 0;
-	PRINT_DEBUG("Player pos[%f][%f]\n", game->player->pos.x, game->player->pos.y);
-	PRINT_DEBUG("Player_rot in degrees = %d\n", (int)floor(game->player->angle * 180 / M_PI));
-	PRINT_DEBUG("Frames = %d\n", game->n_frame);
+	PRINT_POS;
+	PRINT_ROT;
+	PRINT_FPS;
 }
 
 /**

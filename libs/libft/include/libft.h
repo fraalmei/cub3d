@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:40:56 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/30 12:38:32 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/28 10:41:32 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@
 #  define BUFFER_SIZE 1
 # endif
 
-#define PRINT_DEBUG(fmt, ...) printf("DEBUG: %s:%d: " fmt "\n", __FILE__, __LINE__, __VA_ARGS__)
+#define PRINT_DEBUG(fmt, ...) printf("\rDEBUG: %s:%d: " fmt "\n", __FILE__, __LINE__, __VA_ARGS__)
 
 // FILE
 
