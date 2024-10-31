@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/21 15:39:18 by p                ###   ########.fr       */
+/*   Updated: 2024/10/31 11:12:56 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	main(int argc, char **argv)
 	game = init_data();
 	if (check_scene(game, argv[1]))
 		return (ft_printf_fd(2, "Map error.\n"),1);
-	print_global(game);
-	engine(game);
+	//print_global(game);
+	//engine(game);
 	free_data(game);
 	return (0);
 }

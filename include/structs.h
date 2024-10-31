@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/25 11:52:01 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/31 11:08:43 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ typedef struct s_texture
 	char				*name;		///< Name of the texture
 	char				*dir;		///< Directory of the texture
 	mlx_texture_t		*png_img;	///< PNG image pointer
-	xpm_t				*xpm_img;	///< XPM image pointer
-	int					png_xmp;	///< Texture is PNG or XPM
 	unsigned int		color;		///< Color of the texture
 	t_vector2			size;		///< Size of the texture
 }				t_texture;
@@ -128,12 +126,6 @@ typedef struct s_game
 	char		**matrix;			///< Matrix of the map
 	t_vector2	player_init_pos;	///< Player initial position
 	char		player_or;			///< Player orientation
-	int			floor_color;		///< Floor color
-	int			roof_color;			///< Roof color
-	int			north_texture;		///< North texture
-	int			east_texture;		///< East texture
-	int			south_texture;		///< South texture
-	int			west_texture;		///< West texture
 	int			n_frame;			///< Number of frames
 	int			n_ray;				///< Number of rays
 

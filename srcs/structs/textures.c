@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/21 15:33:55 by p                ###   ########.fr       */
+/*   Updated: 2024/10/31 11:17:09 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ static t_texture	*set_texture(char *name)
 	texture->name = name;
 	texture->dir = NULL;
 	texture->png_img = NULL;
-	texture->xpm_img = NULL;
-	texture->png_xmp = 0;
 	texture->color = -1;
 	return (texture);
 }
@@ -50,8 +48,6 @@ static int	free_texture(t_texture *texture)
 		free (texture->dir);
 	if (texture->png_img)
 		free (texture->png_img);
-	if (texture->xpm_img)
-		free (texture->xpm_img);
 	return (0);
 }
 
@@ -65,7 +61,9 @@ int	free_textures(t_texture **textures)
 	while (textures[++i])
 		if (textures[i])
 			(free_texture(textures[i]), free (textures[i]));
-	return (free (textures), ft_printf_fd(1, "Textures freed.\n"), 0);
+	free (textures);
+	ft_printf_fd(1, "Textures freed.\n");
+	return (0);
 }
 
 int	print_textures(t_texture **textures)
