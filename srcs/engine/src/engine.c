@@ -6,7 +6,7 @@
 /*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:12:31 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/28 11:26:18 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/10/31 08:50:57 by cagonzal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ void frame_counter(t_game *game)
 {
 	if (game->n_frame++ > 60)
 		game->n_frame = 0;
-	PRINT_POS;
-	PRINT_ROT;
-	PRINT_FPS;
 }
 
 /**
