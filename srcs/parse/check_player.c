@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:24 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/04 09:24:31 by p                ###   ########.fr       */
+/*   Updated: 2024/11/04 11:25:08 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ int	get_player_pos(t_game *game)
 				game->player->angle = \
 					get_player_angle(game->map->map[i[0]][i[1]]);
 				ft_printf_fd(1, "Pos x: %d | Pos y: %d\n", i[1], i[0]);
-				game->player->pos = ft_vector2(i[1] * T_SIZE + CENTER, i[0] * T_SIZE + CENTER);
+				game->player->pos = \
+					ft_vector2(i[1] * T_SIZE + CENTER, i[0] * T_SIZE + CENTER);
 				game->player_init_pos = game->player->pos;
 				ft_printf_fd(1, " - Correct.\n");
 				return (0);

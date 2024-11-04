@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/04 09:40:04 by p                ###   ########.fr       */
+/*   Updated: 2024/11/04 11:34:23 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ t_texture	**check_elements(int fd)
 		free (line);
 	}
 	if (check_true_list(sides))
-		return (ft_printf_fd(1, " - Texture missing.\n"), free_list (sides), NULL);
+		return (ft_printf_fd(1, " - Texture missing.\n"), \
+			free_list (sides), NULL);
 	free_list (sides);
 	ft_printf_fd(1, " - Correct textures.\n");
 	return (textures);

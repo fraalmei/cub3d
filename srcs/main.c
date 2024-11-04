@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 09:03:42 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/04 09:50:45 by p                ###   ########.fr       */
+/*   Updated: 2024/11/04 14:09:01 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	game = init_data();
 	if (check_scene(game, argv[1]))
 		return (free_data(game), 1);
-	//print_global(game);
+	print_global(game);
 	engine(game);
 	free_data(game);
 	return (0);

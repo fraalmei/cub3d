@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/01 14:43:27 by p                ###   ########.fr       */
+/*   Updated: 2024/11/04 13:24:33 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,40 +64,5 @@ int	free_textures(t_texture **textures)
 			free_texture(textures[i]);
 	free (textures);
 	ft_printf_fd(1, "Textures freed.\n");
-	return (0);
-}
-
-int	print_textures(t_texture **textures)
-{
-	int		i;
-
-	ft_printf_fd(1, "Name:\n");
-	if (!textures)
-		return (0);
-	i = -1;
-	while (textures[++i])
-	{
-		if (textures[i]->name)
-			ft_printf_fd(1, "Name: %s\n", textures[i]->name);
-		if (textures[i]->dir)
-		{
-			ft_printf_fd(1, "Dir: %s\n", textures[i]->dir);
-			ft_printf_fd(1, "Img?: %d\n", is_color(textures[i]->dir));
-		}
-		if (textures[i]->png_img)
-		{
-			ft_printf_fd(1, "Img png: %p\n", textures[i]->png_img);
-			ft_printf_fd(1, "Width: %d\n", textures[i]->png_img->width);
-			ft_printf_fd(1, "Height: %d\n", textures[i]->png_img->height);
-			ft_printf_fd(2, "Bytes_per_pixel: %d\n", textures[i]->png_img->bytes_per_pixel);
-			//sft_printf_fd(2, "Pixels: ");
-			//print_arr_uint8_t(textures[i]->png_img->pixels);
-		}
-		else if (textures[i]->color != 0)
-			ft_printf_fd(1, "Color: %u\n", textures[i]->color);
-		ft_printf_fd (1, COLOR_CYAN);
-		ft_printf_fd (1, "###########################################\n");
-		ft_printf_fd (1, COLOR_RESET);
-	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:43:38 by p                 #+#    #+#             */
-/*   Updated: 2024/11/02 01:41:32 by p                ###   ########.fr       */
+/*   Updated: 2024/11/04 13:45:40 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	free_list(t_str_fndd **list)
 	free(list);
 }
 
-int		str_fndd_list_len(t_str_fndd **list)
+int	str_fndd_list_len(t_str_fndd **list)
 {
 	int		i;
 
@@ -76,7 +76,7 @@ int		str_fndd_list_len(t_str_fndd **list)
 	return (i);
 }
 
-int		check_true_list(t_str_fndd **list)
+int	check_true_list(t_str_fndd **list)
 {
 	int		i;
 

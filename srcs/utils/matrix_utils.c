@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 16:20:23 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/30 13:34:10 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:45:05 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ t_vector2	matrix_len(char **matrix)
 {
 	t_vector2		len;
 
-	len = ft_vector2(ft_strlen_f(matrix[0]), ft_arraylen_f((const void **)matrix));
+	len = ft_vector2(ft_strlen_f(matrix[0]), \
+		ft_arraylen_f((const void **)matrix));
 	return (len);
 }

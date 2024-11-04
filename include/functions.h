@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/03 12:12:58 by p                ###   ########.fr       */
+/*   Updated: 2024/11/04 13:26:56 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int			set_map(t_game *game, int fd);
 		// textures.c
 t_texture	**set_textures(void);
 int			free_textures(t_texture **texture);
-int			print_textures(t_texture **textures);
 
 		// player.c
 int			print_player_inf(t_player *player);
@@ -88,6 +87,7 @@ int			check_true_list(t_str_fndd **list);
 		// print_things.c
 int			print_arr(char **str);
 int			print_arr_uint8_t(uint8_t *i);
+int			print_textures(t_texture **textures);
 
 		// read_utils.c
 char		*get_next_notempty_line(int fd);

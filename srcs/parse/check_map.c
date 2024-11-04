@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:33:55 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/04 09:48:42 by p                ###   ########.fr       */
+/*   Updated: 2024/11/04 11:33:44 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,7 @@ static int	check_map(char **map)
 		p.width++;
 		p.height = 0;
 	}
-	free_arr_string(str);
-	free(allc);
+	(free_arr_string(str), free(allc));
 	return (0);
 }
 
