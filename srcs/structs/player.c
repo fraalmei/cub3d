@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:38:32 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/30 15:52:42 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/03 12:13:02 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	set_player(t_game *game)
 	game->player->rot = 0;
 	game->player->fov_rd = FOV_RAD;
 	if (!game->player)
+		return (1);
+	if (check_multiple_players(game))
 		return (1);
 	if (get_player_pos(game))
 		return (1);

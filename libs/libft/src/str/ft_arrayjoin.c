@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 12:35:13 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/06/27 15:34:19 by p                ###   ########.fr       */
+/*   Updated: 2024/11/01 18:48:29 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	**ft_arrayjoin_arrfree(char **array, const char *str)
 	size_t	i;
 
 	if (!array && str)
-		array = (char **)ft_calloc(sizeof(char *), 1);
+		array = (char **)ft_calloc(sizeof(char *), 2);
 	if (!array || !str)
 		return (NULL);
 	len = ft_arraylen ((const void **)array);
@@ -30,6 +30,6 @@ char	**ft_arrayjoin_arrfree(char **array, const char *str)
 	while (len > ++i)
 		new[i] = ft_strdup(array[i]);
 	new[i] = ft_strdup(str);
-	free (array);
+	free_arr_string (array);
 	return (new);
 }

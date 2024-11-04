@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:50:57 by p                 #+#    #+#             */
-/*   Updated: 2024/07/25 14:26:30 by p                ###   ########.fr       */
+/*   Updated: 2024/11/04 09:39:03 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,23 @@ char	*read_word(char *buffer, int *i)
 	return (word);
 }
 
+static void	ignore_word(char *buffer, int *i)
+{
+	char	c;
+
+	while (buffer[*i] && !(ft_isprint(buffer[*i]) == 0 || buffer[*i] == 32))
+	{
+		if (buffer[*i] == 39 || buffer[*i] == 34)
+		{
+			c = buffer[*i];
+			i[0]++;
+			while (buffer[*i] && buffer[*i] != c)
+				i[0]++;
+		}
+		i[0]++;
+	}
+}
+
 /// @brief read the string and return the indicated word in it
 /// @param str string to read
 /// @param w position of the word to return
@@ -86,7 +103,7 @@ char	*get_word(char *str, int w)
 		if (i == w)
 			word = read_word(str, &l);
 		else
-			word = (free(read_word(str, &l)), NULL);
+			ignore_word(str, &l);
 		i++;
 	}
 	return (word);

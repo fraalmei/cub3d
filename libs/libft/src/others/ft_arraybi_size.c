@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 08:40:40 by mortiz-d          #+#    #+#             */
-/*   Updated: 2024/06/20 16:55:55 by p                ###   ########.fr       */
+/*   Updated: 2024/11/01 14:14:21 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,16 @@ int	ft_arraybi_size(char **str)
 }
 
 size_t	ft_arraylen(const void **array)
+{
+	size_t	i;
+
+	i = 0;
+	while (array[i])
+		i++;
+	return (i);
+}
+
+size_t	ft_str_arraylen(char **array)
 {
 	size_t	i;
 

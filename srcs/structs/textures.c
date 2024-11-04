@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/31 11:17:09 by p                ###   ########.fr       */
+/*   Updated: 2024/11/01 14:43:27 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_texture	**set_textures(void)
 {
 	t_texture	**textures;
 
-	textures = (t_texture **)ft_calloc(sizeof(t_texture *), 6);
+	textures = (t_texture **)ft_calloc(sizeof(t_texture *), 7);
 	textures[0] = set_texture(ft_strdup("NO"));
 	textures[1] = set_texture(ft_strdup("SO"));
 	textures[2] = set_texture(ft_strdup("WE"));
@@ -47,7 +47,8 @@ static int	free_texture(t_texture *texture)
 	if (texture->dir)
 		free (texture->dir);
 	if (texture->png_img)
-		free (texture->png_img);
+		mlx_delete_texture (texture->png_img);
+	free (texture);
 	return (0);
 }
 
@@ -60,7 +61,7 @@ int	free_textures(t_texture **textures)
 	i = -1;
 	while (textures[++i])
 		if (textures[i])
-			(free_texture(textures[i]), free (textures[i]));
+			free_texture(textures[i]);
 	free (textures);
 	ft_printf_fd(1, "Textures freed.\n");
 	return (0);

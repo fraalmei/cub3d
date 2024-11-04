@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:12:31 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/31 08:50:57 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/04 09:52:04 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	update(void *g)
 void	engine(t_game *game)
 {
 	game->n_frame = 0;
-	game->ray = calloc(S_WIDTH, sizeof(t_ray));
+	game->ray = ft_calloc(S_WIDTH, sizeof(t_ray));
 	game->mlx.p_mlx = mlx_init(S_WIDTH, S_HEIGHT, "Cub3D", 0);
 	mlx_loop_hook(game->mlx.p_mlx, &update, game);
 	mlx_key_hook(game->mlx.p_mlx, &read_keys_check, game);

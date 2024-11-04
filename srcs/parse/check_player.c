@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 10:53:24 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/26 13:33:48 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/04 09:24:31 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+int	check_multiple_players(t_game *game)
+{
+	int		i[3];
+
+	i[0] = 0;
+	i[2] = 0;
+	while (i[0] < game->map->map_size.height)
+	{
+		i[1] = 0;
+		while (i[1] < game->map->map_size.width)
+		{
+			if (ft_chrcmp_str(game->map->map[i[0]][i[1]], "NEWS") >= 0)
+				if (++i[2] > 1)
+					return (ft_printf_fd(2, " - Multiple player.\n"), 1);
+			i[1]++;
+		}
+		i[0]++;
+	}
+	return (0);
+}
 
 static double	get_player_angle(char c)
 {
@@ -27,7 +48,7 @@ static double	get_player_angle(char c)
 
 int	get_player_pos(t_game *game)
 {
-	int		i[2]; // i[0] = y, i[1] = x
+	int		i[2];
 
 	ft_printf_fd(1, "Checking player.\n");
 	i[0] = 0;
@@ -40,7 +61,6 @@ int	get_player_pos(t_game *game)
 			{
 				game->player->angle = \
 					get_player_angle(game->map->map[i[0]][i[1]]);
-
 				ft_printf_fd(1, "Pos x: %d | Pos y: %d\n", i[1], i[0]);
 				game->player->pos = ft_vector2(i[1] * T_SIZE + CENTER, i[0] * T_SIZE + CENTER);
 				game->player_init_pos = game->player->pos;

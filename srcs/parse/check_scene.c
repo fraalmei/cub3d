@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:11:41 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/08/05 17:45:13 by p                ###   ########.fr       */
+/*   Updated: 2024/11/02 12:42:54 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_scene(t_game *game, char *file)
 	if (fd < 0)
 		return (1);
 	if (set_map(game, fd))
-		return (1);
+		return (ft_printf_fd(2, " - Map error.\n"), 1);
 	if (set_player(game))
 		return (ft_printf_fd(2, " - Player error.\n"), 1);
 	close (fd);

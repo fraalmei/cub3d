@@ -21,47 +21,18 @@ int	is_color(char *str)
 
 	ft_printf_fd(1, "Comprobando si es color\n");
 	rgba = ft_split(str, ',');
-	if (ft_arraylen((const void **)rgba) < 3 || ft_arraylen((const void **)rgba) > 4)
-		return (ft_printf_fd(1, "Error cantidad datos de color\n"), free_arr((void **)rgba), 1);
+	if (ft_str_arraylen(rgba) < 3 || ft_str_arraylen(rgba) > 4)
+		return (ft_printf_fd(1, "Error cantidad datos de color\n"), free_arr_string(rgba), 1);
 	if (!(ft_atoi(rgba[0]) >= 0 && ft_atoi(rgba[0]) <= 255 && ft_atoi(rgba[1]) >= 0  && \
 			ft_atoi(rgba[1]) <= 255 && ft_atoi(rgba[2]) >= 0 && ft_atoi(rgba[2]) <= 255))
-		return (ft_printf_fd(1, "Rango de color incorrecto\n"), free_arr((void **)rgba), 1);
+		return (ft_printf_fd(1, "Rango de color incorrecto\n"), free_arr_string(rgba), 1);
 	if (rgba[3])
 		if (!(ft_atoi(rgba[3]) >= 0 && ft_atoi(rgba[3]) <= 255))
-			return (ft_printf_fd(1, "Rango alfa incorrecto\n"), free_arr((void **)rgba), 1);
-	free_arr((void **)rgba);
+			return (ft_printf_fd(1, "Rango alfa incorrecto\n"), free_arr_string(rgba), 1);
+	free_arr_string(rgba);
 	ft_printf_fd(1, "Es color\n");
 	return (0);
 }
-
-/* unsigned int	get_rgba(char *color)
-{
-	int					i;
-	long		ret;
-	char				**colors;
-
-	i = 255;
-	colors = ft_split(color, ',');
-	if (!colors)
-		return (-1);
-	if (colors[3])
-		i = ft_atoi(colors[3]);
-	ret = (ft_atoi(colors[0]) << 24) | (ft_atoi(colors[1]) << 16) \
-		| (ft_atoi(colors[2]) << 8) | (i);
-	free_arr((void **) colors);
-	ft_printf_fd(1, "RGBA obtenido: %d\n", ret);
-	return (ret);
-} */
-
-/* static unsigned long createRGB(int r, int g, int b)
-{
-	return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
-} */
-
-/* static unsigned int createRGBA(int r, int g, int b, int a)
-{
-	return (((r & 0xff) << 24) + ((g & 0xff) << 16) + ((b & 0xff) << 8) + (a & 0xff));
-} */
 
 static unsigned int	get_rgba(char *color)
 {
@@ -79,11 +50,10 @@ static unsigned int	get_rgba(char *color)
 	ft_printf_fd(1, "Entra get_rgba %s\n", color);
 	ft_printf_fd(1, "string R = %s\nstring G = %s\nstring B = %s\nA = %d\n", colors[0], colors[1], colors[2], i);
 	ft_printf_fd(1, "int R = %d\nint G = %d\nint B = %d\nint A = %d\n", ft_atoi(colors[0]), ft_atoi(colors[1]), ft_atoi(colors[2]), i);
-	/* ft_printf_fd(1, "hex R = %d\nhex G = %d\nhex B = %d\nhex A = %d\n", (ft_atoi(colors[0]) & 0xff) << 24, (ft_atoi(colors[1]) & 0xff) << 16, (ft_atoi(colors[2]) & 0xff) << 8, i);
-	ret = createRGBA(ft_atoi(colors[0]), ft_atoi(colors[1]), ft_atoi(colors[2]), i); */
 	ret = (ft_atoi(colors[0]) << 24) | (ft_atoi(colors[1]) << 16) \
 		| (ft_atoi(colors[2]) << 8) | (i);
 	ft_printf_fd(1, "RGBA obtenido: %u\n", ret);
+	free_arr_string(colors);
 	return (ret);
 }
 

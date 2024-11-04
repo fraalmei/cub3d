@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/31 11:08:43 by p                ###   ########.fr       */
+/*   Updated: 2024/11/02 00:21:18 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define STRUCTS_H
 
 # include <cub3d.h>
+
+typedef struct s_str_fndd
+{
+	bool		finded;
+	char		*str;
+}				t_str_fndd;
 
 typedef struct s_size
 {

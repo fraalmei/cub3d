@@ -6,7 +6,7 @@
 #    By: p <p@student.42.fr>                        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/26 10:38:51 by cagonzal          #+#    #+#              #
-#    Updated: 2024/10/31 11:02:47 by p                ###   ########.fr        #
+#    Updated: 2024/11/02 01:16:33 by p                ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,9 +82,8 @@ PARSE		= parse/check_scene.c parse/check_element.c \
 
 STRUCTS		= structs/global_data.c structs/textures.c structs/player.c structs/map.c
 
-UTILS		= utils/set_utils.c utils/file_utils.c utils/free.c utils/array_utils.c \
-			utils/print_things.c utils/read_utils.c utils/matrix_utils.c
-
+UTILS		= utils/set_utils.c utils/file_utils.c utils/array_utils.c \
+			utils/print_things.c utils/read_utils.c utils/matrix_utils.c utils/list_to_find.c
 
 ASSETS_DIR	= assets			# path to assets
 

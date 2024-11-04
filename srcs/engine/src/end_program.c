@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   end_program.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:39:57 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/09/23 14:00:05 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/04 09:54:06 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	end_program(void *g)
 		mlx_delete_image(game->mlx.p_mlx, game->mlx.img);
 	mlx_close_window(game->mlx.p_mlx);
 	mlx_terminate(game->mlx.p_mlx);
+	free_arr((void **)game->ray);
 	free_data(game);
 	exit(EXIT_SUCCESS);
 }

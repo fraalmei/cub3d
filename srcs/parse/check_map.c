@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 10:33:55 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/09/30 13:29:39 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/04 09:48:42 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,15 +98,16 @@ static int	check_map(char **map)
 		while (map[p.width][p.height])
 		{
 			if (ft_chrcmp_str(map[p.width][p.height], allc) == -1)
-				return (1);
+				return (free_arr_string(str), free(allc), 1);
 			if (check_point(map, p, str, '1'))
-				return (1);
+				return (free_arr_string(str), free(allc), 1);
 			p.height++;
 		}
 		p.width++;
 		p.height = 0;
 	}
-	free_arr((void **)str);
+	free_arr_string(str);
+	free(allc);
 	return (0);
 }
 
@@ -124,7 +125,7 @@ char	**read_map(int fd)
 	if (!map)
 		return (NULL);
 	if (check_map(map))
-		return (NULL);
+		return (free_arr_string(map), NULL);
 	fill_matrix(&map, ' ');
 	ft_printf(" - Correct.\n");
 	return (map);

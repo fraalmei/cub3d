@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:40:56 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/28 10:41:32 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/01 14:14:48 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ char		*ft_itoa(int n);
 
 int			ft_arraybi_size(char **str);
 size_t		ft_arraylen(const void **array);
+size_t		ft_str_arraylen(char **array);
 void		ft_error(int error);
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);
@@ -117,5 +118,7 @@ int			ft_toupper(int c);
 char		*ft_chrjoin(char *s1, char s2);
 char		*ft_chr_n_join(char *s1, char *s2, int n);
 char		**ft_arrayjoin_arrfree(char **array, const char *str);
+int			free_arr(void **arr);
+int			free_arr_string(char **arr);
 
 #endif

@@ -3,31 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_element.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/07/29 15:56:11 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/11/04 09:40:04 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/// @brief  check if the string side is in of the array sides
-/// @param side 
-/// @param sides 
-/// @return a 0 if side is in sides, a 1 if not
-static int	check_side(char *side, char ***sides)
-{
-	int		i;
-	char	**swap;
-
-	i = -1;
-	swap = *sides;
-	while (swap[++i])
-		if (ft_strcmp(swap[i], side) == 0)
-			return (0);
-	return (1);
-}
 
 /// @brief return a pointer to a structure of a structure array
 /// @param textures is the array of textures
@@ -55,26 +38,24 @@ static t_texture	*get_texture(t_texture **textures, char *name)
 /// @param line the line to read
 /// @param sides an array of sides to check the readed sides
 /// @return a 0 if the texture its correct, or 1 if an error ocurr
-static int	read_texture(t_texture **texture, char *line, char ***sides)
+static int	read_texture(t_texture **texture, char *line, t_str_fndd **list)
 {
 	char		*side;
 	t_texture	*p_texture;
 
 	side = get_word(line, 0);
 	p_texture = get_texture(texture, side);
-	//ft_printf_fd(1, " - - Checking texture: %s\n", side);
-	if (check_side(side, sides) && !texture)
+	if (check_list(side, list))
 	{
-		ft_printf_fd(2, " - - - Several identical or non-existent elements: %s\n", side);
-		return (1);
+		ft_printf_fd(2, " - - Several identical or non-existent elements.\n");
+		return (free(side), 1);
 	}
-	*sides = del_node_arr(*sides, side);
+	free(side);
 	p_texture->dir = get_word(line, 1);
 	if (!p_texture->dir)
 		return (1);
 	if (check_images(p_texture))
 		return (1);
-	//ft_printf_fd(1, " - - Obtained texture: %s\n", p_texture->dir);
 	return (0);
 }
 
@@ -84,24 +65,25 @@ static int	read_texture(t_texture **texture, char *line, char ***sides)
 t_texture	**check_elements(int fd)
 {
 	char		*line;
-	char		**sides;
+	t_str_fndd	**sides;
 	t_texture	**textures;
 	int			i;
 
 	ft_printf_fd(1, "Checking textures.\n");
 	textures = set_textures();
-	sides = ft_split("NO;SO;WE;EA;F;C", ';');
-	i = ft_arraylen((const void **)sides);
+	sides = set_list_to_find("NO;SO;WE;EA;F;C", ';');
+	i = str_fndd_list_len(sides);
 	while (i--)
 	{
 		line = get_next_notempty_line(fd);
-		if (read_texture(textures, line, &sides))
-			return (free_textures(textures), free_arr ((void **)sides), free (line), \
-				ft_printf_fd(2, " - Texture error\n"), NULL);
+		if (read_texture(textures, line, sides))
+			return (free_textures(textures), free_list (sides), free (line), \
+				NULL);
 		free (line);
 	}
-	if (sides)
-		free_arr ((void **)sides);
+	if (check_true_list(sides))
+		return (ft_printf_fd(1, " - Texture missing.\n"), free_list (sides), NULL);
+	free_list (sides);
 	ft_printf_fd(1, " - Correct textures.\n");
 	return (textures);
 }

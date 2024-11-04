@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:45:27 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/11 12:10:01 by p                ###   ########.fr       */
+/*   Updated: 2024/11/03 12:12:58 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int			check_images(t_texture *texture);
 char		**read_map(int fd);
 
 		// check_player
+int			check_multiple_players(t_game *game);
 int			get_player_pos(t_game *game);
 
 		// scene
@@ -74,6 +75,13 @@ int			check_readable(char *file);
 		// free.c
 int			free_arr(void **arr);
 
+		// list_to_find.c
+t_str_fndd	**set_list_to_find(char *splitstring, char split);
+int			check_list(char *str, t_str_fndd **list);
+void		free_list(t_str_fndd **list);
+int			str_fndd_list_len(t_str_fndd **list);
+int			check_true_list(t_str_fndd **list);
+
 		// set_utils.c
 // char		**set_double_arr(char *str, char c);
 
@@ -86,11 +94,6 @@ char		*get_next_notempty_line(int fd);
 char		*read_word(char *buffer, int *i);
 char		*get_word(char *str, int w);
 int			check_empty_line(char *line);
-
-		// print_things
-char		*del_char_str(char *str, char c);
-char		**del_node_arr(char **arr, char *str);
-
 
 		// paco_engine
 void		engine_check(t_game *game);

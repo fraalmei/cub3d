@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:21:48 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/21 15:33:55 by p                ###   ########.fr       */
+/*   Updated: 2024/11/02 12:57:20 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,16 @@ int	print_map(t_map *map)
 int	free_map(t_game *game)
 {
 	free_textures(game->map->map_textures);
-	free_arr((void **)game->map->map);
+	if (game->map->map)
+		free_arr_string(game->map->map);
+	free (game->map);
 	ft_printf_fd(1, "Map freed.\n");
 	return (0);
 }
 
 int	set_map(t_game *game, int fd)
 {
-	game->map = (t_map *)ft_calloc(1, sizeof(t_map));
+	game->map = (t_map *)ft_calloc(sizeof(t_map), 1);
 	if (!game->map)
 		return (1);
 	game->map->tile_size.width = T_SIZE;
