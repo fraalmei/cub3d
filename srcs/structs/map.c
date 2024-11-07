@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:21:48 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/02 12:57:20 by p                ###   ########.fr       */
+/*   Updated: 2024/11/07 17:40:47 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int	print_map(t_map *map)
 
 int	free_map(t_game *game)
 {
+	if (!game->map)
+		return (0);
 	free_textures(game->map->map_textures);
 	if (game->map->map)
 		free_arr_string(game->map->map);
