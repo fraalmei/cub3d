@@ -3,35 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/30 00:37:58 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/10/21 11:12:45 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:58:43 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../include/engine.h"
 
-void read_keys_check(mlx_key_data_t keydata, void *param)
+void	read_keys_check(mlx_key_data_t keydata, void *param)
 {
 	t_game	*game;
-	
+
 	game = (t_game *)param;
 	if (keydata.key == MLX_KEY_ESCAPE && (keydata.action == MLX_PRESS))
 		end_program(game);
 	else if (keydata.action == MLX_PRESS)
 	{
-		if (keydata.key == MLX_KEY_Q) // move left
+		if (keydata.key == MLX_KEY_Q)
 			game->player->l_r = -1;
-		else if (keydata.key == MLX_KEY_E) // move right
+		else if (keydata.key == MLX_KEY_E)
 			game->player->l_r = 1;
-		else if (keydata.key == MLX_KEY_S || keydata.key == MLX_KEY_DOWN) // move down
+		else if (keydata.key == MLX_KEY_S
+			|| keydata.key == MLX_KEY_DOWN)
 			game->player->u_d = -1;
-		else if (keydata.key == MLX_KEY_W || keydata.key == MLX_KEY_UP) // move up
+		else if (keydata.key == MLX_KEY_W
+			|| keydata.key == MLX_KEY_UP)
 			game->player->u_d = 1;
-		else if (keydata.key == MLX_KEY_A || keydata.key == MLX_KEY_LEFT) // rotate left
+		else if (keydata.key == MLX_KEY_A
+			|| keydata.key == MLX_KEY_LEFT)
 			game->player->rot = -1;
-		else if (keydata.key == MLX_KEY_D  || keydata.key == MLX_KEY_RIGHT) // rotate right
+		else if (keydata.key == MLX_KEY_D
+			|| keydata.key == MLX_KEY_RIGHT)
 			game->player->rot = 1;
 	}
 	key_release(keydata, game);
@@ -54,7 +58,8 @@ void	key_release(mlx_key_data_t keydata, t_game *game)
 	}
 }
 
-// void read_mouse_check(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
+// void	read_mouse_check(mouse_key_t button, action_t action,
+// 						modifier_key_t mods, void *param)
 // {
 // 	t_game *data;
 // 	char *str;

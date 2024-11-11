@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:38:32 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/03 12:13:02 by p                ###   ########.fr       */
+/*   Updated: 2024/11/11 10:53:41 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	set_player(t_game *game)
 	game->player->l_r = 0;
 	game->player->u_d = 0;
 	game->player->rot = 0;
-	game->player->fov_rd = FOV_RAD;
+	game->player->fov_rd = (double)FOV * M_PI / 180.0;
 	if (!game->player)
 		return (1);
 	if (check_multiple_players(game))

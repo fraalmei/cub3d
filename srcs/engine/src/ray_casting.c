@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 07:58:21 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/28 10:12:12 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:55:40 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,14 @@ double	get_h_inter(t_game *game, t_ray *ray, double angl)
 	h.y = floor(game->player->pos.y / T_SIZE) * T_SIZE;
 	pixel = inter_check(angl, &h.y, &step.y, 1);
 	h.x = game->player->pos.x + (h.y - game->player->pos.y) / tan(angl);
-	if ((unit_circle(angl, 'y') && step.x > 0) || (!unit_circle(angl, 'y') && step.x < 0))
+	if ((unit_circle(angl, 'y') && step.x > 0)
+		|| (!unit_circle(angl, 'y') && step.x < 0))
 		step.x *= -1;
 	while (wall_hit(game, h.x, h.y - pixel))
 		h = ft_addv2(h, step);
 	ray->ray_hor = h;
-	return (sqrt(pow(h.x - game->player->pos.x, 2) + pow(h.y - game->player->pos.y, 2)));
+	return (sqrt(pow(h.x - game->player->pos.x, 2)
+			+ pow(h.y - game->player->pos.y, 2)));
 }
 
 double	get_v_inter(t_game *game, t_ray *ray, double angl)
@@ -80,12 +82,14 @@ double	get_v_inter(t_game *game, t_ray *ray, double angl)
 	v.x = floor(game->player->pos.x / T_SIZE) * T_SIZE;
 	pixel = inter_check(angl, &v.x, &step.x, 0);
 	v.y = game->player->pos.y + (v.x - game->player->pos.x) * tan(angl);
-	if ((unit_circle(angl, 'x') && step.y < 0) || (!unit_circle(angl, 'x') && step.y > 0))
+	if ((unit_circle(angl, 'x') && step.y < 0)
+		|| (!unit_circle(angl, 'x') && step.y > 0))
 		step.y *= -1;
 	while (wall_hit(game, v.x - pixel, v.y))
 		v = ft_addv2(v, step);
 	ray->ray_ver = v;
-	return (sqrt(pow(v.x - game->player->pos.x, 2) + pow(v.y - game->player->pos.y, 2)));
+	return (sqrt(pow(v.x - game->player->pos.x, 2)
+			+ pow(v.y - game->player->pos.y, 2)));
 }
 
 void	cast_rays(t_game *game)
@@ -99,11 +103,11 @@ void	cast_rays(t_game *game)
 	ray_angle = game->player->angle - (game->player->fov_rd / 2);
 	while (++ray < S_WIDTH)
 	{
-		game->ray[ray].side = 0;
-		game->ray[ray].ray = ray;
-		game->ray[ray].ray_angle = ray_angle;
-		h_inter = get_h_inter(game, &game->ray[ray], nor_angle(game->ray[ray].ray_angle));
-		v_inter = get_v_inter(game, &game->ray[ray], nor_angle(game->ray[ray].ray_angle));
+		init_ray(game, ray, ray_angle);
+		h_inter = get_h_inter(game, &game->ray[ray],
+				nor_angle(game->ray[ray].ray_angle));
+		v_inter = get_v_inter(game, &game->ray[ray],
+				nor_angle(game->ray[ray].ray_angle));
 		if (v_inter <= h_inter)
 			game->ray[ray].dist = v_inter;
 		else

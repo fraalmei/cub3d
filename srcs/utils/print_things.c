@@ -3,14 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   print_things.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 12:54:52 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/04 15:03:32 by p                ###   ########.fr       */
+/*   Updated: 2024/11/11 11:02:06 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
+
+// ft_printf_fd(2, "Bytes_per_pixel: %d\n", \
+// 	textures[i]->png_img->bytes_per_pixel);
 
 /// @brief print an array of strings
 /// @param str 
@@ -65,8 +68,6 @@ int	print_textures(t_texture **textures)
 			ft_printf_fd(1, "Img png: %p\n", textures[i]->png_img);
 			ft_printf_fd(1, "Width: %d\n", textures[i]->png_img->width);
 			ft_printf_fd(1, "Height: %d\n", textures[i]->png_img->height);
-			ft_printf_fd(2, "Bytes_per_pixel: %d\n", \
-				textures[i]->png_img->bytes_per_pixel);
 		}
 		else if (textures[i]->color != 0)
 			ft_printf_fd(1, "Color: %u\n", textures[i]->color);

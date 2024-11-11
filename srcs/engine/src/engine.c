@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   engine.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:12:31 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/11/04 09:52:04 by p                ###   ########.fr       */
+/*   Updated: 2024/11/11 10:53:57 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * 
  * @param game Game structure
  */
-void frame_counter(t_game *game)
+void	frame_counter(t_game *game)
 {
 	if (game->n_frame++ > 60)
 		game->n_frame = 0;
@@ -36,9 +36,9 @@ void frame_counter(t_game *game)
 void	update(void *g)
 {
 	t_game	*game;
-	
+
 	game = g;
-    frame_counter(game);
+	frame_counter(game);
 	mlx_delete_image(game->mlx.p_mlx, game->mlx.img);
 	game->mlx.img = mlx_new_image(game->mlx.p_mlx, S_WIDTH, S_HEIGHT);
 	hook(game);

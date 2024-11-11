@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 10:48:45 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/02 00:21:18 by p                ###   ########.fr       */
+/*   Updated: 2024/11/11 10:50:01 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef enum e_directions
 {
 	NORTH = 0,		///< North direction
 	SOUTH = 1,		///< South direction
-	EAST = 2,    	///< East direction
+	EAST = 2,		///< East direction
 	WEST = 3		///< West direction
 }	t_directions;
 
@@ -83,7 +83,6 @@ typedef struct s_ray
 	t_vector2	step;		///< Step size for the ray
 	t_vector2	side_dist;	///< Distance to the next x or y intersection
 }	t_ray;
-
 
 typedef struct s_mlx
 {
@@ -134,7 +133,7 @@ typedef struct s_game
 	char		player_or;			///< Player orientation
 	int			n_frame;			///< Number of frames
 	int			n_ray;				///< Number of rays
-
+	double		wall_height;		///< Wall height
 }	t_game;
 
 #endif
