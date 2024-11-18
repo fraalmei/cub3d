@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_image.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:26:35 by p                 #+#    #+#             */
-/*   Updated: 2024/11/18 01:32:40 by p                ###   ########.fr       */
+/*   Updated: 2024/11/18 12:21:08 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int check_color_num(char *num)
+static int	check_color_num(char *num)
 {
 	if (num[0] != 0 || num[4] != 0)
 		return (1);
