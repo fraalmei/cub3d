@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:38:39 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/03/18 10:22:35 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:15:31 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <t_list.h>
-
 
 /**
  * @brief Destroys the given linked list.

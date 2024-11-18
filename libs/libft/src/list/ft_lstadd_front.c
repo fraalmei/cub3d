@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 18:36:45 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/03/18 10:22:26 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:06:51 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <t_list.h>
-
 
 /**
  * @brief Adds a new element at the beginning of a linked list.

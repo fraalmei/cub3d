@@ -6,7 +6,7 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:26:35 by p                 #+#    #+#             */
-/*   Updated: 2024/11/18 12:21:08 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:04:05 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 static int	check_color_num(char *num)
 {
-	if (num[0] != 0 || num[4] != 0)
-		return (1);
-	if (ft_isdigit(num[0]))
-		return (1);
-	if (num[1] != 0 && ft_isdigit(num[1]))
-		return (1);
-	if (num[1] != 0 && ft_isdigit(num[2]))
-		return (1);
-	if (!(ft_atoi(num) >= 0 && ft_atoi(num) <= 255))
-		return (1);
+	if (ft_isdigit(num[0]) == 0)
+		return (ft_printf_fd(1, "Not a digit\n"), 1);
+	else if (ft_isdigit(num[1]) == 0)
+		return (ft_printf_fd(1, "Not a digit\n"), 1);
+	else if (ft_isdigit(num[2]) == 0)
+		return (ft_printf_fd(1, "Not a digit\n"), 1);
+	else if (!(ft_atoi(num) >= 0 && ft_atoi(num) <= 255))
+		return (ft_printf_fd(1, "Incorrect rank\n"), 1);
 	return (0);
 }
 
@@ -39,10 +37,9 @@ int	is_color(char *str)
 	if (ft_str_arraylen(rgba) < 3 || ft_str_arraylen(rgba) > 4)
 		return (ft_printf_fd(1, "Error data color\n"), \
 			free_arr_string(rgba), 1);
-	if (check_color_num(rgba[0]) && check_color_num(rgba[1]) && \
+	if (check_color_num(rgba[0]) || check_color_num(rgba[1]) || \
 			check_color_num(rgba[2]))
-		return (ft_printf_fd(1, "Incorrect number\n"), \
-			free_arr_string(rgba), 1);
+		return (free_arr_string(rgba), 1);
 	if (rgba[3])
 		if (check_color_num(rgba[3]))
 			return (ft_printf_fd(1, "Incorrect alpha number\n"), \

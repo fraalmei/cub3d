@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_element.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:27:37 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/04 11:34:23 by p                ###   ########.fr       */
+/*   Updated: 2024/11/18 13:03:43 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ t_texture	**check_elements(int fd)
 	{
 		line = get_next_notempty_line(fd);
 		if (read_texture(textures, line, sides))
-			return (free_textures(textures), free_list (sides), free (line), \
-				NULL);
+			return (free_textures(textures), free_list (sides), \
+				free (line), NULL);
 		free (line);
 	}
 	if (check_true_list(sides))

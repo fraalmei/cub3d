@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:40:56 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/11/01 14:14:48 by p                ###   ########.fr       */
+/*   Updated: 2024/11/18 13:06:38 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,14 @@
 # define OUTFILE 1
 # define APPFILE 2
 
-#ifndef OPEN_MAX
 # define OPEN_MAX FOPEN_MAX
-#endif
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # endif
 
-#define PRINT_DEBUG(fmt, ...) printf("\rDEBUG: %s:%d: " fmt "\n", __FILE__, __LINE__, __VA_ARGS__)
+// #define PRINT_DEBUG(fmt, ...) printf("\rDEBUG: %s:%d: 
+// " fmt "\n", __FILE__, __LINE__, __VA_ARGS__)
 
 // FILE
 

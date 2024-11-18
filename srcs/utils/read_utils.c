@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 17:50:57 by p                 #+#    #+#             */
-/*   Updated: 2024/11/04 13:47:30 by p                ###   ########.fr       */
+/*   Updated: 2024/11/18 13:02:23 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,10 @@ char	*get_next_notempty_line(int fd)
 	char	*line;
 
 	line = get_next_line(fd);
-	while (ft_strcmp(line, "\n") == 0)
-		line = (free (line), get_next_line(fd));
+	while (check_empty_line(line) == 1)
+	{
+		free (line);
+		line = get_next_line(fd);
+	}
 	return (line);
 }

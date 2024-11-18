@@ -6,13 +6,13 @@
 /*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 12:54:52 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/11 11:02:06 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:22:01 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3d.h>
 
-// ft_printf_fd(2, "Bytes_per_pixel: %d\n", \
+// ft_printf_fd(2, "Bytes_per_pixel: %d\n",
 // 	textures[i]->png_img->bytes_per_pixel);
 
 /// @brief print an array of strings

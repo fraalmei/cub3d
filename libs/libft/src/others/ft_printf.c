@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:09:09 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/03/18 10:19:25 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:12:15 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-#ifndef uintptr_t
-# define uintptr_t unsigned long long int
-#endif
+// #ifndef UNINT_PTR
+// #define UNINT_PTR = unsigned long long int
+// #endif
 
-#ifndef UNS_INT
-# define UNS_INT unsigned int
-#endif
+// #ifndef UNS_INT
+// #define UNS_INT unsigned int
+// #endif
 
 static int	ft_makestr(char *str)
 {
@@ -51,14 +51,15 @@ static int	ft_printnum(long long int num, int base, char *charbase)
 	return (len);
 }
 
-static int	ft_printpointer(uintptr_t num, unsigned int base, char *charbase)
+static int	ft_printpointer(unsigned long long int num,
+		unsigned int base, char *charbase)
 {
 	int	len;
 
 	len = 0;
 	len += ft_makestr("0x");
 	if (num > (base - 1))
-			len += ft_printnum(num / base, base, charbase);
+		len += ft_printnum(num / base, base, charbase);
 	len += write(1, &charbase[num % base], 1);
 	return (len);
 }
@@ -87,7 +88,8 @@ static int	ft_printvble(char car, va_list list)
 	else if (car == 'X')
 		len += ft_printnum(va_arg(list, unsigned int), 16, "0123456789ABCDEF");
 	else if (car == 'p')
-		len += ft_printpointer(va_arg(list, uintptr_t), 16, "0123456789abcdef");
+		len += ft_printpointer(va_arg(list, unsigned long long int), \
+			16, "0123456789abcdef");
 	return (len);
 }
 
