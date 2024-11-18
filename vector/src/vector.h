@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 08:53:58 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/13 08:16:33 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/11 11:03:26 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,13 @@ typedef union u_vector3
 		float	g;
 		float	b;
 	};
-
 	struct
 	{
 		float	width;
 		float	heigth;
 		float	depth;
 	};
-
 	float	elements[3];
-
 }	t_vector3;
 
 typedef union u_matrix3
@@ -95,7 +92,6 @@ typedef union u_vector4
 		float	z;
 		float	w;
 	};
-
 	struct
 	{
 		float	r;

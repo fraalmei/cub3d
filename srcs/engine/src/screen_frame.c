@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen_frame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:07:43 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/28 10:06:51 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:50:55 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,22 @@ void	my_mlx_pixel_put(t_game *game, int x, int y, int color)
  * @param flag The flag to determine the color.
  * @return The color of the wall.
  */
-mlx_texture_t* get_side_texture(t_game *game, t_ray *ray)
+mlx_texture_t	*get_side_texture(t_game *game, t_ray *ray)
 {
-	ray->ray_angle = nor_angle(ray->ray_angle); // normalize the angle
+	ray->ray_angle = nor_angle(ray->ray_angle);
 	if (ray->side == 0)
 	{
 		if (ray->ray_angle > M_PI / 2 && ray->ray_angle < 3 * (M_PI / 2))
-			return (game->map->map_textures[WEST]->png_img); // west wall
+			return (game->map->map_textures[WEST]->png_img);
 		else
-			return (game->map->map_textures[EAST]->png_img); // east wall
+			return (game->map->map_textures[EAST]->png_img);
 	}
 	else
 	{
 		if (ray->ray_angle > 0 && ray->ray_angle < M_PI)
-			return (game->map->map_textures[SOUTH]->png_img); // south wall
+			return (game->map->map_textures[SOUTH]->png_img);
 		else
-			return (game->map->map_textures[NORTH]->png_img); // north wall
+			return (game->map->map_textures[NORTH]->png_img);
 	}
 }
 
@@ -60,7 +60,8 @@ mlx_texture_t* get_side_texture(t_game *game, t_ray *ray)
  * @param b_pix The bottom pixel coordinate where the wall segment ends.
  * @param w_h The height of the wall segment to render.
  */
-void render_wall(t_game *game, t_ray *ray, double t_p , double b_p, double w_h)
+void	render_wall(t_game *game, t_ray *ray,
+			double t_p, double b_p)
 {
 	double			x_o;
 	double			y_o;
@@ -70,9 +71,9 @@ void render_wall(t_game *game, t_ray *ray, double t_p , double b_p, double w_h)
 
 	texture = get_side_texture(game, ray);
 	arr = (uint32_t *)texture->pixels;
-	factor = (double)texture->height / w_h;
+	factor = (double)texture->height / game->wall_height;
 	x_o = get_x_o(game, ray, texture);
-	y_o = (t_p - (S_HEIGHT / 2) + (w_h / 2)) * factor;
+	y_o = (t_p - (S_HEIGHT / 2) + (game->wall_height / 2)) * factor;
 	if (y_o < 0)
 		y_o = 0;
 	while (t_p < b_p)
@@ -95,32 +96,35 @@ void render_wall(t_game *game, t_ray *ray, double t_p , double b_p, double w_h)
  * @param t_pix The top pixel coordinate for rendering.
  * @param b_pix The bottom pixel coordinate for rendering.
  */
-void render_floor_ceiling(t_game *game, t_ray *ray, double t_pix , double b_pix)
+void	render_floor_ceiling(t_game *game, t_ray *ray,
+		double t_pix, double b_pix)
 {
 	int		i;
 
 	i = b_pix;
 	while (i < S_HEIGHT)
-		my_mlx_pixel_put(game, ray->ray, i++, game->map->map_textures[4]->color); // floor (grass green)
+		my_mlx_pixel_put(game, ray->ray, i++,
+			game->map->map_textures[4]->color);
 	i = 0;
 	while (i < t_pix)
-		my_mlx_pixel_put(game, ray->ray, i++, game->map->map_textures[5]->color); // ceiling (sky blue)
+		my_mlx_pixel_put(game, ray->ray, i++,
+			game->map->map_textures[5]->color);
 }
 
-void render_scene(t_game *game, t_ray *ray)
+void	render_scene(t_game *game, t_ray *ray)
 {
-	double wall_height;
-	double b_pix;
-	double t_pix;
+	double	b_pix;
+	double	t_pix;
 
 	ray->dist *= cos(ray->ray_angle - game->player->angle);
-	wall_height = (T_SIZE / ray->dist) * ((S_WIDTH / 2) / tan(game->player->fov_rd / 2));
-	b_pix = (S_HEIGHT / 2) + (wall_height / 2);
-	t_pix = (S_HEIGHT / 2) - (wall_height / 2);
+	game->wall_height = (T_SIZE / ray->dist) * ((S_WIDTH / 2)
+			/ tan(game->player->fov_rd / 2));
+	b_pix = (S_HEIGHT / 2) + (game->wall_height / 2);
+	t_pix = (S_HEIGHT / 2) - (game->wall_height / 2);
 	if (b_pix > S_HEIGHT)
 		b_pix = S_HEIGHT;
 	if (t_pix < 0)
 		t_pix = 0;
-	render_wall(game, ray, t_pix, b_pix, wall_height);
+	render_wall(game, ray, t_pix, b_pix);
 	render_floor_ceiling(game, ray, t_pix, b_pix);
 }

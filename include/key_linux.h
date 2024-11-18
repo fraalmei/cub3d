@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_linux.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 11:06:33 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/06/21 08:46:10 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:59:15 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@
 # define K_Y 121
 # define K_Z 122
 
-
 /*
 void run_key(int k_code, int a, int b)
     {
@@ -54,8 +53,6 @@ void run_key(int k_code, int a, int b)
     key_make[k_code -K_A](a, b);
     }
 */
-
-
 
 /*
 ** Keyboard ARROWS

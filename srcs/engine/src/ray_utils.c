@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cagonzal <cagonzal@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 10:16:16 by cagonzal          #+#    #+#             */
-/*   Updated: 2024/10/28 10:15:12 by cagonzal         ###   ########.fr       */
+/*   Updated: 2024/11/11 10:57:14 by fraalmei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ float	nor_angle(float angle)	// normalize the angle
  * @param c The character representing the axis ('x' or 'y').
  * @return 1 if the angle lies within the specified quadrant, 0 otherwise.
  */
-int unit_circle(float angle, char c)
+int	unit_circle(float angle, char c)
 {
 	if (c == 'x')
 		if (angle > 0 && angle < M_PI)
@@ -46,6 +46,7 @@ int unit_circle(float angle, char c)
 			return (1);
 	return (0);
 }
+
 /** 
  * @brief Returns the x coordinate of the texture to be rendered.
  * 
@@ -53,22 +54,24 @@ int unit_circle(float angle, char c)
  * @param ray Pointer to the ray structure containing raycasting information.
  * @param texture Pointer to the texture structure.
 */
-double get_x_o(t_game *game, t_ray *ray, mlx_texture_t *texture)
+double	get_x_o(t_game *game, t_ray *ray, mlx_texture_t *texture)
 {
-	double x_o;
+	double	x_o;
 
 	(void)game;
 	if (ray->side == 1)
-		x_o = fmodf((ray->ray_hor.x * 
-			(texture->width / T_SIZE)), texture->width);
+		x_o = fmodf((ray->ray_hor.x
+					* (texture->width / T_SIZE)), texture->width);
 	else
-		x_o = fmodf((ray->ray_ver.y * 
-			(texture->width / T_SIZE)), texture->width);
+		x_o = fmodf((ray->ray_ver.y
+					* (texture->width / T_SIZE)), texture->width);
 	return (x_o);
 }
+
 /**
  * @brief Reverses the bytes of an integer.
- * 			- The function takes an integer as input and returns the integer with the bytes reversed.
+ * 			- The function takes an integer as input
+ * 			and returns the integer with the bytes reversed.
  *	
  * @param c The integer to reverse the bytes of.
  * @return The integer with the bytes reversed.
@@ -83,4 +86,11 @@ int	reverse_bytes(int c)
 	b |= (c & 0xFF0000) >> 8;
 	b |= (c & 0xFF000000) >> 24;
 	return (b);
+}
+
+void	init_ray(t_game *game, int ray, float ray_angle)
+{
+	game->ray[ray].side = 0;
+	game->ray[ray].ray = ray;
+	game->ray[ray].ray_angle = ray_angle;
 }
