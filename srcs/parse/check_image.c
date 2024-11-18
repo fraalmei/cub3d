@@ -6,11 +6,26 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 11:26:35 by p                 #+#    #+#             */
-/*   Updated: 2024/11/04 12:11:48 by p                ###   ########.fr       */
+/*   Updated: 2024/11/18 01:32:40 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int check_color_num(char *num)
+{
+	if (num[0] != 0 || num[4] != 0)
+		return (1);
+	if (ft_isdigit(num[0]))
+		return (1);
+	if (num[1] != 0 && ft_isdigit(num[1]))
+		return (1);
+	if (num[1] != 0 && ft_isdigit(num[2]))
+		return (1);
+	if (!(ft_atoi(num) >= 0 && ft_atoi(num) <= 255))
+		return (1);
+	return (0);
+}
 
 /// @brief checking if is a texture or a solid color
 /// @param str 
@@ -24,14 +39,13 @@ int	is_color(char *str)
 	if (ft_str_arraylen(rgba) < 3 || ft_str_arraylen(rgba) > 4)
 		return (ft_printf_fd(1, "Error data color\n"), \
 			free_arr_string(rgba), 1);
-	if (!(ft_atoi(rgba[0]) >= 0 && ft_atoi(rgba[0]) <= 255 && \
-			ft_atoi(rgba[1]) >= 0 && ft_atoi(rgba[1]) <= 255 && \
-			ft_atoi(rgba[2]) >= 0 && ft_atoi(rgba[2]) <= 255))
-		return (ft_printf_fd(1, "Incorrect data rank\n"), \
+	if (check_color_num(rgba[0]) && check_color_num(rgba[1]) && \
+			check_color_num(rgba[2]))
+		return (ft_printf_fd(1, "Incorrect number\n"), \
 			free_arr_string(rgba), 1);
 	if (rgba[3])
-		if (!(ft_atoi(rgba[3]) >= 0 && ft_atoi(rgba[3]) <= 255))
-			return (ft_printf_fd(1, "Incorrect alpha rank\n"), \
+		if (check_color_num(rgba[3]))
+			return (ft_printf_fd(1, "Incorrect alpha number\n"), \
 				free_arr_string(rgba), 1);
 	free_arr_string(rgba);
 	ft_printf_fd(1, "It's a color\n");

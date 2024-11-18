@@ -6,7 +6,7 @@
 /*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 03:12:40 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/04 13:24:33 by p                ###   ########.fr       */
+/*   Updated: 2024/11/17 23:21:47 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,5 @@ int	free_textures(t_texture **textures)
 		if (textures[i])
 			free_texture(textures[i]);
 	free (textures);
-	ft_printf_fd(1, "Textures freed.\n");
 	return (0);
 }

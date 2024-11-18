@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fraalmei <fraalmei@student.42.fr>          +#+  +:+       +#+        */
+/*   By: p <p@student.42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 16:21:48 by fraalmei          #+#    #+#             */
-/*   Updated: 2024/11/07 17:40:47 by fraalmei         ###   ########.fr       */
+/*   Updated: 2024/11/17 23:21:49 by p                ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	free_map(t_game *game)
 	if (game->map->map)
 		free_arr_string(game->map->map);
 	free (game->map);
-	ft_printf_fd(1, "Map freed.\n");
 	return (0);
 }
 
