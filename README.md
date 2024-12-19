@@ -12,7 +12,7 @@ cub3d is a 3D game engine project developed as part of the 42 Madrid curriculum.
 - [License](#license)
 
 ## Introduction
-cub3d is a simple 3D game engine that demonstrates the basics of raycasting. It is written in C and uses the MiniLibX library for graphics rendering.
+cub3d is a simple 3D game engine that demonstrates the basics of raycasting. It is written in C and uses the MiniLibX library for graphics rendering. This project only runs on Linux and Mac.
 
 ## Features
 - Raycasting for 3D rendering
